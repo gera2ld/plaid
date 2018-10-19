@@ -1,0 +1,18 @@
+module.exports = {
+  extends: [
+    'eslint:recommended',
+  ],
+  parserOptions: {
+    ecmaVersion: 2018,
+  },
+  env: {
+    es6: true,
+    node: true,
+  },
+  plugins: [
+    'import',
+  ],
+  rules: {
+    'import/no-unresolved': [2, { commonjs: true }],
+  },
+};
