@@ -34,7 +34,7 @@ const defaultOptions = {
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true,
     },
-    template: path.join(__dirname, 'webpack/html/template.html'),
+    template: path.resolve(__dirname, '../webpack/html/template.html'),
     meta: { viewport: 'width=device-width,initial-scale=1.0' },
     css: [],
     js: [],
