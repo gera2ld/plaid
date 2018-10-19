@@ -1,0 +1,18 @@
+{
+  "name": "webpack-util-react",
+  "version": "0.1.0",
+  "description": "Webpack utility helpers for React",
+  "author": "Gerald <i@gerald.top>",
+  "license": "MIT",
+  "files": [
+    "eslint",
+    "webpack",
+    "util"
+  ],
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.0.0"
+  }
+}

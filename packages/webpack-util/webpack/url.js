@@ -1,12 +1,7 @@
-const { defaultOptions } = require('../util');
-
 module.exports = options => config => {
   const {
     svgDir,
-  } = {
-    ...defaultOptions,
-    ...options,
-  };
+  } = options;
   config.module = {
     ...config.module,
   };
@@ -23,4 +18,5 @@ module.exports = options => config => {
       exclude: [svgDir],
     },
   ];
+  return config;
 };

@@ -1,0 +1,17 @@
+{
+  "name": "webpack-util-vue",
+  "version": "0.1.0",
+  "description": "Webpack utility helpers for Vue",
+  "author": "Gerald <i@gerald.top>",
+  "license": "MIT",
+  "files": [
+    "eslint",
+    "webpack",
+    "util"
+  ],
+  "dependencies": {
+    "eslint-plugin-html": "^4.0.6",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

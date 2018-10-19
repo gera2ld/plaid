@@ -9,10 +9,4 @@ module.exports = {
     es6: true,
     node: true,
   },
-  plugins: [
-    'import',
-  ],
-  rules: {
-    'import/no-unresolved': [2, { commonjs: true }],
-  },
 };

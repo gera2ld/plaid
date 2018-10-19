@@ -1,13 +1,10 @@
-const { styleLoader, defaultOptions } = require('../util');
+const { styleLoader } = require('../util');
 
 module.exports = options => config => {
   const {
     lessLoader,
     nodeModules,
-  } = {
-    ...defaultOptions,
-    ...options,
-  };
+  } = options;
   config.module.rules = [
     ...config.module.rules || [],
 
@@ -28,4 +25,5 @@ module.exports = options => config => {
       exclude: [/\.module\.less$/],
     },
   ];
+  return config;
 };

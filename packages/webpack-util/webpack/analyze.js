@@ -5,4 +5,5 @@ module.exports = () => config => {
     ...config.plugins || [],
     new BundleAnalyzerPlugin(),
   ];
+  return config;
 };

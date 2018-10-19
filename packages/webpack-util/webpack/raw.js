@@ -1,13 +1,8 @@
-const { defaultOptions } = require('../util');
-
 module.exports = options => config => {
   const {
     srcDir,
     testDir,
-  } = {
-    ...defaultOptions,
-    ...options,
-  };
+  } = options;
   config.module = {
     ...config.module,
   };
@@ -19,4 +14,5 @@ module.exports = options => config => {
       include: [srcDir, testDir],
     },
   ];
+  return config;
 };

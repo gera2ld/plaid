@@ -10,9 +10,10 @@ const defaultOptions = {
   distDir: path.resolve('dist'),
   nodeModules: path.resolve('node_modules'),
   svgDir: path.resolve('src/resources/svg'),
-  styleOptions: {
+  cssSourceOptions: {
     loaders: ['postcss-loader'],
   },
+  styleOptions: {},
   lessLoader: {
     loader: 'less-loader',
     // For ant-design
@@ -22,6 +23,9 @@ const defaultOptions = {
         hd: '2px',
       },
     },
+  },
+  vueOptions: {
+    preserveWhitespace: false,
   },
   htmlOptions: {
     minify: isProd && {

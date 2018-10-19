@@ -1,4 +1,4 @@
-const { isProd, defaultOptions } = require('../util');
+const { isProd } = require('../util');
 
 module.exports = options => config => {
   const {
@@ -6,10 +6,7 @@ module.exports = options => config => {
     testDir,
     distDir,
     nodeModules,
-  } = {
-    ...defaultOptions,
-    ...options,
-  };
+  } = options;
   config.mode = isProd ? 'production' : 'development';
   config.output = {
     path: distDir,
@@ -35,4 +32,5 @@ module.exports = options => config => {
       include: [srcDir, testDir],
     },
   ];
+  return config;
 };

@@ -1,15 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { defaultOptions } = require('../../util');
 
 module.exports = options => config => {
   const {
     pages,
     htmlOptions,
-  } = {
-    ...defaultOptions,
-    ...options,
-  };
-  const entries = Object.entries(pages)
+  } = options;
+  const entry = Object.entries(pages)
   .reduce((res, [key, { entry }]) => ({ ...res, [key]: entry }), {});
   const htmlPlugins = Object.entries(pages)
   .map(([key, { html }]) => {
@@ -35,9 +31,10 @@ module.exports = options => config => {
     }
   })
   .filter(Boolean);
-  config.entries = entries;
+  config.entry = entry;
   config.plugins = [
     ...config.plugins || [],
     ...htmlPlugins,
   ];
+  return config;
 };

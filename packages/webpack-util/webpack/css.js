@@ -1,22 +1,21 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const { isProd, styleRule, defaultOptions } = require('../util');
+const { isProd, styleRule } = require('../util');
 
 module.exports = options => config => {
   const {
     nodeModules,
+    cssSourceOptions,
     styleOptions,
-  } = {
-    ...defaultOptions,
-    ...options,
-  };
+  } = options;
   config.module.rules = [
     ...config.module.rules || [],
 
     // CSS modules: src/**/*.module.css
     styleRule({
       ...styleOptions,
+      ...cssSourceOptions,
       modules: true,
     }, {
       test: /\.module\.css$/,
@@ -24,7 +23,10 @@ module.exports = options => config => {
     }),
 
     // normal CSS files: src/**/*.css
-    styleRule(styleOptions, {
+    styleRule({
+      ...styleOptions,
+      ...cssSourceOptions,
+    }, {
       exclude: [/\.module\.css$/, nodeModules],
     }),
 
@@ -49,4 +51,5 @@ module.exports = options => config => {
     ...config.plugins || [],
     isProd && new MiniCssExtractPlugin(),
   ].filter(Boolean);
+  return config;
 };
