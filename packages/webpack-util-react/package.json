@@ -1,6 +1,6 @@
 {
   "name": "webpack-util-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webpack utility helpers for React",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
