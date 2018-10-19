@@ -24,9 +24,6 @@ const defaultOptions = {
       },
     },
   },
-  vueOptions: {
-    preserveWhitespace: false,
-  },
   htmlOptions: {
     minify: isProd && {
       collapseWhitespace: true,
