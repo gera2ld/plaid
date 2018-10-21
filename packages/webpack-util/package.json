@@ -4,6 +4,9 @@
   "description": "Webpack utility helpers",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
+  "bin": {
+    "webpack-util": "bin/cli.js"
+  },
   "scripts": {
     "lint": "eslint ."
   },
@@ -29,6 +32,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-module-resolver": "^3.1.1",
     "cross-env": "^5.2.0",
+    "cross-spawn": "^6.0.5",
     "css-loader": "^1.0.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-import-resolver-babel-module": "^5.0.0-beta.1",
