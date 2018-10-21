@@ -11,9 +11,10 @@
     "lint": "eslint ."
   },
   "files": [
+    "bin",
     "eslint",
-    "webpack",
-    "util"
+    "util",
+    "webpack"
   ],
   "dependencies": {
     "@babel/core": "^7.1.2",
