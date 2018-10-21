@@ -10,6 +10,7 @@ const mappings = {
   svg: './svg',
   sw: './sw',
   url: './url',
+  devServer: './dev-server',
   ...requireSilent('webpack-util-vue/webpack'),
 };
 
