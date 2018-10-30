@@ -1,11 +1,18 @@
 process.env.NODE_ENV = 'development';
 
+const fs = require('fs-extra');
+
 module.exports = develop;
 
 async function develop(args) {
   // Allow util to be modified when webpack.conf.js is required
   const { hasConfig, webpackPath } = require('../util/paths')(args);
   const webpackConfig = require(webpackPath);
+
+  const { defaultOptions } = require('../util');
+  const { distDir, publicDir } = defaultOptions;
+  await fs.copy(publicDir, distDir);
+
   const argv = [
     process.argv[0],
   ];

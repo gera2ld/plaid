@@ -8,11 +8,12 @@ async function build(args) {
   // Allow util to be modified when webpack.conf.js is required
   const { hasConfig, webpackPath } = require('../util/paths')(args);
   require(webpackPath);
+
   const { defaultOptions } = require('../util');
   const { distDir, publicDir } = defaultOptions;
-
   await fs.emptyDir(distDir);
   await fs.copy(publicDir, distDir);
+
   const argv = [
     process.argv[0],
     'webpack-cli',
