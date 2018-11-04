@@ -3,11 +3,12 @@ const { isProd } = require('../util');
 
 module.exports = options => config => {
   const {
+    devServer,
     distDir,
   } = options;
   config.devServer = {
-    hot: true,
     contentBase: distDir,
+    ...devServer,
     ...config.devServer,
   };
   config.plugins = [

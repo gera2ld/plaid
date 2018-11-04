@@ -40,6 +40,9 @@ const defaultOptions = {
     css: [],
     js: [],
   },
+  devServer: {
+    hot: true,
+  },
 };
 
 function styleLoader(options) {
