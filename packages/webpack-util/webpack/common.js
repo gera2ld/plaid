@@ -6,12 +6,13 @@ module.exports = options => config => {
     testDir,
     distDir,
     nodeModules,
+    hashedFilename,
   } = options;
   config.mode = isProd ? 'production' : 'development';
   config.output = {
     path: distDir,
     publicPath: '',
-    filename: '[name].js',
+    filename: hashedFilename ? '[name].[chunkhash].js' : '[name].js',
     ...config.output,
   };
   config.resolve = {
@@ -33,17 +34,19 @@ module.exports = options => config => {
     },
   ];
   config.optimization = {
-    ...config.optimization,
-  };
-  config.optimization.splitChunks = {
-    cacheGroups: {
-      common: {
-        name: 'common',
-        minChunks: 2,
-        chunks: 'all',
+    runtimeChunk: {
+      name: 'runtime',
+    },
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          name: 'common',
+          minChunks: 2,
+          chunks: 'all',
+        },
       },
     },
-    ...config.optimization.splitChunks,
+    ...config.optimization,
   };
   return config;
 };

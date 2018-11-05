@@ -11,6 +11,7 @@ const defaultOptions = {
   publicDir: path.resolve('src/public'),
   nodeModules: path.resolve('node_modules'),
   svgDir: path.resolve('src/resources/svg'),
+  hashedFilename: false,
   cssSourceOptions: {
     loaders: ['postcss-loader'],
   },

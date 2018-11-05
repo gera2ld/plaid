@@ -8,6 +8,7 @@ module.exports = options => config => {
     nodeModules,
     cssSourceOptions,
     styleOptions,
+    hashedFilename,
   } = options;
   config.module.rules = [
     ...config.module.rules || [],
@@ -49,7 +50,9 @@ module.exports = options => config => {
   ].filter(Boolean);
   config.plugins = [
     ...config.plugins || [],
-    isProd && new MiniCssExtractPlugin(),
+    isProd && new MiniCssExtractPlugin({
+      filename: hashedFilename ? '[name].[contenthash].css' : '[name].css',
+    }),
   ].filter(Boolean);
   return config;
 };
