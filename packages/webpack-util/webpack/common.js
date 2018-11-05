@@ -32,5 +32,18 @@ module.exports = options => config => {
       include: [srcDir, testDir],
     },
   ];
+  config.optimization = {
+    ...config.optimization,
+  };
+  config.optimization.splitChunks = {
+    cacheGroups: {
+      common: {
+        name: 'common',
+        minChunks: 2,
+        chunks: 'all',
+      },
+    },
+    ...config.optimization.splitChunks,
+  };
   return config;
 };
