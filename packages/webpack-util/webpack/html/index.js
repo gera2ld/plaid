@@ -36,6 +36,7 @@ module.exports = options => config => {
       .map(item => {
         if (typeof item === 'string') return { src: item };
         if (item && item.content) return { content: util.escapeScript(item.content) };
+        return item;
       })
       .filter(Boolean);
       return new HtmlWebpackPlugin(options);
