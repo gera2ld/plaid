@@ -10,7 +10,7 @@
     "util"
   ],
   "dependencies": {
-    "eslint-plugin-html": "^4.0.6",
+    "eslint-plugin-vue": "^5.0.0-beta.4",
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.5.17"
   }
