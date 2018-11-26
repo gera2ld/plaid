@@ -25,5 +25,7 @@ module.exports = {
     }],
     indent: ['error', 2, { MemberExpression: 0 }],
     'object-shorthand': ['error', 'always'],
+    'no-restricted-syntax': 'off',
+    'no-await-in-loop': 'off',
   },
 };
