@@ -32,6 +32,7 @@ module.exports = options => config => {
     }
     if (options) {
       if (options.inlineSource) options.inject = false;
+
       options.js = (options.js || [])
       .map(item => {
         if (typeof item === 'string') return { src: item };
@@ -39,6 +40,15 @@ module.exports = options => config => {
         return item;
       })
       .filter(Boolean);
+
+      options.css = (options.css || [])
+      .map(item => {
+        if (typeof item === 'string') return { href: item };
+        if (item && item.content) return { content: item.content };
+        return item;
+      })
+      .filter(Boolean);
+
       return new HtmlWebpackPlugin(options);
     }
   })

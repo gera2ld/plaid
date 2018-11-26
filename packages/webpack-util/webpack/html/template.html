@@ -9,8 +9,12 @@
 <% if (htmlWebpackPlugin.options.manifest) { %>
 <link rel="manifest" href="<%= htmlWebpackPlugin.options.manifest %>">
 <% } %>
-<% htmlWebpackPlugin.options.css.forEach(url => { %>
-<link rel="stylesheet" href="<%= url %>">
+<% htmlWebpackPlugin.options.css.forEach(({ href, content }) => { %>
+<% if (href) { %>
+<link rel="stylesheet" href="<%= href %>">
+<% } else { %>
+<style><%= content %></style>
+<% } %>
 <% }); %>
 <% htmlWebpackPlugin.options.inlineSource && htmlWebpackPlugin.files.css.forEach(file => { %>
 <style><%= compilation.assets[file.slice(htmlWebpackPlugin.files.publicPath.length)].source() %></style>
