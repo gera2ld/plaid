@@ -18,7 +18,12 @@ module.exports = options => config => {
     !isProd && new webpack.HotModuleReplacementPlugin(),
     !isProd && new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
-        messages: [`Your application is running here: http://localhost:${config.devServer.port || 8080}`],
+        messages: [
+          'Envs:',
+          `  NODE_ENV=${process.env.NODE_ENV || ''}`,
+          `  BABEL_ENV=${process.env.BABEL_ENV || ''}`,
+          `Your application is running here: http://localhost:${config.devServer.port || 8080}`,
+        ],
       },
     }),
   ].filter(Boolean);
