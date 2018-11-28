@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<% htmlWebpackPlugin.options.inlineSource && Object.entries(htmlWebpackPlugin.options.meta || {}).forEach(([ name, content ]) => { %>
+<% Object.entries(htmlWebpackPlugin.options.meta || {}).forEach(([ name, content ]) => { %>
 <meta name="<%= name %>" content="<%= content %>">
 <% }) %>
 <title><%= htmlWebpackPlugin.options.title %></title>
@@ -16,8 +16,12 @@
 <style><%= content %></style>
 <% } %>
 <% }); %>
-<% htmlWebpackPlugin.options.inlineSource && htmlWebpackPlugin.files.css.forEach(file => { %>
+<% htmlWebpackPlugin.files.css.forEach(file => { %>
+<% if (htmlWebpackPlugin.options.inlineSource) { %>
 <style><%= compilation.assets[file.slice(htmlWebpackPlugin.files.publicPath.length)].source() %></style>
+<% } else { %>
+<link rel="stylesheet" href="<%= file %>">
+<% } %>
 <% }); %>
 <% htmlWebpackPlugin.options.js.forEach(({ src, content }) => { %>
 <% if (src) { %>
@@ -28,8 +32,12 @@
 <% }); %>
 </head>
 <body>
-<% htmlWebpackPlugin.options.inlineSource && htmlWebpackPlugin.files.js.forEach(file => { %>
+<% htmlWebpackPlugin.files.js.forEach(file => { %>
+<% if (htmlWebpackPlugin.options.inlineSource) { %>
 <script><%= htmlWebpackPlugin.options.util.escapeScript(compilation.assets[file.slice(htmlWebpackPlugin.files.publicPath.length)].source()) %></script>
+<% } else { %>
+<script src="<%= file %>"></script>
+<% } %>
 <% }); %>
 </body>
 </html>

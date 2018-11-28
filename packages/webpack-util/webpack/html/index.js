@@ -17,6 +17,7 @@ module.exports = options => config => {
     if (html) {
       options = {
         ...htmlOptions,
+        inject: false,
         util,
         filename: `${key}.html`,
         chunks: [key],
@@ -31,9 +32,7 @@ module.exports = options => config => {
       }
     }
     if (options) {
-      if (options.inlineSource) options.inject = false;
-
-      options.js = (options.js || [])
+      options.js = options.js
       .map(item => {
         if (typeof item === 'string') return { src: item };
         if (item && item.content) return { content: util.escapeScript(item.content) };
@@ -41,7 +40,7 @@ module.exports = options => config => {
       })
       .filter(Boolean);
 
-      options.css = (options.css || [])
+      options.css = options.css
       .map(item => {
         if (typeof item === 'string') return { href: item };
         if (item && item.content) return { content: item.content };
