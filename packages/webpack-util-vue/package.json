@@ -1,6 +1,6 @@
 {
   "name": "webpack-util-vue",
-  "version": "0.1.9",
+  "version": "0.1.12",
   "description": "Webpack utility helpers for Vue",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
