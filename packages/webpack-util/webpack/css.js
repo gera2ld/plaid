@@ -49,7 +49,7 @@ module.exports = options => config => {
   ]).filter(Boolean);
   config.plugins = [
     ...config.plugins || [],
-    isProd && new MiniCssExtractPlugin({
+    styleOptions.extract && new MiniCssExtractPlugin({
       filename: hashedFilename ? '[name].[contenthash].css' : '[name].css',
     }),
   ].filter(Boolean);

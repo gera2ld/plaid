@@ -15,7 +15,9 @@ const defaultOptions = {
   cssSourceOptions: {
     loaders: ['postcss-loader'],
   },
-  styleOptions: {},
+  styleOptions: {
+    extract: isProd,
+  },
   lessLoader: {
     loader: 'less-loader',
     // For ant-design
