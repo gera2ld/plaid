@@ -7,6 +7,7 @@ module.exports = options => config => {
     distDir,
     nodeModules,
     hashedFilename,
+    jsOptions,
   } = options;
   config.mode = isProd ? 'production' : 'development';
   config.output = {
@@ -19,7 +20,7 @@ module.exports = options => config => {
     // Tell webpack to look for peer dependencies in `node_modules`
     // when packages are linked from outside directories
     modules: [nodeModules],
-    extensions: ['.js'],
+    ...jsOptions.resolve,
     ...config.resolve,
   },
   config.module = {
@@ -28,7 +29,7 @@ module.exports = options => config => {
   config.module.rules = [
     ...config.module.rules || [],
     {
-      test: /\.js$/,
+      test: jsOptions.test,
       use: 'babel-loader',
       include: [srcDir, testDir],
     },
