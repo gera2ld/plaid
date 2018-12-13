@@ -1,3 +1,4 @@
+const TerserPlugin = require('terser-webpack-plugin');
 const { isProd } = require('../util');
 
 module.exports = options => config => {
@@ -49,5 +50,18 @@ module.exports = options => config => {
     },
     ...config.optimization,
   };
+  config.optimization.minimizer = [
+    ...config.optimization.minimizer || [],
+    isProd && new TerserPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true,
+      terserOptions: {
+        output: {
+          ascii_only: true,
+        },
+      },
+    }),
+  ].filter(Boolean);
   return config;
 };
