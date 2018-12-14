@@ -21,6 +21,7 @@ module.exports = options => config => {
     // Tell webpack to look for peer dependencies in `node_modules`
     // when packages are linked from outside directories
     modules: [nodeModules],
+    extensions: ['.js'],
     ...jsOptions.resolve,
     ...config.resolve,
   },
