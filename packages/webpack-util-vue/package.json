@@ -13,5 +13,6 @@
     "eslint-plugin-vue": "^5.0.0-beta.4",
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.5.17"
-  }
+  },
+  "repository": "git@github.com:gera2ld/webpack-util.git"
 }

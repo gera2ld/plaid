@@ -1,4 +1,6 @@
 {
+  "name": "webpack-util",
+  "version": "1.0.0",
   "author": "Gerald <i@gerald.top>",
   "description": "Webpack utility helpers",
   "license": "MIT",
@@ -8,5 +10,6 @@
   "devDependencies": {
     "eslint": "^5.7.0",
     "lerna": "^2.11.0"
-  }
+  },
+  "repository": "git@github.com:gera2ld/webpack-util.git"
 }

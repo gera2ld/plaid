@@ -63,5 +63,6 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
-  }
+  },
+  "repository": "git@github.com:gera2ld/webpack-util.git"
 }

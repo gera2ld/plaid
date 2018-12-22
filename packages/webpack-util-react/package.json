@@ -14,5 +14,6 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0"
-  }
+  },
+  "repository": "git@github.com:gera2ld/webpack-util.git"
 }
