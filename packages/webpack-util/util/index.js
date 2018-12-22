@@ -81,8 +81,19 @@ function styleRule(options, rule) {
   };
 }
 
+async function combineConfig(input, reducers) {
+  let config = await input;
+  for (const reducer of reducers) {
+    if (reducer) {
+      config = await reducer(config) || config;
+    }
+  }
+  return config;
+}
+
 exports.isDev = isDev;
 exports.isProd = isProd;
 exports.defaultOptions = defaultOptions;
 exports.styleLoader = styleLoader;
 exports.styleRule = styleRule;
+exports.combineConfig = combineConfig;
