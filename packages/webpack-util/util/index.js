@@ -91,9 +91,18 @@ async function combineConfig(input, reducers) {
   return config;
 }
 
+async function loadConfig(webpackConfig) {
+  let config = webpackConfig;
+  if (typeof config === 'function') {
+    config = config();
+  }
+  return config;
+}
+
 exports.isDev = isDev;
 exports.isProd = isProd;
 exports.defaultOptions = defaultOptions;
 exports.styleLoader = styleLoader;
 exports.styleRule = styleRule;
 exports.combineConfig = combineConfig;
+exports.loadConfig = loadConfig;

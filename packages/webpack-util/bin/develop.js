@@ -7,7 +7,8 @@ module.exports = develop;
 async function develop(args) {
   // Allow util to be modified when webpack.conf.js is required
   const { hasConfig, webpackPath } = require('../util/paths')(args);
-  const webpackConfig = await require(webpackPath);
+  const { loadConfig } = require('../util');
+  const webpackConfig = await loadConfig(require(webpackPath));
 
   const { defaultOptions } = require('../util');
   const { distDir, publicDir } = defaultOptions;
