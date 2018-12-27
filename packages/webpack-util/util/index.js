@@ -15,9 +15,7 @@ const defaultOptions = {
   jsOptions: {
     test: /\.js$/,
   },
-  cssSourceOptions: {
-    loaders: ['postcss-loader'],
-  },
+  cssLoaders: ['postcss-loader'],
   styleOptions: {
     extract: isProd,
   },

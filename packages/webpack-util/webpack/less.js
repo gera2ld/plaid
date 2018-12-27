@@ -3,6 +3,7 @@ const { styleLoader } = require('../util');
 module.exports = options => config => {
   const {
     lessLoader,
+    cssLoaders,
     nodeModules,
   } = options;
   config.module.rules = [
@@ -11,7 +12,7 @@ module.exports = options => config => {
     {
       test: /\.module\.less$/,
       use: styleLoader({
-        loaders: ['postcss-loader', lessLoader],
+        loaders: [...cssLoaders, lessLoader],
         modules: true,
       }),
       exclude: [nodeModules],
@@ -20,7 +21,7 @@ module.exports = options => config => {
     {
       test: /\.less$/,
       use: styleLoader({
-        loaders: ['postcss-loader', lessLoader],
+        loaders: [...cssLoaders, lessLoader],
       }),
       exclude: [/\.module\.less$/],
     },

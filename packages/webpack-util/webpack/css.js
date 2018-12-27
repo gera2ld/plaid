@@ -5,7 +5,7 @@ const { isProd, styleRule } = require('../util');
 module.exports = options => config => {
   const {
     nodeModules,
-    cssSourceOptions,
+    cssLoaders,
     styleOptions,
     hashedFilename,
   } = options;
@@ -15,7 +15,7 @@ module.exports = options => config => {
     // CSS modules: src/**/*.module.css
     styleRule({
       ...styleOptions,
-      ...cssSourceOptions,
+      ...cssLoaders,
       modules: true,
     }, {
       test: /\.module\.css$/,
@@ -25,7 +25,7 @@ module.exports = options => config => {
     // normal CSS files: src/**/*.css
     styleRule({
       ...styleOptions,
-      ...cssSourceOptions,
+      ...cssLoaders,
     }, {
       exclude: [/\.module\.css$/, nodeModules],
     }),
