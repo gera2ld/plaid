@@ -1,18 +1,18 @@
 process.env.NODE_ENV = 'development';
 
 const fs = require('fs-extra');
+const { defaultOptions, findWebpackConfig, loadWebpackConfig, exists } = require('../util');
 
 module.exports = develop;
 
-async function develop(args) {
+async function develop() {
   // Allow util to be modified when webpack.conf.js is required
-  const { hasConfig, webpackPath } = require('../util/paths')(args);
-  const { loadConfig } = require('../util');
-  const webpackConfig = await loadConfig(require(webpackPath));
+  const webpackConfig = await loadWebpackConfig();
 
-  const { defaultOptions } = require('../util');
   const { distDir, publicDir } = defaultOptions;
-  await fs.copy(publicDir, distDir);
+  if (await exists(publicDir, { dir: true })) {
+    await fs.copy(publicDir, distDir);
+  }
 
   const argv = [
     process.argv[0],
@@ -27,7 +27,10 @@ async function develop(args) {
     argv.push('webpack-cli', '-w');
     module = 'webpack-cli/bin/cli';
   }
-  if (!hasConfig) argv.push('--config', webpackPath);
+  argv.push(
+    '--config',
+    await findWebpackConfig(),
+  );
   process.argv = argv;
   require(module);
 }

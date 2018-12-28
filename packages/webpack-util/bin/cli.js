@@ -1,6 +1,20 @@
 #!/usr/bin/env node
 
-const [command, ...args] = process.argv.slice(2);
+const program = require('commander');
 
-if (command === 'develop') require('./develop')(args);
-else if (command === 'build') require('./build')(args);
+program
+.version(require('../package.json').version);
+
+program
+.command('develop')
+.action((cmd) => {
+  require('./develop')(cmd);
+});
+
+program
+.command('build')
+.action((cmd) => {
+  require('./build')(cmd);
+});
+
+program.parse(process.argv);

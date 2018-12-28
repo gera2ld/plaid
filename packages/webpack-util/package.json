@@ -7,13 +7,6 @@
   "bin": {
     "webpack-util": "bin/cli.js"
   },
-  "files": [
-    "bin",
-    "eslint",
-    "postcss",
-    "util",
-    "webpack"
-  ],
   "dependencies": {
     "@babel/core": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.2.1",
@@ -30,6 +23,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "babel-plugin-module-resolver": "^3.1.1",
+    "commander": "^2.19.0",
     "cross-env": "^5.2.0",
     "css-loader": "^2.0.0",
     "eslint": "^5.10.0",

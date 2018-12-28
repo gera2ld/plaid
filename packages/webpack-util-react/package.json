@@ -4,11 +4,6 @@
   "description": "Webpack utility helpers for React",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
-  "files": [
-    "eslint",
-    "webpack",
-    "util"
-  ],
   "scripts": {
     "lint": "eslint ."
   },

@@ -1,58 +1,11 @@
-const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-const isDev = process.env.NODE_ENV === 'development';
-const isProd = process.env.NODE_ENV === 'production';
-
-const defaultOptions = {
-  srcDir: path.resolve('src'),
-  testDir: path.resolve('test'),
-  distDir: path.resolve('dist'),
-  publicDir: path.resolve('src/public'),
-  nodeModules: path.resolve('node_modules'),
-  svgDir: path.resolve('src/resources/svg'),
-  hashedFilename: false,
-  jsOptions: {
-    test: /\.js$/,
-  },
-  cssLoaders: ['postcss-loader'],
-  styleOptions: {
-    extract: isProd,
-  },
-  lessLoader: {
-    loader: 'less-loader',
-    // For ant-design
-    options: {
-      javascriptEnabled: true,
-      modifyVars: {
-        hd: '2px',
-      },
-    },
-  },
-  htmlOptions: {
-    minify: isProd && {
-      collapseWhitespace: true,
-      removeAttributeQuotes: true,
-      removeComments: true,
-      removeOptionalTags: true,
-      removeRedundantAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-    },
-    template: path.resolve(__dirname, '../webpack/html/template.html'),
-    meta: { viewport: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0' },
-    css: [],
-    js: [],
-  },
-  devServer: {
-    hot: true,
-  },
-};
+const helpers = require('./helpers');
+const defaultOptions = require('./defaults');
 
 function styleLoader(options) {
   const {
     loaders = [],
-    extract = isProd,
+    extract = helpers.isProd,
     fallback = 'style-loader',
     modules = false,
   } = options || {};
@@ -79,28 +32,7 @@ function styleRule(options, rule) {
   };
 }
 
-async function combineConfig(input, reducers) {
-  let config = await input;
-  for (const reducer of reducers) {
-    if (reducer) {
-      config = await reducer(config) || config;
-    }
-  }
-  return config;
-}
-
-async function loadConfig(webpackConfig) {
-  let config = webpackConfig;
-  if (typeof config === 'function') {
-    config = config();
-  }
-  return config;
-}
-
-exports.isDev = isDev;
-exports.isProd = isProd;
+Object.assign(exports, helpers);
 exports.defaultOptions = defaultOptions;
 exports.styleLoader = styleLoader;
 exports.styleRule = styleRule;
-exports.combineConfig = combineConfig;
-exports.loadConfig = loadConfig;
