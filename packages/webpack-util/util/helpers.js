@@ -89,6 +89,21 @@ async function loadWebpackConfig() {
   return config;
 }
 
+function exitError(code, message) {
+  if (message) console.error(message);
+  process.exit(code);
+}
+
+function catchError(func) {
+  return async (...args) => {
+    try {
+      await func(...args);
+    } catch (err) {
+      exitError(1, err);
+    }
+  };
+}
+
 exports.isDev = isDev;
 exports.isProd = isProd;
 exports.combineConfig = combineConfig;
@@ -100,3 +115,5 @@ exports.findWebpackConfig = findWebpackConfig;
 exports.loadWebpackConfig = loadWebpackConfig;
 exports.exists = exists;
 exports.findConfig = findConfig;
+exports.exitError = exitError;
+exports.catchError = catchError;

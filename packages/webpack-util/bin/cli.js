@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander');
+const { catchError } = require('../util');
 
 program
 .version(require('../package.json').version);
@@ -8,13 +9,13 @@ program
 program
 .command('develop')
 .action((cmd) => {
-  require('./develop')(cmd);
+  catchError(require('./develop'))(cmd);
 });
 
 program
 .command('build')
 .action((cmd) => {
-  require('./build')(cmd);
+  catchError(require('./build'))(cmd);
 });
 
 program.parse(process.argv);
