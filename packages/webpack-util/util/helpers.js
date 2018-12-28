@@ -70,6 +70,8 @@ async function exists(filepath, { file, dir } = {}) {
 
 async function findWebpackConfig() {
   for (const name of [
+    'scripts/webpack.conf.js',
+    'scripts/webpack.config.js',
     'webpack.conf.js',
     'webpack.config.js',
   ]) {
@@ -78,7 +80,7 @@ async function findWebpackConfig() {
       return filepath;
     }
   }
-  return require.resolve('../config/webpack.conf');
+  throw new Error('No webpack.conf.js is found!');
 }
 
 async function loadWebpackConfig() {
