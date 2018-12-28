@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const program = require('commander');
-const { catchError } = require('../util');
+const { Command } = require('commander');
+
+const program = new Command();
 
 program
 .version(require('../package.json').version);
@@ -9,13 +10,18 @@ program
 program
 .command('develop')
 .action((cmd) => {
-  catchError(require('./develop'))(cmd);
+  safeRun(require('./develop'), cmd);
 });
 
 program
 .command('build')
 .action((cmd) => {
-  catchError(require('./build'))(cmd);
+  safeRun(require('./build'), cmd);
 });
 
 program.parse(process.argv);
+
+function safeRun(module, cmd) {
+  const { catchError } = require('../util');
+  catchError(module)(cmd);
+}
