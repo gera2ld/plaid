@@ -1,6 +1,6 @@
 {
   "name": "webpack-util",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Webpack utility helpers",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
