@@ -3,9 +3,6 @@ const webpackUtil = require('../webpack');
 const { combineConfig } = require('../util');
 
 const baseConfig = combineConfig({
-  devServer: {
-    host: '0.0.0.0',
-  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.BABEL_ENV': JSON.stringify(process.env.BABEL_ENV || ''),

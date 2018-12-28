@@ -20,6 +20,9 @@ async function develop() {
   let module;
   if (webpackConfig.devServer) {
     // Use webpack-dev-server, write in memory
+    defaultOptions.successMessages.push(
+      `Your application is running here: http://localhost:${webpackConfig.devServer.port}`,
+    );
     argv.push('webpack-dev-server');
     module = 'webpack-dev-server/bin/webpack-dev-server';
   } else {

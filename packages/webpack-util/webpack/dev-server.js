@@ -1,12 +1,12 @@
 const webpack = require('webpack');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const portfinder = require('portfinder');
 const { isProd } = require('../util');
 
 module.exports = options => async config => {
   const {
     devServer,
     distDir,
+    successMessages,
   } = options;
   config.devServer = {
     contentBase: distDir,
@@ -14,30 +14,19 @@ module.exports = options => async config => {
     ...devServer,
     ...config.devServer,
   };
-  if (!isProd && !config.devServer.port) {
-    portfinder.basePort = 8080;
-    await new Promise((resolve, reject) => {
-      portfinder.getPort((err, port) => {
-        if (err) {
-          reject(err);
-        } else {
-          config.devServer.port = port;
-          resolve();
-        }
-      });
-    });
+  if (!successMessages.length) {
+    successMessages.push(
+      'Envs:',
+      `  NODE_ENV=${process.env.NODE_ENV || ''}`,
+      `  BABEL_ENV=${process.env.BABEL_ENV || ''}`,
+    );
   }
   config.plugins = [
     ...config.plugins || [],
     !isProd && new webpack.HotModuleReplacementPlugin(),
     !isProd && new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
-        messages: [
-          'Envs:',
-          `  NODE_ENV=${process.env.NODE_ENV || ''}`,
-          `  BABEL_ENV=${process.env.BABEL_ENV || ''}`,
-          `Your application is running here: http://localhost:${config.devServer.port}`,
-        ],
+        messages: successMessages,
       },
     }),
   ].filter(Boolean);
