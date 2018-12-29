@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const portfinder = require('portfinder');
 const { isProd } = require('../util');
 
 module.exports = options => async config => {
@@ -14,6 +15,20 @@ module.exports = options => async config => {
     ...devServer,
     ...config.devServer,
   };
+  // Make sure port is defined
+  if (!isProd && !config.devServer.port) {
+    portfinder.basePort = 8080;
+    await new Promise((resolve, reject) => {
+      portfinder.getPort((err, port) => {
+        if (err) {
+          reject(err);
+        } else {
+          config.devServer.port = port;
+          resolve();
+        }
+      });
+    });
+  }
   if (!successMessages.length) {
     successMessages.push(
       'Envs:',
