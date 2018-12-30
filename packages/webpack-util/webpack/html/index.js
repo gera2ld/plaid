@@ -10,7 +10,10 @@ module.exports = options => config => {
     htmlOptions,
   } = options;
   const entry = Object.entries(pages)
-  .reduce((res, [key, { entry }]) => ({ ...res, [key]: entry }), {});
+  .reduce((res, [key, { entry }]) => ({
+    ...res,
+    [key]: entry || `./src/pages/${key}`,
+  }), {});
   const htmlPlugins = Object.entries(pages)
   .map(([key, { html }]) => {
     let options;
