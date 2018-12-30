@@ -9,6 +9,7 @@ module.exports = options => async config => {
     distDir,
     successMessages,
   } = options;
+  if (devServer === false) return config;
   config.devServer = {
     contentBase: distDir,
     quiet: true,
