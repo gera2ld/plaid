@@ -15,7 +15,7 @@ module.exports = options => config => {
     // CSS modules: src/**/*.module.css
     styleRule({
       ...styleOptions,
-      ...cssLoaders,
+      loaders: cssLoaders,
       modules: true,
     }, {
       test: /\.module\.css$/,
@@ -25,7 +25,7 @@ module.exports = options => config => {
     // normal CSS files: src/**/*.css
     styleRule({
       ...styleOptions,
-      ...cssLoaders,
+      loaders: cssLoaders,
     }, {
       exclude: [/\.module\.css$/, nodeModules],
     }),
