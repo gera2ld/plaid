@@ -6,16 +6,12 @@ module.exports = async () => {
   if (enableTs) {
     defaultOptions.jsOptions = {
       resolve: {
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
-      test: /\.(js|ts)$/,
+      test: /\.(jsx?|tsx?)$/,
     };
   }
-  const baseConfig = {
-    resolve: {
-      extensions: ['.wasm', '.ts', '.mjs', '.js', '.json'],
-    },
-  };
+  const baseConfig = {};
   return combineConfig(baseConfig, [
     webpackUtil.common(),
     webpackUtil.css(),
