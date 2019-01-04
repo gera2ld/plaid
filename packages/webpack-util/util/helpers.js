@@ -17,6 +17,16 @@ async function combineConfig(input, reducers) {
   return config;
 }
 
+function combineConfigSync(input, reducers) {
+  let config = input;
+  for (const reducer of reducers) {
+    if (reducer) {
+      config = reducer(config) || config;
+    }
+  }
+  return config;
+}
+
 function parseConfig(input) {
   let config = input;
   if (typeof config === 'function') {
@@ -116,6 +126,7 @@ function catchError(func) {
 }
 
 exports.isProd = isProd;
+exports.combineConfigSync = combineConfigSync;
 exports.combineConfig = combineConfig;
 exports.parseConfig = parseConfig;
 exports.findConfigSync = findConfigSync;
