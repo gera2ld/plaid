@@ -8,5 +8,6 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react/prop-types': 'off',
     'react/no-array-index-key': 'off',
+    'react/button-has-type': 'off',
   },
 };
