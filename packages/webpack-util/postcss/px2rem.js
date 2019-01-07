@@ -1,4 +1,4 @@
-module.exports = () => config => {
+module.exports = config => {
   config.plugins = [
     ...config.plugins || [],
     // px to rem

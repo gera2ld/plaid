@@ -1,4 +1,4 @@
-module.exports = options => config => {
+module.exports = (config, options) => {
   const {
     svgDir,
   } = options;

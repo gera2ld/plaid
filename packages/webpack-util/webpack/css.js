@@ -2,7 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { isProd, styleRule } = require('../util');
 
-module.exports = options => config => {
+module.exports = (config, options) => {
   const {
     nodeModules,
     cssLoaders,

@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const helpers = require('./helpers');
+const pagesHelpers = require('./pages');
 const defaultOptions = require('./defaults');
 
 function styleLoader(options) {
@@ -32,7 +33,7 @@ function styleRule(options, rule) {
   };
 }
 
-Object.assign(exports, helpers);
+Object.assign(exports, helpers, pagesHelpers);
 exports.defaultOptions = defaultOptions;
 exports.styleLoader = styleLoader;
 exports.styleRule = styleRule;

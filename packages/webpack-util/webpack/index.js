@@ -1,5 +1,3 @@
-const { defaultOptions } = require('../util');
-
 const mappings = {
   html: './html',
   analyze: './analyze',
@@ -16,19 +14,9 @@ const mappings = {
 
 module.exports = Object.entries(mappings)
 .reduce((map, [key, value]) => {
-  map[key] = getApplier(key, value);
+  map[key] = require(value);
   return map;
 }, {});
-
-function getApplier(name, modulePath) {
-  return options => {
-    const apply = require(modulePath);
-    return apply({
-      ...defaultOptions,
-      ...options,
-    });
-  };
-}
 
 function requireSilent(modulePath) {
   try {

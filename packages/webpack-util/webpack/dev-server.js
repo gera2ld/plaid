@@ -3,7 +3,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder');
 const { isProd } = require('../util');
 
-module.exports = options => async config => {
+module.exports = async (config, options) => {
   const {
     devServer,
     distDir,

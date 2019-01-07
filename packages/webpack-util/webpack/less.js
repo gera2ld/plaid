@@ -1,6 +1,6 @@
 const { styleLoader } = require('../util');
 
-module.exports = options => config => {
+module.exports = (config, options) => {
   const {
     lessLoader,
     cssLoaders,

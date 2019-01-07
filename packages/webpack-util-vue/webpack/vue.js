@@ -1,6 +1,6 @@
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-module.exports = options => config => {
+module.exports = (config, options) => {
   const {
     vueOptions,
   } = options;

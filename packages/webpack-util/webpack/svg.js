@@ -1,7 +1,7 @@
 // const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 // const extractSVG = isProd;
 
-module.exports = options => config => {
+module.exports = (config, options) => {
   const {
     svgDir,
   } = options;

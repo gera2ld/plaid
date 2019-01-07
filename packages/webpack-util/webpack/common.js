@@ -1,7 +1,7 @@
 const TerserPlugin = require('terser-webpack-plugin');
 const { isProd } = require('../util');
 
-module.exports = options => config => {
+module.exports = (config, options) => {
   const {
     srcDir,
     testDir,

@@ -7,21 +7,21 @@ const isProd = NODE_ENV === 'production';
 process.env.NODE_ENV = NODE_ENV;
 const DEFAULT_WEBPACK = require.resolve('../config/webpack.conf');
 
-async function combineConfig(input, reducers) {
+async function combineConfig(input, reducers, options = {}) {
   let config = await input;
   for (const reducer of reducers) {
     if (reducer) {
-      config = await reducer(config) || config;
+      config = await reducer(config, options) || config;
     }
   }
   return config;
 }
 
-function combineConfigSync(input, reducers) {
+function combineConfigSync(input, reducers, options = {}) {
   let config = input;
   for (const reducer of reducers) {
     if (reducer) {
-      config = reducer(config) || config;
+      config = reducer(config, options) || config;
     }
   }
   return config;
@@ -89,15 +89,19 @@ async function findFile(candidates, message) {
   throw new Error(message || 'File not found');
 }
 
+function findConfigFile(name, message) {
+  return findFile([
+    `scripts/${name}.conf.js`,
+    `scripts/${name}.config.js`,
+    `${name}.conf.js`,
+    `${name}.config.js`,
+  ], message);
+}
+
 async function findWebpackConfig() {
   let filepath;
   try {
-    filepath = await findFile([
-      'scripts/webpack.conf.js',
-      'scripts/webpack.config.js',
-      'webpack.conf.js',
-      'webpack.config.js',
-    ], 'No webpack.conf.js is found');
+    filepath = await findConfigFile('webpack', 'No webpack.conf.js is found');
   } catch (err) {
     filepath = DEFAULT_WEBPACK;
   }
@@ -133,6 +137,7 @@ exports.findConfigSync = findConfigSync;
 exports.loadConfig = loadConfig;
 exports.loadConfigSync = loadConfigSync;
 exports.findFile = findFile;
+exports.findConfigFile = findConfigFile;
 exports.findWebpackConfig = findWebpackConfig;
 exports.loadWebpackConfig = loadWebpackConfig;
 exports.exists = exists;

@@ -4,17 +4,17 @@ const util = {
   escapeScript: content => content.replace(/<(\/script>)/g, '\\x3c$2'),
 };
 
-module.exports = options => config => {
+module.exports = (config, options) => {
   const {
-    pages,
+    pagesConfig,
     htmlOptions,
   } = options;
-  const entry = Object.entries(pages)
+  const entry = Object.entries(pagesConfig)
   .reduce((res, [key, { entry }]) => ({
     ...res,
     [key]: entry || `./src/pages/${key}`,
   }), {});
-  const htmlPlugins = Object.entries(pages)
+  const htmlPlugins = Object.entries(pagesConfig)
   .map(([key, { html }]) => {
     let options;
     if (html) {
