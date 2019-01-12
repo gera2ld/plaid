@@ -1,10 +1,9 @@
 const webpackUtil = require('../webpack');
-const { exists, defaultOptions, combineConfig, loadPagesConfig } = require('../util');
+const { defaultOptions, combineConfig, loadPagesConfig } = require('../util');
 
 module.exports = async () => {
-  const enableTs = await exists('tsconfig.json', { file: true });
   const baseConfig = {};
-  return combineConfig(baseConfig, [
+  const config = await combineConfig(baseConfig, [
     webpackUtil.common,
     webpackUtil.css,
     webpackUtil.url,
@@ -16,14 +15,7 @@ module.exports = async () => {
     webpackUtil.html,
   ], {
     ...defaultOptions,
-    ...enableTs && {
-      jsOptions: {
-        resolve: {
-          extensions: ['.ts', '.tsx', '.js', '.jsx'],
-        },
-        test: /\.(jsx?|tsx?)$/,
-      },
-    },
     pagesConfig: await loadPagesConfig(),
   });
+  return config;
 };

@@ -9,9 +9,6 @@ const defaultOptions = {
   nodeModules: path.resolve('node_modules'),
   svgDir: path.resolve('src/resources/svg'),
   hashedFilename: false,
-  jsOptions: {
-    test: /\.js$/,
-  },
   cssLoaders: ['postcss-loader'],
   styleOptions: {
     extract: isProd,
