@@ -2,9 +2,6 @@ const path = require('path');
 const fs = require('fs-extra');
 const cosmiconfig = require('cosmiconfig');
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const isProd = NODE_ENV === 'production';
-process.env.NODE_ENV = NODE_ENV;
 const DEFAULT_WEBPACK = require.resolve('../config/webpack.conf');
 
 async function combineConfig(input, reducers, options = {}) {
@@ -129,7 +126,6 @@ function catchError(func) {
   };
 }
 
-exports.isProd = isProd;
 exports.combineConfigSync = combineConfigSync;
 exports.combineConfig = combineConfig;
 exports.parseConfig = parseConfig;

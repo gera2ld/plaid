@@ -1,5 +1,5 @@
 const path = require('path');
-const { isProd } = require('./helpers');
+const { isProd } = require('./env');
 
 const defaultOptions = {
   srcDir: path.resolve('src'),

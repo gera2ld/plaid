@@ -22,6 +22,6 @@ program
 program.parse(process.argv);
 
 function safeRun(module, cmd) {
-  const { catchError } = require('../util');
+  const { catchError } = require('../util/helpers');
   catchError(module)(cmd);
 }
