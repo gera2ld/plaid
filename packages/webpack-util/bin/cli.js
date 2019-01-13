@@ -19,6 +19,12 @@ program
   safeRun(require('./build'), cmd);
 });
 
+program
+.command('analyze')
+.action((cmd) => {
+  safeRun(require('./analyze'), cmd);
+});
+
 program.parse(process.argv);
 
 function safeRun(module, cmd) {
