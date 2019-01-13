@@ -4,7 +4,7 @@ const aliases = {
   '#': path.resolve('src'),
 };
 
-exports.config = {
+module.exports = {
   // Transform inline comments
   parser: require('postcss-scss'),
   plugins: [
