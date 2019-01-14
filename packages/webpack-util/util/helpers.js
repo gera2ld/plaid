@@ -111,6 +111,10 @@ async function loadWebpackConfig() {
   return config;
 }
 
+function loadDefaultWebpackConfig() {
+  return parseConfig(require(DEFAULT_WEBPACK));
+}
+
 function exitError(code, message) {
   if (message) console.error(message);
   process.exit(code);
@@ -136,6 +140,7 @@ exports.findFile = findFile;
 exports.findConfigFile = findConfigFile;
 exports.findWebpackConfig = findWebpackConfig;
 exports.loadWebpackConfig = loadWebpackConfig;
+exports.loadDefaultWebpackConfig = loadDefaultWebpackConfig;
 exports.exists = exists;
 exports.findConfig = findConfig;
 exports.exitError = exitError;
