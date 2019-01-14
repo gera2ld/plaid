@@ -17,7 +17,8 @@ module.exports = async () => {
 
 async function generate(name) {
   if (name === 'webpack') {
-    return handleConflict('scripts/webpack.conf.js', TEMPLATE_WEBPACK);
+    await handleConflict('scripts/webpack.conf.js', TEMPLATE_WEBPACK);
+    console.info('Webpack config is generated successfully at scripts/webpack.conf.js');
   }
   throw new Error(`Unknown type to generate: ${name}`);
 }

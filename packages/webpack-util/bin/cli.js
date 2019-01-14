@@ -27,7 +27,8 @@ program
 });
 
 program
-.command('generate <name>', 'Generate template files')
+.command('generate <name>')
+.description('Generate template files')
 .action((name, cmd) => {
   safeRun(require('./generate'), name, cmd);
 });
