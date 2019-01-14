@@ -4,6 +4,7 @@ module.exports = (config, options) => {
   const {
     lessLoader,
     cssLoaders,
+    styleOptions,
     nodeModules,
   } = options;
   config.module.rules = [
@@ -12,6 +13,7 @@ module.exports = (config, options) => {
     {
       test: /\.module\.less$/,
       use: styleLoader({
+        ...styleOptions,
         loaders: [...cssLoaders, lessLoader],
         modules: true,
       }),
@@ -21,6 +23,7 @@ module.exports = (config, options) => {
     {
       test: /\.less$/,
       use: styleLoader({
+        ...styleOptions,
         loaders: [...cssLoaders, lessLoader],
       }),
       exclude: [/\.module\.less$/],
