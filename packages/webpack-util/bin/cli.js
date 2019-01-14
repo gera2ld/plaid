@@ -15,6 +15,7 @@ program
 
 program
 .command('build')
+.option('-c, --clean', 'Clean previously built files')
 .action((cmd) => {
   safeRun(require('./build'), cmd);
 });
@@ -25,9 +26,15 @@ program
   safeRun(require('./analyze'), cmd);
 });
 
+program
+.command('generate <name>', 'Generate template files')
+.action((name, cmd) => {
+  safeRun(require('./generate'), name, cmd);
+});
+
 program.parse(process.argv);
 
-function safeRun(module, cmd) {
+function safeRun(module, ...args) {
   const { catchError } = require('../util/helpers');
-  catchError(module)(cmd);
+  catchError(module)(...args);
 }

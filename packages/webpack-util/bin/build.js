@@ -5,12 +5,12 @@ const { defaultOptions, findWebpackConfig, loadWebpackConfig, exists } = require
 
 module.exports = build;
 
-async function build() {
+async function build(cmd) {
   // Allow util to be modified when webpack.conf.js is required
   await loadWebpackConfig();
 
   const { distDir, publicDir } = defaultOptions;
-  await fs.emptyDir(distDir);
+  if (cmd.clean) await fs.emptyDir(distDir);
   if (await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);
   }
