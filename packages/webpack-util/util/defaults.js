@@ -1,4 +1,5 @@
 const path = require('path');
+const { loadConfigSync } = require('./helpers');
 const { isProd } = require('./env');
 
 const defaultOptions = {
@@ -9,7 +10,10 @@ const defaultOptions = {
   nodeModules: path.resolve('node_modules'),
   svgDir: path.resolve('src/resources/svg'),
   hashedFilename: false,
-  cssLoaders: ['postcss-loader'],
+  postcssLoader: {
+    loader: 'postcss-loader',
+    options: loadConfigSync('postcss') || require('../config/postcssrc'),
+  },
   styleOptions: {
     extract: isProd,
   },

@@ -5,7 +5,7 @@ const { isProd, styleRule } = require('../util');
 module.exports = (config, options) => {
   const {
     nodeModules,
-    cssLoaders,
+    postcssLoader,
     styleOptions,
     hashedFilename,
   } = options;
@@ -15,7 +15,7 @@ module.exports = (config, options) => {
     // CSS modules: src/**/*.module.css
     styleRule({
       ...styleOptions,
-      loaders: cssLoaders,
+      loaders: [postcssLoader],
       modules: true,
     }, {
       test: /\.module\.css$/,
@@ -25,7 +25,7 @@ module.exports = (config, options) => {
     // normal CSS files: src/**/*.css
     styleRule({
       ...styleOptions,
-      loaders: cssLoaders,
+      loaders: [postcssLoader],
     }, {
       exclude: [/\.module\.css$/, nodeModules],
     }),

@@ -33,13 +33,17 @@ function parseConfig(input) {
 }
 
 function findConfigSync(name, place = process.cwd()) {
-  const explorer = cosmiconfig(name);
+  const explorer = cosmiconfig(name, {
+    stopDir: place,
+  });
   const result = explorer.searchSync(place);
   return result;
 }
 
 async function findConfig(name, place = process.cwd()) {
-  const explorer = cosmiconfig(name);
+  const explorer = cosmiconfig(name, {
+    stopDir: place,
+  });
   const result = await explorer.search(place);
   return result;
 }
