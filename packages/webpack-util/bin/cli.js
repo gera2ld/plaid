@@ -9,33 +9,37 @@ program
 
 program
 .command('develop')
-.action((cmd) => {
-  safeRun(require('./develop'), cmd);
+.description('Start development server')
+.action((...args) => {
+  safeRun(require('./develop'), args);
 });
 
 program
 .command('build')
+.description('Build static files')
 .option('-c, --clean', 'Clean previously built files')
-.action((cmd) => {
-  safeRun(require('./build'), cmd);
+.action((...args) => {
+  safeRun(require('./build'), args);
 });
 
 program
 .command('analyze')
-.action((cmd) => {
-  safeRun(require('./analyze'), cmd);
+.description('Analyze package size')
+.action((...args) => {
+  safeRun(require('./analyze'), args);
 });
 
 program
 .command('generate <name>')
 .description('Generate template files')
-.action((name, cmd) => {
-  safeRun(require('./generate'), name, cmd);
+.action((...args) => {
+  safeRun(require('./generate'), args);
 });
 
 program.parse(process.argv);
 
-function safeRun(module, ...args) {
+function safeRun(module, args) {
   const { catchError } = require('../util/helpers');
-  catchError(module)(...args);
+  const cmd = args.pop();
+  catchError(module)(cmd, ...args);
 }

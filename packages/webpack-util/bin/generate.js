@@ -3,17 +3,36 @@ const { exists } = require('../util/helpers');
 
 module.exports = generate;
 
-const TEMPLATE_WEBPACK = `\
+const templateInfo = [
+  {
+    name: 'webpack',
+    filepath: 'scripts/webpack.conf.js',
+    template: `\
 const { modifyWebpackConfig } = require('webpack-util/util');
 
 module.exports = modifyWebpackConfig(async (config) => {
   return config;
-});`;
+});`,
+    successMessage: 'Webpack config is generated successfully at scripts/webpack.conf.js',
+  },
+  {
+    name: 'postcss',
+    filepath: '.postcssrc.js',
+    template: `\
+const { combineConfigSync } = require('webpack-util/util');
+const precss = require('webpack-util/postcss/precss');
 
-async function generate(name) {
-  if (name === 'webpack') {
-    await handleConflict('scripts/webpack.conf.js', TEMPLATE_WEBPACK);
-    console.info('Webpack config is generated successfully at scripts/webpack.conf.js');
+module.exports = combineConfigSync({}, [precss]);`,
+    successMessage: 'PostCSS config is generated successfully at .postcssrc.js',
+  },
+];
+
+
+async function generate(cmd, name) {
+  const info = templateInfo.find(info => info.name === name);
+  if (info) {
+    await handleConflict(info.filepath, info.template);
+    console.info(info.successMessage);
     return;
   }
   throw new Error(`Unknown type to generate: ${name}`);
