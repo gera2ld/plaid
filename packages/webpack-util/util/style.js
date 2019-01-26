@@ -1,10 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const env = require('./env');
 
 function styleLoader(options) {
   const {
+    extract,
+    localIdentName,
     loaders = [],
-    extract = env.isProd,
     fallback = 'style-loader',
     modules = false,
   } = options || {};
@@ -12,6 +12,7 @@ function styleLoader(options) {
     loader: 'css-loader',
     options: {
       modules,
+      localIdentName,
       importLoaders: 1,
       sourceMap: false,
     },
