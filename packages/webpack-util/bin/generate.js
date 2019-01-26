@@ -19,7 +19,7 @@ module.exports = modifyWebpackConfig(async (config) => {
     name: 'postcss',
     filepath: '.postcssrc.js',
     template: `\
-const { combineConfigSync } = require('webpack-util/util');
+const { combineConfigSync } = require('webpack-util/util/helpers');
 const precss = require('webpack-util/postcss/precss');
 
 module.exports = combineConfigSync({}, [precss]);`,

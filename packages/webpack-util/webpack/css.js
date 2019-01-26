@@ -1,14 +1,18 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const { isProd, styleRule } = require('../util');
+const { isProd, styleRule, loadConfig } = require('../util');
 
-module.exports = (config, options) => {
+module.exports = async (config, options) => {
   const {
     nodeModules,
     postcssLoader,
     styleOptions,
     hashedFilename,
   } = options;
+  if (!postcssLoader.options) {
+    // Initialize postcss config
+    postcssLoader.options = await loadConfig('postcss') || require('../config/postcssrc');
+  }
   config.module.rules = [
     ...config.module.rules || [],
 

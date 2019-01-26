@@ -1,5 +1,4 @@
 const path = require('path');
-const { loadConfigSync } = require('./helpers');
 const { isProd } = require('./env');
 
 const defaultOptions = {
@@ -12,7 +11,7 @@ const defaultOptions = {
   hashedFilename: false,
   postcssLoader: {
     loader: 'postcss-loader',
-    options: loadConfigSync('postcss') || require('../config/postcssrc'),
+    // Load options later to avoid circular dependencies
   },
   styleOptions: {
     extract: isProd,
