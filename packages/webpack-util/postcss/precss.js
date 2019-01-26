@@ -4,10 +4,10 @@ const aliases = {
   '#': path.resolve('src'),
 };
 
-module.exports = {
-  // Transform inline comments
-  parser: require('postcss-scss'),
-  plugins: [
+module.exports = config => {
+  config.parser = require('postcss-scss');
+  config.plugins = [
+    ...config.plugins || [],
     // Transform @import, resolve `#` to `$PWD/src`
     require('postcss-import')({
       resolve(id) {
@@ -25,5 +25,6 @@ module.exports = {
     require('postcss-color-function'),
     // Calculate at compile time
     require('postcss-calc'),
-  ],
+  ];
+  return config;
 };
