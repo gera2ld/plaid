@@ -119,6 +119,30 @@ function loadDefaultWebpackConfig() {
   return parseConfig(require(DEFAULT_WEBPACK));
 }
 
+function shallowMerge(first, ...others) {
+  const out = Object.assign({}, first);
+  for (const other of others) {
+    if (!other) continue;
+    Object.entries(other)
+    .forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        out[key] = [
+          ...out[key] || [],
+          ...value,
+        ];
+      } else if (value && typeof value === 'object') {
+        out[key] = {
+          ...out[key],
+          ...value,
+        };
+      } else {
+        out[key] = value;
+      }
+    });
+  }
+  return out;
+}
+
 function exitError(code, message) {
   if (message) console.error(message);
   process.exit(code);
@@ -145,6 +169,7 @@ exports.findConfigFile = findConfigFile;
 exports.findWebpackConfig = findWebpackConfig;
 exports.loadWebpackConfig = loadWebpackConfig;
 exports.loadDefaultWebpackConfig = loadDefaultWebpackConfig;
+exports.shallowMerge = shallowMerge;
 exports.exists = exists;
 exports.findConfig = findConfig;
 exports.exitError = exitError;
