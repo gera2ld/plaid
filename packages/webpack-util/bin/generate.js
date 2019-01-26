@@ -4,16 +4,11 @@ const { exists } = require('../util/helpers');
 module.exports = generate;
 
 const TEMPLATE_WEBPACK = `\
-const webpackUtil = require('webpack-util/webpack');
-const { defaultOptions, loadDefaultWebpackConfig, combineConfig } = require('webpack-util/util');
+const { modifyWebpackConfig } = require('webpack-util/util');
 
-module.exports = async () => {
-  const config = await combineConfig(loadDefaultWebpackConfig(), [
-  ], {
-    ...defaultOptions,
-  });
+module.exports = modifyWebpackConfig(async (config) => {
   return config;
-};`;
+});`;
 
 async function generate(name) {
   if (name === 'webpack') {
