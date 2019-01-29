@@ -1,4 +1,4 @@
-const { defaultOptions } = require('webpack-util/util');
+const { defaultOptions } = require('@gera2ld/plaid/util');
 
 defaultOptions.styleOptions.fallback = 'vue-style-loader';
 defaultOptions.vueOptions = {

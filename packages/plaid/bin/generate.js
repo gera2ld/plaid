@@ -8,7 +8,7 @@ const templateInfo = [
     name: 'webpack',
     filepath: 'scripts/webpack.conf.js',
     template: `\
-const { modifyWebpackConfig } = require('webpack-util/util');
+const { modifyWebpackConfig } = require('@gera2ld/plaid/util');
 
 module.exports = modifyWebpackConfig(async (config) => {
   return config;
@@ -19,8 +19,8 @@ module.exports = modifyWebpackConfig(async (config) => {
     name: 'postcss',
     filepath: '.postcssrc.js',
     template: `\
-const { combineConfigSync } = require('webpack-util/util/helpers');
-const precss = require('webpack-util/postcss/precss');
+const { combineConfigSync } = require('@gera2ld/plaid/util/helpers');
+const precss = require('@gera2ld/plaid/postcss/precss');
 
 module.exports = combineConfigSync({}, [precss]);`,
     successMessage: 'PostCSS config is generated successfully at .postcssrc.js',

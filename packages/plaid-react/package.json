@@ -1,5 +1,5 @@
 {
-  "name": "webpack-util-react",
+  "name": "@gera2ld/plaid-react",
   "version": "0.2.0",
   "description": "Webpack utility helpers for React",
   "author": "Gerald <i@gerald.top>",
@@ -10,5 +10,8 @@
   "dependencies": {
     "@babel/preset-react": "^7.0.0"
   },
-  "repository": "git@github.com:gera2ld/webpack-util.git"
+  "repository": "git@github.com:gera2ld/plaid.git",
+  "publishConfig": {
+    "access": "public"
+  }
 }

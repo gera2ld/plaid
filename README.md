@@ -1,4 +1,4 @@
-# webpack-util
+# @gera2ld/plaid
 
 A bunch of helpers to add functions to your webpack configuration.
 

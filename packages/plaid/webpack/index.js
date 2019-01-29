@@ -9,7 +9,7 @@ const mappings = {
   sw: './sw',
   url: './url',
   devServer: './dev-server',
-  ...requireSilent('webpack-util-vue/webpack'),
+  ...requireSilent('@gera2ld/plaid-vue/webpack'),
 };
 
 module.exports = Object.entries(mappings)

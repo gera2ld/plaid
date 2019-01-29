@@ -1,5 +1,5 @@
 {
-  "name": "webpack-util-vue",
+  "name": "@gera2ld/plaid-vue",
   "version": "0.2.2",
   "description": "Webpack utility helpers for Vue",
   "author": "Gerald <i@gerald.top>",
@@ -9,5 +9,8 @@
     "vue-loader": "^15.6.2",
     "vue-template-compiler": "^2.5.22"
   },
-  "repository": "git@github.com:gera2ld/webpack-util.git"
+  "repository": "git@github.com:gera2ld/plaid.git",
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,6 +1,5 @@
 {
-  "name": "webpack-util",
-  "version": "1.0.0",
+  "name": "@gera2ld/plaid",
   "author": "Gerald <i@gerald.top>",
   "description": "Webpack utility helpers",
   "license": "MIT",
@@ -11,5 +10,5 @@
     "eslint": "^5.7.0",
     "lerna": "^2.11.0"
   },
-  "repository": "git@github.com:gera2ld/webpack-util.git"
+  "repository": "git@github.com:gera2ld/plaid.git"
 }
