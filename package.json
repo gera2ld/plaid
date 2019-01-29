@@ -10,5 +10,8 @@
     "eslint": "^5.7.0",
     "lerna": "^2.11.0"
   },
-  "repository": "git@github.com:gera2ld/plaid.git"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gera2ld/plaid.git"
+  }
 }

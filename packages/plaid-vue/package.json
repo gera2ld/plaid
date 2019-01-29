@@ -9,7 +9,10 @@
     "vue-loader": "^15.6.2",
     "vue-template-compiler": "^2.5.22"
   },
-  "repository": "git@github.com:gera2ld/plaid.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gera2ld/plaid.git"
+  },
   "publishConfig": {
     "access": "public"
   }
