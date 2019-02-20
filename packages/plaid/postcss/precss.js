@@ -1,8 +1,5 @@
 const path = require('path');
-
-const aliases = {
-  '#': path.resolve('src'),
-};
+const { defaultOptions } = require('../util');
 
 module.exports = config => {
   config.parser = require('postcss-scss');
@@ -13,7 +10,8 @@ module.exports = config => {
       resolve(id) {
         if (id.startsWith('~')) {
           const parts = id.slice(1).split('/');
-          parts[0] = aliases[parts[0]] || parts[0];
+          const alias = defaultOptions.alias[parts[0]];
+          if (alias) parts[0] = path.resolve(alias);
           return require.resolve(parts.join('/'));
         }
         return id;

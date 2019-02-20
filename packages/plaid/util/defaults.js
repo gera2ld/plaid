@@ -9,6 +9,9 @@ const defaultOptions = {
   nodeModules: path.resolve('node_modules'),
   svgDir: path.resolve('src/resources/svg'),
   hashedFilename: false,
+  alias: {
+    '#': './src',
+  },
   postcssLoader: {
     loader: 'postcss-loader',
     // Load options later to avoid circular dependencies
