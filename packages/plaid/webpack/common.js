@@ -6,7 +6,6 @@ module.exports = async (config, options) => {
     srcDir,
     testDir,
     distDir,
-    nodeModules,
     hashedFilename,
   } = options;
   const enableTs = await exists('tsconfig.json', { file: true });
@@ -19,9 +18,6 @@ module.exports = async (config, options) => {
     ...config.output,
   };
   config.resolve = {
-    // Tell webpack to look for peer dependencies in `node_modules`
-    // when packages are linked from outside directories
-    modules: [nodeModules],
     extensions: [
       ...enableTs ? ['.ts', '.tsx'] : [],
       '.js', '.jsx',
