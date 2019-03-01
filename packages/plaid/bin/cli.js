@@ -36,6 +36,13 @@ program
   safeRun(require('./generate'), args);
 });
 
+program
+.command('svgo [files...]')
+.description('Compress SVG files')
+.action((...args) => {
+  safeRun(require('./svgo'), args);
+});
+
 program.parse(process.argv);
 
 function safeRun(module, args) {
