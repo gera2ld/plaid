@@ -17,7 +17,8 @@ program
 program
 .command('build')
 .description('Build static files')
-.option('-c, --clean', 'Clean previously built files')
+.option('-k, --keep', 'Keep previously built files')
+.option('--api', 'Build with webpack API')
 .action((...args) => {
   safeRun(require('./build'), args);
 });
