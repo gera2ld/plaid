@@ -172,7 +172,6 @@ function webpackCallback(resolve, reject) {
     if (stats.hasWarnings()) {
       const { warnings } = stats.toJson();
       console.warn('[WARNING] webpack compilation has warnings\n', warnings.join('\n'));
-      return reject({ warnings });
     }
     (Array.isArray(stats.stats) ? stats.stats : [stats])
     .forEach(stat => {
