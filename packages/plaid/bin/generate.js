@@ -1,8 +1,6 @@
 const fs = require('fs-extra');
 const { exists } = require('../util/helpers');
 
-module.exports = generate;
-
 const templateInfo = [
   {
     name: 'webpack',
@@ -44,3 +42,5 @@ async function handleConflict(filepath, content) {
   }
   return fs.writeFile(filepath, content, 'utf8');
 }
+
+module.exports = generate;

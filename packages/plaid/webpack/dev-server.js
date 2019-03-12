@@ -7,9 +7,8 @@ module.exports = async (config, options) => {
   const {
     devServer,
     distDir,
-    successMessages,
   } = options;
-  if (devServer === false) return config;
+  if (!process.env.PLAID_DEV_SERVER) return config;
   config.devServer = {
     contentBase: distDir,
     quiet: true,
@@ -30,13 +29,12 @@ module.exports = async (config, options) => {
       });
     });
   }
-  if (!successMessages.length) {
-    successMessages.push(
-      'Envs:',
-      `  NODE_ENV=${process.env.NODE_ENV || ''}`,
-      `  BABEL_ENV=${process.env.BABEL_ENV || ''}`,
-    );
-  }
+  const successMessages = options.successMessages || [
+    'Envs:',
+    `  NODE_ENV=${process.env.NODE_ENV || ''}`,
+    `  BABEL_ENV=${process.env.BABEL_ENV || ''}`,
+    `Your application is running here: http://localhost:${config.devServer.port}`,
+  ];
   config.plugins = [
     ...config.plugins || [],
     !isProd && new webpack.HotModuleReplacementPlugin(),

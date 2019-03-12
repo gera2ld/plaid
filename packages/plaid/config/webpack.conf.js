@@ -1,8 +1,9 @@
 const webpackUtil = require('../webpack');
-const { defaultOptions, combineConfig, loadPagesConfig } = require('../util');
+const { defaultOptions, combineConfig, loadProjectConfig } = require('../util');
 
 module.exports = async () => {
   const baseConfig = {};
+  const projectConfig = await loadProjectConfig();
   const config = await combineConfig(baseConfig, [
     webpackUtil.common,
     webpackUtil.css,
@@ -15,7 +16,8 @@ module.exports = async () => {
     webpackUtil.html,
   ], {
     ...defaultOptions,
-    pagesConfig: await loadPagesConfig(),
+    ...projectConfig.global,
+    pagesConfig: projectConfig.pages,
   });
   return config;
 };

@@ -9,7 +9,8 @@ program
 
 program
 .command('develop')
-.description('Start development server')
+.description('Start development')
+.option('--no-server', 'Do not use webpack-dev-server')
 .action((...args) => {
   safeRun(require('./develop'), args);
 });

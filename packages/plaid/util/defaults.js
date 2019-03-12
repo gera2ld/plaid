@@ -48,7 +48,7 @@ const defaultOptions = {
     host: '0.0.0.0',
     hot: true,
   },
-  successMessages: [],
+  successMessages: null,
 };
 
 module.exports = defaultOptions;
