@@ -1,21 +1,18 @@
 process.env.NODE_ENV = 'production';
 
 const fs = require('fs-extra');
-const spawn = require('cross-spawn');
 const webpack = require('webpack');
 const {
-  defaultOptions,
   loadProjectConfig,
   findWebpackConfig,
   loadWebpackConfig,
   exists,
   webpackCallback,
-  shallowMerge,
 } = require('../util');
 
 async function prebuild(cmd) {
   const { global } = await loadProjectConfig();
-  const { distDir, publicDir } = shallowMerge(defaultOptions, global);
+  const { distDir, publicDir } = global;
   if (!cmd.keep) await fs.emptyDir(distDir);
   if (await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);
@@ -23,13 +20,13 @@ async function prebuild(cmd) {
 }
 
 async function buildWithCLI() {
-  spawn('webpack-cli', [
+  process.argv = [
+    process.argv[0],
+    'webpack-cli',
     '--config',
     await findWebpackConfig(),
-  ], { stdio: 'inherit' })
-  .on('exit', (code) => {
-    process.exitCode = code;
-  });
+  ];
+  require('webpack-cli/bin/cli');
 }
 
 async function buildWithAPI() {

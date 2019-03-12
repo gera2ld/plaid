@@ -1,5 +1,5 @@
 const webpackUtil = require('../webpack');
-const { defaultOptions, combineConfig, loadProjectConfig } = require('../util');
+const { combineConfig, loadProjectConfig, shallowMerge } = require('../util');
 
 module.exports = async () => {
   const baseConfig = {};
@@ -14,10 +14,8 @@ module.exports = async () => {
     process.env.RUN_ENV === 'analyze' && webpackUtil.analyze,
     webpackUtil.vue,
     webpackUtil.html,
-  ], {
-    ...defaultOptions,
-    ...projectConfig.global,
+  ], shallowMerge(projectConfig.global, {
     pagesConfig: projectConfig.pages,
-  });
+  }));
   return config;
 };
