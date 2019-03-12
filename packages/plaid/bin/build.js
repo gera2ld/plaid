@@ -25,7 +25,10 @@ async function buildWithCLI() {
   spawn('webpack-cli', [
     '--config',
     await findWebpackConfig(),
-  ], { stdio: 'inherit' });
+  ], { stdio: 'inherit' })
+  .on('exit', (code) => {
+    process.exitCode = code;
+  });
 }
 
 async function buildWithAPI() {
