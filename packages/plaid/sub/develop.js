@@ -1,9 +1,15 @@
 const fs = require('fs-extra');
-const { defaultOptions, loadProjectConfig, findWebpackConfig, exists } = require('../util');
+const {
+  defaultOptions,
+  loadProjectConfig,
+  findWebpackConfig,
+  exists,
+  shallowMerge,
+} = require('../util');
 
 async function develop() {
   const { global } = await loadProjectConfig();
-  const { distDir, publicDir } = { ...defaultOptions, ...global };
+  const { distDir, publicDir } = shallowMerge(defaultOptions, global);
 
   if (await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);

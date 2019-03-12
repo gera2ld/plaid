@@ -10,11 +10,12 @@ const {
   loadWebpackConfig,
   exists,
   webpackCallback,
+  shallowMerge,
 } = require('../util');
 
 async function prebuild(cmd) {
   const { global } = await loadProjectConfig();
-  const { distDir, publicDir } = { ...defaultOptions, ...global };
+  const { distDir, publicDir } = shallowMerge(defaultOptions, global);
   if (!cmd.keep) await fs.emptyDir(distDir);
   if (await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);
