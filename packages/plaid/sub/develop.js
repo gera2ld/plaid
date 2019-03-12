@@ -14,6 +14,7 @@ async function develop() {
   ];
   let module;
   if (process.env.PLAID_DEV_SERVER) {
+    // Use webpack-dev-server, write in memory
     module = 'webpack-dev-server/bin/webpack-dev-server';
     argv.push('webpack-dev-server');
   } else {

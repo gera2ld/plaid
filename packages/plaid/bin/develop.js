@@ -48,7 +48,8 @@ async function load() {
 }
 
 async function reload() {
-  console.info('\nReloading...\n');
+  console.clear();
+  console.info('Reloading...');
   await clean();
   await load();
 }
