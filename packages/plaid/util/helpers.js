@@ -2,8 +2,6 @@ const path = require('path');
 const fs = require('fs-extra');
 const cosmiconfig = require('cosmiconfig');
 
-const DEFAULT_WEBPACK = require.resolve('../config/webpack.conf');
-
 async function combineConfig(input, reducers, options = {}) {
   let config = await input;
   for (const reducer of reducers) {
@@ -99,26 +97,6 @@ function findConfigFile(name, message) {
   ], message);
 }
 
-async function findWebpackConfig() {
-  let filepath;
-  try {
-    filepath = await findConfigFile('webpack', 'No webpack.conf.js is found');
-  } catch (err) {
-    filepath = DEFAULT_WEBPACK;
-  }
-  return filepath;
-}
-
-async function loadWebpackConfig() {
-  const filepath = await findWebpackConfig();
-  const config = await parseConfig(require(filepath));
-  return config;
-}
-
-function loadDefaultWebpackConfig() {
-  return parseConfig(require(DEFAULT_WEBPACK));
-}
-
 function shallowMerge(first, ...others) {
   const out = Object.assign({}, first);
   for (const other of others) {
@@ -191,9 +169,6 @@ exports.loadConfig = loadConfig;
 exports.loadConfigSync = loadConfigSync;
 exports.findFile = findFile;
 exports.findConfigFile = findConfigFile;
-exports.findWebpackConfig = findWebpackConfig;
-exports.loadWebpackConfig = loadWebpackConfig;
-exports.loadDefaultWebpackConfig = loadDefaultWebpackConfig;
 exports.shallowMerge = shallowMerge;
 exports.exists = exists;
 exports.findConfig = findConfig;
