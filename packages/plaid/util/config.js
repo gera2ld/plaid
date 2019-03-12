@@ -1,8 +1,12 @@
 const { findConfigFile, parseConfig } = require('./helpers');
 
-async function loadProjectConfig() {
-  const filepath = await findConfigFile('plaid', 'No plaid.conf.js is found');
-  return parseConfig(require(filepath));
+async function findProjectConfig() {
+  return findConfigFile('plaid', 'No plaid.conf.js is found');
 }
 
+async function loadProjectConfig() {
+  return parseConfig(require(await findProjectConfig()));
+}
+
+exports.findProjectConfig = findProjectConfig;
 exports.loadProjectConfig = loadProjectConfig;
