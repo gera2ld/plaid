@@ -49,7 +49,7 @@ const defaultOptions = {
     hot: true,
   },
   successMessages: null,
-  externals: null,
+  externals: {},
 };
 
 module.exports = defaultOptions;
