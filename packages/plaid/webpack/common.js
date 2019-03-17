@@ -7,6 +7,7 @@ module.exports = async (config, options) => {
     testDir,
     distDir,
     hashedFilename,
+    externals,
   } = options;
   const enableTs = await exists('tsconfig.json', { file: true });
   config.mode = isProd ? 'production' : 'development';
@@ -63,5 +64,6 @@ module.exports = async (config, options) => {
       },
     }),
   ].filter(Boolean);
+  config.externals = externals;
   return config;
 };

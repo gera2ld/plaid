@@ -49,6 +49,7 @@ const defaultOptions = {
     hot: true,
   },
   successMessages: null,
+  externals: null,
 };
 
 module.exports = defaultOptions;
