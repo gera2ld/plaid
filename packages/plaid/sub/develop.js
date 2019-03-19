@@ -6,8 +6,7 @@ const {
 } = require('../util');
 
 async function develop() {
-  const { global } = await loadProjectConfig();
-  const { distDir, publicDir } = global;
+  const { distDir, publicDir } = await loadProjectConfig();
 
   if (await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);

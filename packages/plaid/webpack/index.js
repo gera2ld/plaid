@@ -1,4 +1,23 @@
-const mappings = {
+const { loadProjectConfig, combineConfig } = require('../util');
+
+function requireSilent(modulePath) {
+  try {
+    return require(modulePath);
+  } catch (err) {
+    // ignore
+  }
+}
+
+async function modifyWebpackConfig(configurators) {
+  if (!configurators) configurators = [];
+  else if (typeof configurators === 'function') configurators = [configurators];
+  return combineConfig({}, [
+    ...defaultConfiguratorList,
+    ...configurators,
+  ], await loadProjectConfig());
+}
+
+const nameMap = {
   html: './html',
   analyze: './analyze',
   common: './common',
@@ -12,16 +31,24 @@ const mappings = {
   ...requireSilent('@gera2ld/plaid-vue/webpack'),
 };
 
-module.exports = Object.entries(mappings)
+const configurators = Object.entries(nameMap)
 .reduce((map, [key, value]) => {
   map[key] = require(value);
   return map;
 }, {});
 
-function requireSilent(modulePath) {
-  try {
-    return require(modulePath);
-  } catch (err) {
-    // ignore
-  }
-}
+const defaultConfiguratorList = [
+  configurators.common,
+  configurators.css,
+  configurators.url,
+  configurators.raw,
+  configurators.svg,
+  configurators.devServer,
+  process.env.RUN_ENV === 'analyze' && configurators.analyze,
+  configurators.vue,
+  configurators.html,
+];
+
+exports.configurators = configurators;
+exports.defaultConfiguratorList = defaultConfiguratorList;
+exports.modifyWebpackConfig = modifyWebpackConfig;

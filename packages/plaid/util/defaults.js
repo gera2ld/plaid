@@ -1,7 +1,7 @@
 const path = require('path');
 const { isProd } = require('./env');
 
-const defaultOptions = {
+exports.defaultOptions = {
   srcDir: path.resolve('src'),
   testDir: path.resolve('test'),
   distDir: path.resolve('dist'),
@@ -51,5 +51,3 @@ const defaultOptions = {
   successMessages: null,
   externals: {},
 };
-
-module.exports = defaultOptions;

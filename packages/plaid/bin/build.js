@@ -11,8 +11,7 @@ const {
 } = require('../util');
 
 async function prebuild(cmd) {
-  const { global } = await loadProjectConfig();
-  const { distDir, publicDir } = global;
+  const { distDir, publicDir } = await loadProjectConfig();
   if (!cmd.keep) await fs.emptyDir(distDir);
   if (await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);
