@@ -12,7 +12,7 @@ module.exports = async (config, options) => {
   await fs.mkdir(tmpDir, { recursive: true });
   const swCode = [
     importWorkboxFrom == null && `\
-importScript('https://cdn.jsdelivr.net/npm/workbox-sw@4.1.1/build/workbox-sw.min.js');
+importScripts('https://cdn.jsdelivr.net/npm/workbox-sw@4.1.1/build/workbox-sw.min.js');
 workbox.setConfig({
   modulePathPrefix: 'https://cdn.jsdelivr.net/npm/workbox-sw@4.1.1/build',
 });`,
