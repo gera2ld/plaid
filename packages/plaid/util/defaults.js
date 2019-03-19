@@ -2,7 +2,6 @@ const path = require('path');
 const { isProd } = require('./env');
 
 exports.defaultOptions = {
-  tmpDir: path.resolve(__dirname, '../.tmp'),
   srcDir: path.resolve('src'),
   testDir: path.resolve('test'),
   distDir: path.resolve('dist'),
