@@ -6,7 +6,8 @@ module.exports = {
       ...process.env.BABEL_ENV !== 'test' && {
         modules: false,
       },
-      useBuiltIns: 'usage'
+      useBuiltIns: 'usage',
+      corejs: 3,
     }],
   ],
   plugins: [
