@@ -136,31 +136,6 @@ function catchError(func) {
   };
 }
 
-function webpackCallback(resolve, reject) {
-  return (err, stats) => {
-    if (err) {
-      console.error('[FATAL]', err);
-      return reject(err);
-    }
-    if (stats.hasErrors()) {
-      const { errors } = stats.toJson();
-      console.error('[ERROR] webpack compilation failed\n', errors.join('\n'));
-      return reject({ errors });
-    }
-    if (stats.hasWarnings()) {
-      const { warnings } = stats.toJson();
-      console.warn('[WARNING] webpack compilation has warnings\n', warnings.join('\n'));
-    }
-    (Array.isArray(stats.stats) ? stats.stats : [stats])
-    .forEach(stat => {
-      const timeCost = (stat.endTime - stat.startTime) / 1000;
-      const chunks = Object.keys(stat.compilation.namedChunks).join(' ');
-      console.log(`Webpack built: [${timeCost.toFixed(3)}s] ${chunks}`);
-    });
-    resolve();
-  };
-}
-
 exports.combineConfigSync = combineConfigSync;
 exports.combineConfig = combineConfig;
 exports.parseConfig = parseConfig;
@@ -174,4 +149,3 @@ exports.exists = exists;
 exports.findConfig = findConfig;
 exports.exitError = exitError;
 exports.catchError = catchError;
-exports.webpackCallback = webpackCallback;
