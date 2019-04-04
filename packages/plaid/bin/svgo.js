@@ -1,10 +1,17 @@
 const path = require('path');
 const spawn = require('cross-spawn');
+const { findConfigFile } = require('../util');
 
-function svgo(cmd, files) {
+async function svgo(cmd, files) {
+  let svgoConfig;
+  try {
+    svgoConfig = await findConfigFile('svgo');
+  } catch (e) {
+    svgoConfig = path.resolve(__dirname, '../config/svgo.yml');
+  }
   spawn('svgo', [
     '--config',
-    path.resolve(__dirname, '../config/svgo.yml'),
+    svgoConfig,
     ...files.length ? files : ['src/resources/svg'],
   ], { stdio: 'inherit' })
   .on('exit', (code) => {
