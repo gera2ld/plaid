@@ -7,7 +7,7 @@ module.exports = async (config, options) => {
     nodeModules,
     postcssLoader,
     styleOptions,
-    hashedFilename,
+    cssFilename,
   } = options;
   if (!postcssLoader.options) {
     // Initialize postcss config
@@ -46,10 +46,11 @@ module.exports = async (config, options) => {
     ...config.optimization.minimizer || [],
     isProd && new OptimizeCSSAssetsPlugin(),
   ].filter(Boolean);
+  const filename = typeof cssFilename === 'function' ? cssFilename(options) : cssFilename;
   config.plugins = [
     ...config.plugins || [],
     styleOptions.extract && new MiniCssExtractPlugin({
-      filename: hashedFilename ? '[name].[contenthash].css' : '[name].css',
+      filename,
     }),
   ].filter(Boolean);
   return config;

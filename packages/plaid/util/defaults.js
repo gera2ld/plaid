@@ -9,6 +9,7 @@ exports.defaultOptions = {
   nodeModules: path.resolve('node_modules'),
   svgDir: path.resolve('src/resources/svg'),
   hashedFilename: false,
+  cssFilename: (options) => options.hashedFilename ? '[name].[contenthash].css' : '[name].css',
   alias: {
     '#': './src',
   },
@@ -49,5 +50,5 @@ exports.defaultOptions = {
     hot: true,
   },
   successMessages: null,
-  externals: {},
+  externals: null,
 };
