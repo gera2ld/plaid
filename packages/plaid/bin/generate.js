@@ -3,17 +3,6 @@ const { exists } = require('../util/helpers');
 
 const templateInfo = [
   {
-    name: 'webpack',
-    filepath: 'scripts/webpack.conf.js',
-    template: `\
-const { modifyWebpackConfig } = require('@gera2ld/plaid/util');
-
-module.exports = modifyWebpackConfig(async (config) => {
-  return config;
-});`,
-    successMessage: 'Webpack config is generated successfully at scripts/webpack.conf.js',
-  },
-  {
     name: 'postcss',
     filepath: '.postcssrc.js',
     template: `\
@@ -43,4 +32,5 @@ async function handleConflict(filepath, content) {
   return fs.writeFile(filepath, content, 'utf8');
 }
 
+generate.templateInfo = templateInfo;
 module.exports = generate;

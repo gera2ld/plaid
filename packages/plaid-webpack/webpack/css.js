@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const { isProd, styleRule, loadConfig } = require('../util');
+const { isProd, styleRule, loadConfig } = require('@gera2ld/plaid/util');
 
 module.exports = async (config, options) => {
   const {

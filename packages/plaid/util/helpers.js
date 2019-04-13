@@ -136,6 +136,14 @@ function catchError(func) {
   };
 }
 
+function requireSilent(modulePath) {
+  try {
+    return require(modulePath);
+  } catch (err) {
+    // ignore
+  }
+}
+
 exports.combineConfigSync = combineConfigSync;
 exports.combineConfig = combineConfig;
 exports.parseConfig = parseConfig;
@@ -149,3 +157,4 @@ exports.exists = exists;
 exports.findConfig = findConfig;
 exports.exitError = exitError;
 exports.catchError = catchError;
+exports.requireSilent = requireSilent;

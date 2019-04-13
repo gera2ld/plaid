@@ -1,4 +1,4 @@
-const { findConfigFile, parseConfig } = require('./helpers');
+const { findConfigFile, parseConfig } = require('@gera2ld/plaid/util/helpers');
 
 const DEFAULT_WEBPACK = require.resolve('../config/webpack.conf');
 
