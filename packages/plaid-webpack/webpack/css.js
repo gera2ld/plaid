@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const { isProd, styleRule, loadConfig } = require('@gera2ld/plaid/util');
+const { isProd, styleRule, loadConfig } = require('../util');
 
 module.exports = async (config, options) => {
   const {
@@ -11,7 +11,7 @@ module.exports = async (config, options) => {
   } = options;
   if (!postcssLoader.options) {
     // Initialize postcss config
-    postcssLoader.options = await loadConfig('postcss') || require('../config/postcssrc');
+    postcssLoader.options = await loadConfig('postcss') || require('@gera2ld/plaid/config/postcssrc');
   }
   config.module.rules = [
     ...config.module.rules || [],

@@ -50,5 +50,5 @@ exports.defaultOptions = {
     hot: true,
   },
   successMessages: null,
-  externals: null,
+  externals: undefined,
 };

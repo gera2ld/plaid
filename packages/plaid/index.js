@@ -1,4 +1,6 @@
 const util = require('./util');
-const webpackUtil = require('./webpack');
+const { requireSilent } = util;
 
-Object.assign(exports, util, webpackUtil);
+const webpack = requireSilent('@gera2ld/plaid-webpack/webpack');
+
+Object.assign(exports, util, webpack);

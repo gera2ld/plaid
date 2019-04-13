@@ -1,4 +1,4 @@
-const { loadProjectConfig, combineConfig, requireSilent } = require('@gera2ld/plaid/util');
+const { loadProjectConfig, combineConfig, requireSilent } = require('../util');
 
 async function modifyWebpackConfig(configurators) {
   if (!configurators) configurators = [];
