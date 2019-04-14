@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 const { program } = require('./program');
-const { requireSilent, exitError } = require('../util');
+// Avoid loading env here so that process.env.NODE_ENV can be changed later in
+// commands.
+const { requireSilent, exitError } = require('../util/helpers');
 
 requireSilent('@gera2ld/plaid-webpack/bin');
 
