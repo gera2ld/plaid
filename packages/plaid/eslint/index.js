@@ -13,6 +13,7 @@ module.exports = {
   },
   rules: {
     'consistent-return': 'off',
+    'import/prefer-default-export': 'off',
     indent: ['error', 2, { MemberExpression: 0 }],
     'no-await-in-loop': 'off',
     'no-bitwise': ['error', { int32Hint: true }],
