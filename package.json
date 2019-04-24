@@ -8,8 +8,8 @@
     "prepublishOnly": "npm run lint"
   },
   "devDependencies": {
-    "eslint": "^5.7.0",
-    "lerna": "^2.11.0"
+    "eslint": "^5.16.0",
+    "lerna": "^3.13.4"
   },
   "repository": {
     "type": "git",
