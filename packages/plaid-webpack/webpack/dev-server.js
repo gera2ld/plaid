@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
 const { isProd } = require('../util');
 
