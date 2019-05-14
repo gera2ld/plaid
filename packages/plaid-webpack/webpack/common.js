@@ -42,6 +42,11 @@ module.exports = async (config, options) => {
     },
     splitChunks: {
       cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          name: 'vendor',
+          chunks: 'all',
+        },
         common: {
           name: 'common',
           minChunks: 2,
