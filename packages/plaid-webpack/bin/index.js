@@ -29,7 +29,7 @@ templateInfo.push({
   name: 'webpack',
   filepath: 'scripts/webpack.conf.js',
   template: `\
-const { modifyWebpackConfig } = require('@gera2ld/plaid/util');
+const { modifyWebpackConfig } = require('@gera2ld/plaid');
 
 module.exports = modifyWebpackConfig(async (config) => {
   return config;
