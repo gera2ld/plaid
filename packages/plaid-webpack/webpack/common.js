@@ -11,7 +11,7 @@ module.exports = async (config, options) => {
   } = options;
   const enableTs = await exists('tsconfig.json', { file: true });
   config.mode = isProd ? 'production' : 'development';
-  if (!isProd) config.devtool = 'cheap-module-eval-source-map';
+  if (!isProd && !config.devtool) config.devtool = 'cheap-module-eval-source-map';
   config.output = {
     path: distDir,
     publicPath: '',
