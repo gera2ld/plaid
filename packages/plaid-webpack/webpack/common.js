@@ -8,10 +8,12 @@ module.exports = async (config, options) => {
     distDir,
     hashedFilename,
     externals,
+    devtool,
   } = options;
   const enableTs = await exists('tsconfig.json', { file: true });
   config.mode = isProd ? 'production' : 'development';
-  if (!isProd && !config.devtool) config.devtool = 'cheap-module-eval-source-map';
+  if (devtool) config.devtool = devtool;
+  else if (!isProd) config.devtool = 'cheap-module-eval-source-map';
   config.output = {
     path: distDir,
     publicPath: '',
