@@ -17,7 +17,7 @@ module.exports = async (config, options) => {
   config.output = {
     path: distDir,
     publicPath: '',
-    filename: hashedFilename ? '[name].[chunkhash].js' : '[name].js',
+    filename: isProd && hashedFilename ? '[name].[chunkhash].js' : '[name].js',
     ...config.output,
   };
   config.resolve = {
