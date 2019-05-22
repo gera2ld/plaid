@@ -71,6 +71,21 @@ module.exports = async (config, options) => {
       },
     }),
   ].filter(Boolean);
-  config.externals = externals;
+  if (Array.isArray(externals)) {
+    // Merge if an array is provided
+    let originalExternals = config.externals;
+    if (!originalExternals) {
+      originalExternals = [];
+    } else if (!Array.isArray(originalExternals)) {
+      originalExternals = [originalExternals];
+    }
+    config.externals = [
+      ...originalExternals,
+      ...externals,
+    ];
+  } else if (externals) {
+    // Override if an object is provided
+    config.externals = externals;
+  }
   return config;
 };
