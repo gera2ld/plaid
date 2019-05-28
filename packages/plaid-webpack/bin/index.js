@@ -4,7 +4,6 @@ const { templateInfo } = require('@gera2ld/plaid/bin/generate');
 program
 .command('develop')
 .description('Start development')
-.option('--no-server', 'Do not use webpack-dev-server')
 .action((...args) => {
   safeRun(require('./develop'), args);
 });
