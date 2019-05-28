@@ -8,7 +8,7 @@ module.exports = async (config, options) => {
     devServer,
     distDir,
   } = options;
-  if (!process.env.PLAID_DEV_SERVER) return config;
+  if (devServer === false) return config;
   config.devServer = {
     contentBase: distDir,
     quiet: true,

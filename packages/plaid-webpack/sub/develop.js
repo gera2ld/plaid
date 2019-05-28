@@ -6,7 +6,7 @@ const {
 } = require('../util');
 
 async function develop() {
-  const { distDir, publicDir } = await loadProjectConfig();
+  const { distDir, publicDir, devServer } = await loadProjectConfig();
 
   if (await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);
@@ -16,7 +16,7 @@ async function develop() {
     process.argv[0],
   ];
   let module;
-  if (process.env.PLAID_DEV_SERVER) {
+  if (devServer !== false) {
     // Use webpack-dev-server, write in memory
     module = 'webpack-dev-server/bin/webpack-dev-server';
     argv.push('webpack-dev-server');

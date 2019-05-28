@@ -10,13 +10,6 @@ let watchers;
 let waiting;
 const debouncedReload = _.debounce(reload, 1000);
 
-function develop(cmd) {
-  if (cmd.server) {
-    process.env.PLAID_DEV_SERVER = 1;
-  }
-  load();
-}
-
 async function clean() {
   if (watchers) {
     watchers.forEach(watcher => {
@@ -54,4 +47,4 @@ async function reload() {
   await load();
 }
 
-module.exports = develop;
+module.exports = load;
