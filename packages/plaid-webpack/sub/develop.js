@@ -23,7 +23,7 @@ async function develop() {
   } else {
     // Use webpack watch mode, write in file system
     module = 'webpack-cli/bin/cli';
-    argv.push('-w');
+    argv.push('webpack', '-w');
   }
   argv.push(
     '--config',
