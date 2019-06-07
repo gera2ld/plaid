@@ -21,7 +21,7 @@ module.exports = {
       allow: ['error', 'warn', 'info'],
     }],
     'no-mixed-operators': 'off',
-    'no-param-reassign': ['error', { props: false }],
+    'no-param-reassign': 'off',
     'no-restricted-syntax': 'off',
     'no-underscore-dangle': 'off',
     'no-use-before-define': ['error', 'nofunc'],
