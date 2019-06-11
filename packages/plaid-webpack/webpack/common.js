@@ -1,5 +1,5 @@
 const TerserPlugin = require('terser-webpack-plugin');
-const { isProd, exists } = require('../util');
+const { isProd, exists, shallowMerge } = require('../util');
 
 module.exports = async (config, options) => {
   const {
@@ -9,6 +9,8 @@ module.exports = async (config, options) => {
     hashedFilename,
     externals,
     devtool,
+    alias,
+    optimization,
   } = options;
   const enableTs = await exists('tsconfig.json', { file: true });
   config.mode = isProd ? 'production' : 'development';
@@ -25,6 +27,7 @@ module.exports = async (config, options) => {
       ...enableTs ? ['.ts', '.tsx'] : [],
       '.js', '.jsx',
     ],
+    alias,
     ...config.resolve,
   },
   config.module = {
@@ -38,7 +41,7 @@ module.exports = async (config, options) => {
       include: [srcDir, testDir],
     },
   ];
-  config.optimization = {
+  config.optimization = shallowMerge({
     runtimeChunk: {
       name: 'runtime',
     },
@@ -56,21 +59,19 @@ module.exports = async (config, options) => {
         },
       },
     },
-    ...config.optimization,
-  };
-  config.optimization.minimizer = [
-    ...config.optimization.minimizer || [],
-    isProd && new TerserPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true,
-      terserOptions: {
-        output: {
-          ascii_only: true,
+    minimizer: [
+      isProd && new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+        terserOptions: {
+          output: {
+            ascii_only: true,
+          },
         },
-      },
-    }),
-  ].filter(Boolean);
+      }),
+    ].filter(Boolean),
+  }, optimization);
   if (Array.isArray(externals)) {
     // Merge if an array is provided
     let originalExternals = config.externals;
