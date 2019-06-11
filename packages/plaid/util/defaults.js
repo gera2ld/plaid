@@ -9,7 +9,9 @@ exports.defaultOptions = {
   svgDir: path.resolve('src/resources/svg'),
   hashedFilename: false,
   cssFilename: (options) => options.hashedFilename ? '[name].[contenthash].css' : '[name].css',
+  // Babel accepts both absolute paths and relative paths
+  // Webpack accepts only absolute paths
   alias: {
-    '#': './src',
+    '#': path.resolve('src'),
   },
 };
