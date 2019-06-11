@@ -1,12 +1,14 @@
 const { loadProjectConfig, combineConfig, requireSilent } = require('../util');
 
-async function modifyWebpackConfig(configurators) {
+async function modifyWebpackConfig(configurators, options = {}) {
   if (!configurators) configurators = [];
   else if (typeof configurators === 'function') configurators = [configurators];
+  let { projectConfig } = options;
+  if (!projectConfig) projectConfig = await loadProjectConfig();
   return combineConfig({}, [
-    ...defaultConfiguratorList,
+    ...options.noDefaults ? [] : defaultConfiguratorList,
     ...configurators,
-  ], await loadProjectConfig());
+  ], projectConfig);
 }
 
 const nameMap = {

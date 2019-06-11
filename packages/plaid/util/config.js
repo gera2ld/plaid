@@ -8,9 +8,7 @@ async function findProjectConfig() {
 
 async function loadProjectConfig() {
   const projectConfig = await parseConfig(require(await findProjectConfig()));
-  const config = shallowMerge(defaultOptions, projectConfig.global, {
-    pagesConfig: projectConfig.pages,
-  });
+  const config = shallowMerge(defaultOptions, projectConfig, projectConfig.global);
   return config;
 }
 

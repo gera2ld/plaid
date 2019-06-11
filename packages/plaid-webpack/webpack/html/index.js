@@ -6,15 +6,15 @@ const util = {
 
 module.exports = (config, options) => {
   const {
-    pagesConfig,
+    pages,
     htmlOptions,
   } = options;
-  const entry = Object.entries(pagesConfig)
+  const entry = Object.entries(pages)
   .reduce((res, [key, { entry }]) => ({
     ...res,
     [key]: entry || `./src/pages/${key}`,
   }), {});
-  const htmlPlugins = Object.entries(pagesConfig)
+  const htmlPlugins = Object.entries(pages)
   .map(([key, { html }]) => {
     let page;
     if (html) {

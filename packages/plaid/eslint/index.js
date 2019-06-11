@@ -28,5 +28,6 @@ module.exports = {
     'object-shorthand': ['error', 'always'],
     'prefer-destructuring': ['error', { array: false }],
     'prefer-promise-reject-errors': 'off',
+    'class-methods-use-this': 'off',
   },
 };
