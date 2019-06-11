@@ -1,6 +1,6 @@
 {
   "name": "@gera2ld/plaid-webpack",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "Webpack utility helpers",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
