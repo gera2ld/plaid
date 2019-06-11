@@ -3,7 +3,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 function styleLoader(options) {
   const {
     extract,
-    localIdentName = '[emoji]',
     loaders = [],
     fallback = 'style-loader',
     modules = false,
@@ -12,7 +11,6 @@ function styleLoader(options) {
     loader: 'css-loader',
     options: {
       modules,
-      localIdentName,
       importLoaders: 1,
       sourceMap: false,
     },

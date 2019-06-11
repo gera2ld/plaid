@@ -13,6 +13,11 @@ module.exports = async (config, options) => {
     // Initialize postcss config
     postcssLoader.options = await loadConfig('postcss') || require('@gera2ld/plaid/config/postcssrc');
   }
+
+  const cssModules = {
+    localIdentName: '[emoji]',
+  };
+
   config.module.rules = [
     ...config.module.rules || [],
 
@@ -20,7 +25,7 @@ module.exports = async (config, options) => {
     styleRule({
       ...styleOptions,
       loaders: [postcssLoader],
-      modules: true,
+      modules: cssModules,
     }, {
       test: /\.module\.css$/,
       exclude: [nodeModules],
