@@ -16,9 +16,9 @@ module.exports = (config, options) => {
   }), {});
   const htmlPlugins = Object.entries(pagesConfig)
   .map(([key, { html }]) => {
-    let options;
+    let page;
     if (html) {
-      options = {
+      page = {
         ...htmlOptions,
         inject: false,
         util,
@@ -26,16 +26,16 @@ module.exports = (config, options) => {
         chunks: [key],
       };
       if (typeof html === 'function') {
-        options = html(options);
+        page = html(page);
       } else {
-        options = {
-          ...options,
+        page = {
+          ...page,
           ...html,
         };
       }
     }
-    if (options) {
-      options.js = options.js
+    if (page) {
+      page.js = page.js
       .map(item => {
         if (typeof item === 'string') return { src: item };
         if (item && item.content) return { content: util.escapeScript(item.content) };
@@ -43,7 +43,7 @@ module.exports = (config, options) => {
       })
       .filter(Boolean);
 
-      options.css = options.css
+      page.css = page.css
       .map(item => {
         if (typeof item === 'string') return { href: item };
         if (item && item.content) return { content: item.content };
@@ -51,7 +51,7 @@ module.exports = (config, options) => {
       })
       .filter(Boolean);
 
-      return new HtmlWebpackPlugin(options);
+      return new HtmlWebpackPlugin(page);
     }
   })
   .filter(Boolean);
