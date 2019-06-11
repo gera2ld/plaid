@@ -16,6 +16,7 @@
     "@babel/plugin-proposal-function-sent": "^7.2.0",
     "@babel/plugin-proposal-json-strings": "^7.2.0",
     "@babel/plugin-proposal-numeric-separator": "^7.2.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/plugin-proposal-pipeline-operator": "^7.3.2",
     "@babel/plugin-proposal-throw-expressions": "^7.2.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
@@ -40,7 +41,8 @@
     "postcss-import": "^12.0.1",
     "postcss-plugin-px2rem": "^0.8.1",
     "postcss-scss": "^2.0.0",
-    "precss": "^4.0.0"
+    "precss": "^4.0.0",
+    "svgo": "^1.2.2"
   },
   "repository": {
     "type": "git",
