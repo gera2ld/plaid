@@ -6,5 +6,4 @@ plugins:
       attrs:
         - class
         - fill
-        - fill-rule
         - stroke
