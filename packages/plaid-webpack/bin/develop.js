@@ -3,6 +3,7 @@ process.env.NODE_ENV = 'development';
 const fs = require('fs-extra');
 const spawn = require('cross-spawn');
 const _ = require('lodash');
+const log = require('debug')('plaid');
 const { findProjectConfig, findWebpackConfig } = require('../util');
 
 let child;
@@ -31,13 +32,18 @@ async function load() {
     findWebpackConfig(),
   ]);
   watchers = [
-    fs.watch(projectConfigFile, debouncedReload),
-    fs.watch(webpackConfigFile, debouncedReload),
+    fs.watch(projectConfigFile, reloadLater),
+    fs.watch(webpackConfigFile, reloadLater),
   ];
   child = spawn(process.execPath, [require.resolve('../sub/develop')], { stdio: 'inherit' });
   waiting = new Promise((resolve) => {
     child.on('exit', resolve);
   });
+}
+
+function reloadLater(type, filename) {
+  log('[%s] %s', type, filename);
+  debouncedReload();
 }
 
 async function reload() {
