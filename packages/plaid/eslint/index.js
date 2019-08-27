@@ -27,6 +27,7 @@ module.exports = {
     }],
     'no-await-in-loop': 'off',
     'no-bitwise': ['error', { int32Hint: true }],
+    'no-cond-assign': ['error', 'except-parens'],
     'no-console': ['warn', {
       allow: ['error', 'warn', 'info'],
     }],
