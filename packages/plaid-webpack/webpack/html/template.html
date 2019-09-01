@@ -2,13 +2,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <% Object.entries(htmlWebpackPlugin.options.meta || {}).forEach(([ name, content ]) => { %>
 <meta name="<%= name %>" content="<%= content %>">
 <% }) %>
+
 <title><%= htmlWebpackPlugin.options.title %></title>
+
+<% if (htmlWebpackPlugin.files.favicon) { %>
+<link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon %>">
+<% } %>
+
 <% if (htmlWebpackPlugin.options.manifest) { %>
 <link rel="manifest" href="<%= htmlWebpackPlugin.options.manifest %>">
 <% } %>
+
 <% htmlWebpackPlugin.options.css.forEach(({ href, content }) => { %>
 <% if (href) { %>
 <link rel="stylesheet" href="<%= href %>">
@@ -16,6 +24,7 @@
 <style><%= content %></style>
 <% } %>
 <% }); %>
+
 <% htmlWebpackPlugin.files.css.forEach(file => { %>
 <% if (htmlWebpackPlugin.options.inlineSource) { %>
 <style><%= compilation.assets[file.slice(htmlWebpackPlugin.files.publicPath.length)].source() %></style>
@@ -23,6 +32,7 @@
 <link rel="stylesheet" href="<%= file %>">
 <% } %>
 <% }); %>
+
 <% htmlWebpackPlugin.options.js.forEach(({ src, content }) => { %>
 <% if (src) { %>
 <script src="<%= src %>"></script>
@@ -30,8 +40,10 @@
 <script><%= content %></script>
 <% } %>
 <% }); %>
+
 </head>
 <body>
+
 <% htmlWebpackPlugin.files.js.forEach(file => { %>
 <% if (htmlWebpackPlugin.options.inlineSource) { %>
 <script><%= htmlWebpackPlugin.options.util.escapeScript(compilation.assets[file.slice(htmlWebpackPlugin.files.publicPath.length)].source()) %></script>
@@ -39,5 +51,6 @@
 <script src="<%= file %>"></script>
 <% } %>
 <% }); %>
+
 </body>
 </html>
