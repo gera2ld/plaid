@@ -3,6 +3,10 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
 const { isProd } = require('../util');
 
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
 module.exports = async (config, options) => {
   const {
     devServer,
@@ -16,18 +20,27 @@ module.exports = async (config, options) => {
     ...config.devServer,
   };
   // Make sure port is defined
-  if (!isProd && !config.devServer.port) {
-    portfinder.basePort = 8080;
-    await new Promise((resolve, reject) => {
-      portfinder.getPort((err, port) => {
-        if (err) {
-          reject(err);
-        } else {
-          config.devServer.port = port;
-          resolve();
+  if (!isProd) {
+    if (!config.devServer.port) {
+      // find an available port
+      config.devServer.port = await portfinder.getPortPromise();
+    } else {
+      // check if the given port is available
+      const { port } = config.devServer;
+      while (true) {
+        try {
+          await portfinder.getPortPromise({
+            port,
+            stopPort: port,
+          });
+          break;
+        } catch (err) {
+          console.clear();
+          console.error(`Port ${port} is already in use`);
+          await delay(1000);
         }
-      });
-    });
+      }
+    }
   }
   const successMessages = options.successMessages || [
     'Envs:',
