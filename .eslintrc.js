@@ -11,6 +11,8 @@ module.exports = {
   },
   rules: {
     'no-console': 'off',
+    'no-constant-condition': 'off',
     semi: ['error', 'always'],
+    'require-atomic-updates': 'off',
   },
 };
