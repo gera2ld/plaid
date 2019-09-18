@@ -16,6 +16,7 @@ module.exports = {
     'arrow-parens': 'off',
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
+    'import/default': 'error',
     'import/prefer-default-export': 'off',
     indent: ['error', 2, { MemberExpression: 0 }],
     'max-len': ['error', 100, 2, { // airbnb-base + ignore comments
