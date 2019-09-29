@@ -13,7 +13,7 @@ const {
 async function prebuild(cmd) {
   const { distDir, publicDir } = await loadProjectConfig();
   if (!cmd.keep) await fs.emptyDir(distDir);
-  if (await exists(publicDir, { dir: true })) {
+  if (cmd.copy && await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);
   }
 }
