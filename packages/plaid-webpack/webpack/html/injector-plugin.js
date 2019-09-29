@@ -7,6 +7,7 @@ class InjectorPlugin {
     compiler.hooks.compilation.tap('InjectorPlugin', (compilation) => {
       HtmlWebpackPlugin.getHooks(compilation).alterAssetTagGroups.tapAsync(
         'InjectorPlugin', (data, callback) => {
+          this.injectManifest(data);
           this.injectExternalFiles(data);
           this.groupAssets(data);
           if (data.plugin.options.inlineSource) this.inlineSource(data, compilation);
@@ -64,6 +65,20 @@ class InjectorPlugin {
     };
     data.headTags = data.headTags.map(inlineItem);
     data.bodyTags = data.bodyTags.map(inlineItem);
+  }
+
+  injectManifest(data) {
+    const { manifest } = data.plugin.options;
+    if (manifest) {
+      data.headTags.push({
+        tagName: 'link',
+        closeTag: false,
+        attributes: {
+          rel: 'manifest',
+          href: manifest,
+        },
+      });
+    }
   }
 
   injectExternalFiles(data) {
