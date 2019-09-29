@@ -1,8 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const util = {
-  escapeScript: content => content.replace(/<(\/script>)/g, '\\x3c$2'),
-};
+const InjectorPlugin = require('./injector-plugin');
 
 module.exports = (config, options) => {
   const {
@@ -20,8 +17,6 @@ module.exports = (config, options) => {
     if (html) {
       page = {
         ...htmlOptions,
-        inject: false,
-        util,
         filename: `${key}.html`,
         chunks: [key],
       };
@@ -34,31 +29,14 @@ module.exports = (config, options) => {
         };
       }
     }
-    if (page) {
-      page.js = page.js
-      .map(item => {
-        if (typeof item === 'string') return { src: item };
-        if (item && item.content) return { content: util.escapeScript(item.content) };
-        return item;
-      })
-      .filter(Boolean);
-
-      page.css = page.css
-      .map(item => {
-        if (typeof item === 'string') return { href: item };
-        if (item && item.content) return { content: item.content };
-        return item;
-      })
-      .filter(Boolean);
-
-      return new HtmlWebpackPlugin(page);
-    }
+    if (page) return new HtmlWebpackPlugin(page);
   })
   .filter(Boolean);
   config.entry = entry;
   config.plugins = [
     ...config.plugins || [],
     ...htmlPlugins,
+    new InjectorPlugin(),
   ];
   return config;
 };
