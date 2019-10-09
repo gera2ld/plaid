@@ -15,7 +15,6 @@ module.exports = async (config, options) => {
   if (devServer === false) return config;
   config.devServer = {
     contentBase: distDir,
-    quiet: true,
     ...devServer,
     ...config.devServer,
   };
@@ -42,19 +41,13 @@ module.exports = async (config, options) => {
       }
     }
   }
-  const successMessages = options.successMessages || [
-    'Envs:',
-    `  NODE_ENV=${process.env.NODE_ENV || ''}`,
-    `  BABEL_ENV=${process.env.BABEL_ENV || ''}`,
-    `Your application is running here: http://localhost:${config.devServer.port}`,
-  ];
+  let { successInfo } = options;
+  if (typeof successInfo === 'function') successInfo = successInfo(config, options);
   config.plugins = [
     ...config.plugins || [],
     !isProd && new webpack.HotModuleReplacementPlugin(),
     !isProd && new FriendlyErrorsPlugin({
-      compilationSuccessInfo: {
-        messages: successMessages,
-      },
+      compilationSuccessInfo: successInfo,
     }),
   ].filter(Boolean);
   return config;

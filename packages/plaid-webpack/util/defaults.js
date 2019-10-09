@@ -36,7 +36,17 @@ exports.defaultOptions = {
   devServer: {
     host: '0.0.0.0',
     hot: true,
+    quiet: true,
   },
-  successMessages: null,
+  successInfo(config/*, options */) {
+    return {
+      messages: [
+        'Envs:',
+        `  NODE_ENV=${process.env.NODE_ENV || ''}`,
+        `  BABEL_ENV=${process.env.BABEL_ENV || ''}`,
+        `Application running at http://localhost:${config.devServer.port}`,
+      ],
+    };
+  },
   externals: undefined,
 };
