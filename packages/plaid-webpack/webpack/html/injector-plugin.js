@@ -40,7 +40,7 @@ class InjectorPlugin {
       return source;
     };
     const inlineItem = item => {
-      if (item.tagName === 'script' && item.attributes.src) {
+      if (item.tagName === 'script' && item.attributes && item.attributes.src) {
         const url = `${prefix}${item.attributes.src}`;
         const source = getSource(url);
         if (source != null) {
@@ -50,7 +50,7 @@ class InjectorPlugin {
             innerHTML: util.escapeScript(source),
           };
         }
-      } else if (item.tagName === 'link' && item.attributes.rel === 'stylesheet' && item.attributes.href) {
+      } else if (item.tagName === 'link' && item.attributes && item.attributes.rel === 'stylesheet' && item.attributes.href) {
         const url = `${prefix}${item.attributes.href}`;
         const source = getSource(url);
         if (source != null) {
