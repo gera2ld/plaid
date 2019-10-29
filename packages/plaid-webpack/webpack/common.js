@@ -36,7 +36,12 @@ module.exports = async (config, options) => {
   config.module.rules = [
     ...config.module.rules || [],
     {
-      test: enableTs ? /\.(jsx?|tsx?)$/ : /\.jsx?$/,
+      test: enableTs ? /\.worker\.[jt]s$/ : /\.worker\.js$/,
+      use: 'worker-loader',
+      include: [srcDir, testDir],
+    },
+    {
+      test: enableTs ? /\.[jt]sx?$/ : /\.jsx?$/,
       use: 'babel-loader',
       include: [srcDir, testDir],
     },
