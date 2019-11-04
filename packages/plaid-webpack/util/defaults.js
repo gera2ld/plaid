@@ -49,4 +49,7 @@ exports.defaultOptions = {
     };
   },
   externals: undefined,
+  analyzer: {
+    analyzerPort: 0,
+  },
 };
