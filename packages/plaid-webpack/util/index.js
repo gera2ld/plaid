@@ -1,8 +1,6 @@
 const util = require('@gera2ld/plaid/util');
 const style = require('./style');
 const webpack = require('./webpack');
-const { defaultOptions } = require('./defaults');
+const defaults = require('./defaults');
 
-Object.assign(util.defaultOptions, defaultOptions);
-
-module.exports = Object.assign(util, style, webpack);
+module.exports = Object.assign(util, style, webpack, defaults, util.requireSilent('@gera2ld/plaid-vue/util'));

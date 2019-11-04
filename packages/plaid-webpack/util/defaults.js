@@ -1,6 +1,6 @@
-const { isProd } = require('@gera2ld/plaid/util');
+const { isProd, defaultOptions } = require('@gera2ld/plaid/util');
 
-exports.defaultOptions = {
+exports.defaultOptions = Object.assign(defaultOptions, {
   postcssLoader: {
     loader: 'postcss-loader',
     // Load options later to avoid circular dependencies
@@ -52,4 +52,4 @@ exports.defaultOptions = {
   analyzer: {
     analyzerPort: 0,
   },
-};
+});
