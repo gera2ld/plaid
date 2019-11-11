@@ -4,10 +4,11 @@ module.exports = {
     'airbnb/rules/react',
   ],
   rules: {
+    'react/button-has-type': 'off',
+    'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-one-expression-per-line': 'off',
-    'react/prop-types': 'off',
     'react/no-array-index-key': 'off',
-    'react/button-has-type': 'off',
+    'react/prop-types': 'off',
   },
 };
