@@ -6,6 +6,9 @@ module.exports = {
   env: {
     browser: true,
   },
+  plugins: [
+    'babel',
+  ],
   settings: {
     'import/resolver': {
       'babel-module': {},
@@ -41,6 +44,12 @@ module.exports = {
     'no-use-before-define': ['error', 'nofunc'],
     'object-shorthand': ['error', 'always'],
     'prefer-destructuring': ['error', { array: false }],
+    'prefer-object-spread': 'off',
     'prefer-promise-reject-errors': 'off',
+
+    // workaround for the false-positive on optional?.chainingCall() statement
+    // https://github.com/eslint/eslint/issues/11045#issuecomment-436685184
+    'no-unused-expressions': 'off',
+    'babel/no-unused-expressions': 'error',
   },
 };
