@@ -1,6 +1,16 @@
+const path = require('path');
 const { isProd, defaultOptions } = require('@gera2ld/plaid/util');
 
 exports.defaultOptions = Object.assign(defaultOptions, {
+  publicDir: path.resolve('src/public'),
+  svgDir: path.resolve('src/resources/svg'),
+  hashedFilename: false,
+  cssFilename: (options) => options.hashedFilename ? '[name].[contenthash].css' : '[name].css',
+  cssModules: {
+    // XXX emoji is buggy in nested class names
+    // see https://github.com/webpack-contrib/css-loader/issues/995
+    // localIdentName: '[emoji]',
+  },
   postcssLoader: {
     loader: 'postcss-loader',
     // Load options later to avoid circular dependencies
