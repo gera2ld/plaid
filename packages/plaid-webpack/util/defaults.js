@@ -7,8 +7,7 @@ exports.defaultOptions = Object.assign(defaultOptions, {
   hashedFilename: false,
   cssFilename: (options) => options.hashedFilename ? '[name].[contenthash].css' : '[name].css',
   cssModules: {
-    // XXX emoji is buggy in nested class names
-    // see https://github.com/webpack-contrib/css-loader/issues/995
+    // emoji support is fixed in css-loader@3.2.0 > postcss-modules-scope@^2.1.1
     // localIdentName: '[emoji]',
   },
   postcssLoader: {
