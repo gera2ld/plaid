@@ -17,29 +17,27 @@ module.exports = async (config, options) => {
 
   config.module.rules = [
     ...config.module.rules || [],
-
-    // CSS modules: src/**/*.module.css
-    styleRule({
-      ...styleOptions,
-      loaders: [postcssLoader],
-      modules: cssModules,
-    }, {
-      test: /\.module\.css$/,
-      exclude: [nodeModules],
-    }),
-
-    // normal CSS files: src/**/*.css
-    styleRule({
-      ...styleOptions,
-      loaders: [postcssLoader],
-    }, {
-      exclude: [/\.module\.css$/, nodeModules],
-    }),
-
-    // library CSS files: node_modules/**/*.css
-    styleRule(styleOptions, {
-      include: [nodeModules],
-    }),
+    {
+      oneOf: [
+        // library CSS files: node_modules/**/*.css
+        styleRule(styleOptions, {
+          include: [nodeModules],
+        }),
+        // CSS modules: src/**/*.module.css
+        styleRule({
+          ...styleOptions,
+          loaders: [postcssLoader],
+          modules: cssModules,
+        }, {
+          test: /\.module\.css$/,
+        }),
+        // normal CSS files: src/**/*.css
+        styleRule({
+          ...styleOptions,
+          loaders: [postcssLoader],
+        }),
+      ],
+    },
   ];
   config.optimization = {
     ...config.optimization,
