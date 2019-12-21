@@ -23,6 +23,7 @@
     "@babel/plugin-transform-runtime": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "babel-eslint": "^10.0.3",
+    "babel-plugin-macros": "^2.8.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "commander": "^4.0.1",
     "cosmiconfig": "^6.0.0",

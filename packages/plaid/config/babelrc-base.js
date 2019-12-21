@@ -25,5 +25,7 @@ module.exports = {
     '@babel/plugin-proposal-numeric-separator',
     ['@babel/plugin-proposal-optional-chaining', { loose: true }],
     ['@babel/plugin-proposal-nullish-coalescing-operator', { loose: true }],
+
+    'babel-plugin-macros',
   ]
 };
