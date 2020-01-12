@@ -5,9 +5,9 @@
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
   "dependencies": {
-    "eslint-plugin-vue": "^6.0.1",
-    "vue-loader": "^15.7.2",
-    "vue-template-compiler": "^2.6.10"
+    "eslint-plugin-vue": "^6.1.2",
+    "vue-loader": "^15.8.3",
+    "vue-template-compiler": "^2.6.11"
   },
   "peerDependencies": {
     "@gera2ld/plaid-webpack": "*"

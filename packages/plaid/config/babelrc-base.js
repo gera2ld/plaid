@@ -23,8 +23,6 @@ module.exports = {
     // Use loose mode: facebook/create-react-app#4263
     ['@babel/plugin-proposal-class-properties', { loose: true }],
     '@babel/plugin-proposal-numeric-separator',
-    ['@babel/plugin-proposal-optional-chaining', { loose: true }],
-    ['@babel/plugin-proposal-nullish-coalescing-operator', { loose: true }],
 
     'babel-plugin-macros',
   ]
