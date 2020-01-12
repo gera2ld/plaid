@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
-const cosmiconfig = require('cosmiconfig');
+const { cosmiconfig, cosmiconfigSync } = require('cosmiconfig');
 
 async function combineConfig(input, reducers, options = {}) {
   let config = await input;
@@ -31,10 +31,10 @@ function parseConfig(input) {
 }
 
 function findConfigSync(name, place = process.cwd()) {
-  const explorer = cosmiconfig(name, {
+  const explorer = cosmiconfigSync(name, {
     stopDir: place,
   });
-  const result = explorer.searchSync(place);
+  const result = explorer.search(place);
   return result;
 }
 
