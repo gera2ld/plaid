@@ -12,7 +12,10 @@ module.exports = {
     }],
   ],
   plugins: [
-    '@babel/plugin-transform-runtime',
+    ['@babel/plugin-transform-runtime', {
+      useESModules: true,
+      version: '^7.5.0',
+    }],
 
     ['module-resolver', {
       alias: defaultOptions.alias,
