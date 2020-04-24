@@ -1,5 +1,5 @@
 const path = require('path');
-const fs = require('fs-extra');
+const fs = require('fs').promises;
 const { cosmiconfig, cosmiconfigSync } = require('cosmiconfig');
 
 async function combineConfig(input, reducers, options = {}) {

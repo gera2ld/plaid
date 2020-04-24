@@ -5,8 +5,8 @@
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
   "dependencies": {
-    "eslint-plugin-vue": "^6.1.2",
-    "vue-loader": "^15.8.3",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-loader": "^15.9.1",
     "vue-template-compiler": "^2.6.11"
   },
   "peerDependencies": {

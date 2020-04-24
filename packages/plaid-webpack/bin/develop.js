@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'development';
 
-const fs = require('fs-extra');
+const fs = require('fs');
 const spawn = require('cross-spawn');
 const _ = require('lodash');
 const log = require('debug')('plaid');

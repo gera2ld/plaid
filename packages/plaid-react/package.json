@@ -8,8 +8,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@babel/preset-react": "^7.8.0",
-    "eslint-config-airbnb": "^18.0.1"
+    "@babel/preset-react": "^7.9.4",
+    "eslint-config-airbnb": "^18.1.0"
   },
   "peerDependencies": {
     "@gera2ld/plaid-webpack": "*"
