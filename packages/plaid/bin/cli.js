@@ -9,7 +9,7 @@ requireSilent('@gera2ld/plaid-webpack/bin');
 
 program
 .command('*')
-.action((name) => {
+.action((cmd, name) => {
   exitError(1, `Unknown command: ${name}`);
 });
 
