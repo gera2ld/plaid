@@ -23,6 +23,7 @@ const nameMap = {
   url: './url',
   devServer: './dev-server',
   ...requireSilent('@gera2ld/plaid-vue/webpack'),
+  ...requireSilent('@gera2ld/plaid-svelte/webpack'),
 };
 
 const configurators = Object.entries(nameMap)
@@ -40,6 +41,7 @@ const defaultConfiguratorList = [
   configurators.devServer,
   process.env.RUN_ENV === 'analyze' && configurators.analyze,
   configurators.vue,
+  configurators.svelte,
   configurators.html,
 ];
 

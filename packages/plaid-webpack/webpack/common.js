@@ -24,6 +24,7 @@ module.exports = async (config, options) => {
   };
   config.resolve = {
     extensions: [
+      '.mjs',
       ...enableTs ? ['.ts', '.tsx'] : [],
       '.js', '.jsx',
     ],
