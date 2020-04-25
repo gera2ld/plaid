@@ -4,7 +4,7 @@ const fs = require('fs');
 const spawn = require('cross-spawn');
 const _ = require('lodash');
 const log = require('debug')('plaid');
-const { findProjectConfig, findWebpackConfig } = require('../util');
+const { findProjectConfig, findWebpackConfig } = require('@gera2ld/plaid/util');
 
 let child;
 let watchers;

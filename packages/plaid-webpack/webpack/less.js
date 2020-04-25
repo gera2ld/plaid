@@ -1,4 +1,4 @@
-const { styleLoader } = require('../util');
+const { styleLoader } = require('@gera2ld/plaid/util');
 
 module.exports = (config, options) => {
   const {

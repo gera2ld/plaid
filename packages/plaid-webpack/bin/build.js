@@ -8,7 +8,7 @@ const {
   loadWebpackConfig,
   exists,
   webpackCallback,
-} = require('../util');
+} = require('@gera2ld/plaid/util');
 
 async function prebuild(cmd) {
   const { distDir, publicDir } = await loadProjectConfig();

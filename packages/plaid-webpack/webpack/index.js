@@ -1,4 +1,4 @@
-const { loadProjectConfig, combineConfig, requireSilent } = require('../util');
+const { loadProjectConfig, combineConfig, mergeLibraries } = require('@gera2ld/plaid/util');
 
 async function modifyWebpackConfig(configurators, options = {}) {
   if (!configurators) configurators = [];
@@ -11,7 +11,7 @@ async function modifyWebpackConfig(configurators, options = {}) {
   ], projectConfig);
 }
 
-const nameMap = {
+const nameMap = mergeLibraries({
   html: './html',
   analyze: './analyze',
   common: './common',
@@ -22,9 +22,7 @@ const nameMap = {
   sw: './sw',
   url: './url',
   devServer: './dev-server',
-  ...requireSilent('@gera2ld/plaid-vue/webpack'),
-  ...requireSilent('@gera2ld/plaid-svelte/webpack'),
-};
+}, 'webpack');
 
 const configurators = Object.entries(nameMap)
 .reduce((map, [key, value]) => {

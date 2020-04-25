@@ -144,6 +144,18 @@ function requireSilent(modulePath) {
   }
 }
 
+const defaultLibraries = [
+  '@gera2ld/plaid-webpack',
+  '@gera2ld/plaid-vue',
+  '@gera2ld/plaid-svelte',
+];
+function mergeLibraries(obj, name, libs = defaultLibraries) {
+  for (const lib of libs) {
+    Object.assign(obj, requireSilent(`${lib}/${name}`));
+  }
+  return obj;
+}
+
 exports.combineConfigSync = combineConfigSync;
 exports.combineConfig = combineConfig;
 exports.parseConfig = parseConfig;
@@ -158,3 +170,4 @@ exports.findConfig = findConfig;
 exports.exitError = exitError;
 exports.catchError = catchError;
 exports.requireSilent = requireSilent;
+exports.mergeLibraries = mergeLibraries;

@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
-const { isProd } = require('../util');
+const { isProd } = require('@gera2ld/plaid/util');
 
 function delay(time) {
   return new Promise(resolve => setTimeout(resolve, time));

@@ -1,5 +1,5 @@
 const TerserPlugin = require('terser-webpack-plugin');
-const { isProd, exists, shallowMerge } = require('../util');
+const { isProd, exists, shallowMerge } = require('@gera2ld/plaid/util');
 
 module.exports = async (config, options) => {
   const {
