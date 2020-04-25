@@ -62,8 +62,8 @@ exports.defaultOptions = Object.assign(defaultOptions, {
   analyzer: {
     analyzerPort: 0,
   },
-  purgecssOptions: async options => ({
-    paths: () => await globby(`${options.srcDir}/**/*.@(js|html|vue|svelte)`),
+  purgecssOptions: options => ({
+    paths: () => globby.sync(`${options.srcDir}/**/*.@(js|html|vue|svelte)`),
     defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
   }),
 });

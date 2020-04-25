@@ -1,5 +1,5 @@
 const { defaultOptions } = require('@gera2ld/plaid/util');
 
-defaultOptions.purgecss.content.push(
+defaultOptions.purgecssOptions.content.push(
   './src/**/*.svelte',
 );

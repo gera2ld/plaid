@@ -6,6 +6,6 @@ defaultOptions.vueOptions = {
     whitespace: 'condense',
   },
 };
-defaultOptions.purgecss.content.push(
+defaultOptions.purgecssOptions.content.push(
   './src/**/*.vue',
 );
