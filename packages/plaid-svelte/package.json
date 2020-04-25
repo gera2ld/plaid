@@ -1,6 +1,6 @@
 {
   "name": "@gera2ld/plaid-svelte",
-  "version": "1.6.3",
+  "version": "1.6.5",
   "description": "Webpack utility helpers for Vue",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
