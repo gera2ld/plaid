@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
 const { isProd, styleRule, loadConfig } = require('@gera2ld/plaid/util');
 
 module.exports = async (config, options) => {
@@ -9,6 +10,7 @@ module.exports = async (config, options) => {
     styleOptions,
     cssFilename,
     cssModules,
+    purgecssOptions,
   } = options;
   if (!postcssLoader.options) {
     // Initialize postcss config
@@ -52,6 +54,7 @@ module.exports = async (config, options) => {
     styleOptions.extract && new MiniCssExtractPlugin({
       filename,
     }),
+    isProd && new PurgecssPlugin(typeof purgecssOptions === 'function' ? await purgecssOptions(options) : purgecssOptions),
   ].filter(Boolean);
   return config;
 };

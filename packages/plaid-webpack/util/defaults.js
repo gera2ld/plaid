@@ -1,4 +1,5 @@
 const path = require('path');
+const globby = require('globby');
 const { isProd, defaultOptions } = require('@gera2ld/plaid/util');
 
 exports.defaultOptions = Object.assign(defaultOptions, {
@@ -61,4 +62,8 @@ exports.defaultOptions = Object.assign(defaultOptions, {
   analyzer: {
     analyzerPort: 0,
   },
+  purgecssOptions: async options => ({
+    paths: () => await globby(`${options.srcDir}/**/*.@(js|html|vue|svelte)`),
+    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+  }),
 });

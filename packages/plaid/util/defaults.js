@@ -10,11 +10,4 @@ exports.defaultOptions = {
   alias: {
     '#': path.resolve('src'),
   },
-  purgecss: {
-    content: [
-      './src/**/*.html',
-      './src/**/*.js',
-    ],
-    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-  },
 };
