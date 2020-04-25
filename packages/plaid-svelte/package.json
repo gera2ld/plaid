@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "eslint-plugin-svelte3": "^2.7.3",
+    "svelte": "^3.21.0",
     "svelte-loader": "^2.13.6"
   },
   "peerDependencies": {
