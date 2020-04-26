@@ -3,7 +3,7 @@ const {
   loadProjectConfig,
   findWebpackConfig,
   exists,
-} = require('../util');
+} = require('@gera2ld/plaid/util');
 
 async function develop() {
   const { distDir, publicDir, devServer } = await loadProjectConfig();
