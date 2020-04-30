@@ -10,7 +10,7 @@ module.exports = (config, options) => {
     {
       test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
       use: [{
-        loader: 'url-loader',
+        loader: require.resolve('url-loader'),
         options: {
           limit: 10000,
         },

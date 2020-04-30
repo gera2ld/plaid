@@ -1,0 +1,29 @@
+{
+  "name": "@gera2ld/plaid-webpack-vue",
+  "version": "1.6.6",
+  "description": "Webpack configuration for Vue",
+  "keywords": [
+    "webpack",
+    "vue"
+  ],
+  "author": "Gerald <gera2ld@163.com>",
+  "homepage": "https://github.com/gera2ld/plaid#readme",
+  "license": "ISC",
+  "dependencies": {
+    "@gera2ld/plaid-common-vue": "^1.6.5",
+    "vue-loader": "^15.9.1"
+  },
+  "peerDependencies": {
+    "@gera2ld/plaid": "~1.6.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gera2ld/plaid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gera2ld/plaid/issues"
+  }
+}

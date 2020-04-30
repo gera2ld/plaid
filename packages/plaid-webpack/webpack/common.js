@@ -1,5 +1,5 @@
 const TerserPlugin = require('terser-webpack-plugin');
-const { isProd, exists, shallowMerge } = require('@gera2ld/plaid/util');
+const { isProd, shallowMerge } = require('@gera2ld/plaid/util');
 
 module.exports = async (config, options) => {
   const {
@@ -10,9 +10,9 @@ module.exports = async (config, options) => {
     externals,
     devtool,
     alias,
+    extensions,
     optimization,
   } = options;
-  const enableTs = await exists('tsconfig.json', { file: true });
   config.mode = isProd ? 'production' : 'development';
   if (devtool) config.devtool = devtool;
   else if (!isProd) config.devtool = 'cheap-module-eval-source-map';
@@ -23,12 +23,8 @@ module.exports = async (config, options) => {
     ...config.output,
   };
   config.resolve = {
-    extensions: [
-      '.mjs',
-      ...enableTs ? ['.ts', '.tsx'] : [],
-      '.js', '.jsx',
-    ],
     alias,
+    extensions,
     ...config.resolve,
   },
   config.module = {
@@ -37,13 +33,13 @@ module.exports = async (config, options) => {
   config.module.rules = [
     ...config.module.rules || [],
     {
-      test: enableTs ? /\.worker\.[jt]s$/ : /\.worker\.js$/,
-      use: 'worker-loader',
+      test: /\.worker\.[jt]s$/,
+      use: require.resolve('worker-loader'),
       include: [srcDir, testDir],
     },
     {
-      test: enableTs ? /\.[jt]sx?$/ : /\.jsx?$/,
-      use: 'babel-loader',
+      test: /\.[jt]sx?$/,
+      use: require.resolve('babel-loader'),
       include: [srcDir, testDir],
     },
   ];

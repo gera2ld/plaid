@@ -1,0 +1,29 @@
+{
+  "name": "@gera2ld/plaid-webpack-svelte",
+  "version": "1.6.6",
+  "description": "Webpack configuration for Svelte",
+  "keywords": [
+    "webpack",
+    "svelte"
+  ],
+  "author": "Gerald <gera2ld@163.com>",
+  "homepage": "https://github.com/gera2ld/plaid#readme",
+  "license": "ISC",
+  "dependencies": {
+    "@gera2ld/plaid-common-svelte": "^1.6.5",
+    "svelte-loader": "^2.13.6"
+  },
+  "peerDependencies": {
+    "@gera2ld/plaid": "~1.6.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gera2ld/plaid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gera2ld/plaid/issues"
+  }
+}

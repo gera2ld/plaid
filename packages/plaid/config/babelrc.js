@@ -1,6 +1,6 @@
-const { defaultOptions } = require('../util');
+const { resolveBabelConfig } = require('../util');
 
-module.exports = {
+module.exports = resolveBabelConfig({
   extends: require.resolve('./babelrc-base'),
   presets: [
     ['@babel/preset-env', {
@@ -16,12 +16,5 @@ module.exports = {
       useESModules: true,
       version: '^7.5.0',
     }],
-
-    ['module-resolver', {
-      alias: defaultOptions.alias,
-      extensions: [
-        '.js', '.vue',
-      ],
-    }],
   ]
-};
+}, require.resolve);

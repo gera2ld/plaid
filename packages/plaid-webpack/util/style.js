@@ -4,11 +4,11 @@ function styleLoader(options) {
   const {
     extract,
     loaders = [],
-    fallback = 'style-loader',
+    fallback = require.resolve('style-loader'),
     modules = false,
   } = options || {};
   const cssLoader = {
-    loader: 'css-loader',
+    loader: require.resolve('css-loader'),
     options: {
       modules,
       importLoaders: 1,

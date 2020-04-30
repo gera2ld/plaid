@@ -13,7 +13,7 @@ module.exports = (config, options) => {
     {
       test: /\.svg$/,
       use: [{
-        loader: 'svg-sprite-loader',
+        loader: require.resolve('svg-sprite-loader'),
         options: {
           // extract: extractSVG,
         },

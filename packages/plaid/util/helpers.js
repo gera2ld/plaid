@@ -1,6 +1,8 @@
 const path = require('path');
-const fs = require('fs').promises;
+const fs = require('fs');
 const { cosmiconfig, cosmiconfigSync } = require('cosmiconfig');
+
+const fsPromises = fs.promises;
 
 async function combineConfig(input, reducers, options = {}) {
   let config = await input;
@@ -67,7 +69,7 @@ async function loadConfig(name) {
 
 async function exists(filepath, { file, dir } = {}) {
   try {
-    const stats = await fs.stat(filepath);
+    const stats = await fsPromises.stat(filepath);
     if (file && stats.isFile()) return true;
     if (dir && stats.isDirectory()) return true;
   } catch (err) {
@@ -144,15 +146,25 @@ function requireSilent(modulePath) {
   }
 }
 
-const defaultLibraries = [
-  '@gera2ld/plaid-webpack',
-  '@gera2ld/plaid-vue',
-  '@gera2ld/plaid-svelte',
-];
-function mergeLibraries(obj, name, libs = defaultLibraries) {
-  for (const lib of libs) {
-    Object.assign(obj, requireSilent(`${lib}/${name}`));
+let packages;
+function mergeLibraries(obj, lib, test) {
+  if (!packages) packages = fs.readdirSync('node_modules/@gera2ld');
+  let filter;
+  if (test instanceof RegExp) {
+    filter = s => test.test(s);
+  } else if (typeof test === 'function') {
+    filter = test;
+  } else if (!test) {
+    filter = () => true;
+  } else {
+    if (!Array.isArray(test)) test = [test];
+    filter = s => test.includes(s);
   }
+  packages.filter(filter).forEach(name => {
+    let modulePath = path.resolve(`node_modules/@gera2ld/${name}`);
+    if (lib) modulePath += '/' + lib;
+    Object.assign(obj, requireSilent(modulePath));
+  });
   return obj;
 }
 

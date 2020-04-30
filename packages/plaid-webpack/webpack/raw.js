@@ -10,7 +10,7 @@ module.exports = (config, options) => {
     ...config.module.rules || [],
     {
       test: /\.(html|vert|frag)$/,
-      use: 'raw-loader',
+      use: require.resolve('raw-loader'),
       include: [srcDir, testDir],
     },
   ];

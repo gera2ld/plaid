@@ -22,7 +22,7 @@ const nameMap = mergeLibraries({
   sw: './sw',
   url: './url',
   devServer: './dev-server',
-}, 'webpack');
+}, 'webpack', /^plaid-webpack-/);
 
 const configurators = Object.entries(nameMap)
 .reduce((map, [key, value]) => {
@@ -43,6 +43,4 @@ const defaultConfiguratorList = [
   configurators.html,
 ];
 
-exports.configurators = configurators;
-exports.defaultConfiguratorList = defaultConfiguratorList;
 exports.modifyWebpackConfig = modifyWebpackConfig;

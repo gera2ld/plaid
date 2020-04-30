@@ -10,4 +10,4 @@ Object.assign(
   env,
   defaults,
 );
-helpers.mergeLibraries(exports, 'util');
+helpers.mergeLibraries(exports, 'util', /^plaid-/);

@@ -1,16 +1,15 @@
 {
-  "name": "@gera2ld/plaid-svelte",
+  "name": "@gera2ld/plaid-common-vue",
   "version": "1.6.5",
   "description": "Webpack utility helpers for Vue",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
   "dependencies": {
-    "eslint-plugin-svelte3": "^2.7.3",
-    "svelte": "^3.21.0",
-    "svelte-loader": "^2.13.6"
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
   },
   "peerDependencies": {
-    "@gera2ld/plaid-webpack": "*"
+    "@gera2ld/plaid": "~1.6.4"
   },
   "repository": {
     "type": "git",
@@ -18,5 +17,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@gera2ld/plaid": "^1.6.4"
   }
 }

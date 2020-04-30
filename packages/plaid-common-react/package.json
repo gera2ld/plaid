@@ -1,5 +1,5 @@
 {
-  "name": "@gera2ld/plaid-react",
+  "name": "@gera2ld/plaid-common-react",
   "version": "1.6.0",
   "description": "Webpack utility helpers for React",
   "author": "Gerald <i@gerald.top>",
@@ -11,14 +11,14 @@
     "@babel/preset-react": "^7.9.4",
     "eslint-config-airbnb": "^18.1.0"
   },
-  "peerDependencies": {
-    "@gera2ld/plaid-webpack": "*"
-  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/gera2ld/plaid.git"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@gera2ld/plaid": "^1.6.4"
   }
 }

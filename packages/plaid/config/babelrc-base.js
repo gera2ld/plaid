@@ -1,4 +1,6 @@
-module.exports = {
+const { defaultOptions, resolveBabelConfig } = require('../util');
+
+module.exports = resolveBabelConfig({
   presets: [
     ['@babel/preset-env', {
       ...process.env.BABEL_ENV !== 'test' && {
@@ -25,5 +27,10 @@ module.exports = {
     '@babel/plugin-proposal-numeric-separator',
 
     'babel-plugin-macros',
+
+    ['babel-plugin-module-resolver', {
+      alias: defaultOptions.alias,
+      extensions: defaultOptions.extensions,
+    }],
   ]
-};
+}, require.resolve);

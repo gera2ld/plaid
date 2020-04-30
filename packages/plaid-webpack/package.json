@@ -4,6 +4,7 @@
   "description": "Webpack utility helpers",
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
+  "main": "index.js",
   "dependencies": {
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.2",
@@ -11,7 +12,6 @@
     "file-loader": "^6.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "fs-extra": "^9.0.0",
-    "globby": "^11.0.0",
     "html-webpack-plugin": "^4.2.0",
     "less-loader": "^5.0.0",
     "lodash": "^4.17.15",
@@ -32,7 +32,7 @@
     "worker-loader": "^2.0.0"
   },
   "peerDependencies": {
-    "@gera2ld/plaid-webpack": "*"
+    "@gera2ld/plaid": "~1.6.0"
   },
   "repository": {
     "type": "git",
@@ -40,5 +40,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@gera2ld/plaid": "^1.6.4"
   }
 }

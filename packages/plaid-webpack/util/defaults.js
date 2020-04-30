@@ -1,5 +1,4 @@
 const path = require('path');
-const globby = require('globby');
 const { isProd, defaultOptions } = require('@gera2ld/plaid/util');
 
 exports.defaultOptions = Object.assign(defaultOptions, {
@@ -12,7 +11,7 @@ exports.defaultOptions = Object.assign(defaultOptions, {
     // localIdentName: '[emoji]',
   },
   postcssLoader: {
-    loader: 'postcss-loader',
+    loader: require.resolve('postcss-loader'),
     // Load options later to avoid circular dependencies
   },
   htmlOptions: {
@@ -34,7 +33,7 @@ exports.defaultOptions = Object.assign(defaultOptions, {
     extract: isProd,
   },
   lessLoader: {
-    loader: 'less-loader',
+    loader: require.resolve('less-loader'),
     // For ant-design
     // options: {
     //   javascriptEnabled: true,
@@ -62,8 +61,4 @@ exports.defaultOptions = Object.assign(defaultOptions, {
   analyzer: {
     analyzerPort: 0,
   },
-  purgecssOptions: options => ({
-    paths: () => globby.sync(`${options.srcDir}/**/*.@(js|html|vue|svelte)`),
-    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-  }),
 });

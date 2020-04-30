@@ -8,7 +8,7 @@ module.exports = (config, options) => {
     {
       test: /\.svelte$/,
       use: {
-        loader: 'svelte-loader',
+        loader: require.resolve('svelte-loader'),
         options: {
           emitCss: true,
         },

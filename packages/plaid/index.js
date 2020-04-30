@@ -1,6 +1,7 @@
 const util = require('./util');
-const { requireSilent } = util;
+const { requireSilent, mergeLibraries } = util;
 
-const webpack = requireSilent('@gera2ld/plaid-webpack/webpack');
-
-Object.assign(exports, util, webpack);
+mergeLibraries(Object.assign(exports, util), null, [
+  'plaid-rollup',
+  'plaid-webpack',
+]);
