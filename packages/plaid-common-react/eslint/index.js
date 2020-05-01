@@ -11,4 +11,9 @@ module.exports = {
     'react/no-array-index-key': 'off',
     'react/prop-types': 'off',
   },
+  settings: {
+    react: {
+      version: '16.13.1',
+    },
+  },
 };
