@@ -9,7 +9,7 @@
     "svelte": "^3.21.0"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "~1.6.4"
+    "@gera2ld/plaid": "~2.0.0"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@gera2ld/plaid": "^1.6.4"
+    "@gera2ld/plaid": "~2.0.0"
   }
 }
