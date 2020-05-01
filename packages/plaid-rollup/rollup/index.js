@@ -1,9 +1,11 @@
-const babel = require('rollup-plugin-babel');
+const { combineConfigSync } = require('@gera2ld/plaid');
+const babel = require('@rollup/plugin-babel').default;
 const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const alias = require('@rollup/plugin-alias');
 const json = require('@rollup/plugin-json');
+const postcss = require('rollup-plugin-postcss');
 const pkg = require('../package.json');
 
 const values = {
@@ -11,13 +13,20 @@ const values = {
 };
 
 const rollupPluginMap = {
-  postcss: options => require('rollup-plugin-postcss')({
-    ...options,
+  postcss: ({ noDefaults = false, ...rest }) => postcss({
+    ...!noDefaults && combineConfigSync({}, [
+      require('@gera2ld/plaid/postcss/precss'),
+      config => {
+        config.plugins.push(require('cssnano'));
+        return config;
+      },
+    ]),
+    ...rest,
   }),
   alias: aliases => alias(aliases),
   babel: ({ babelConfig, esm, extensions }) => babel({
     // import helpers from '@babel/runtime'
-    runtimeHelpers: true,
+    babelHelpers: 'runtime',
     plugins: [
       [require.resolve('@babel/plugin-transform-runtime'), {
         useESModules: esm,
