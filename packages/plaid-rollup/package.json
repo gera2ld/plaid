@@ -1,6 +1,6 @@
 {
   "name": "@gera2ld/plaid-rollup",
-  "version": "1.6.6",
+  "version": "2.0.0-alpha.0",
   "description": "Gerald's rollup config",
   "keywords": [
     "rollup"
