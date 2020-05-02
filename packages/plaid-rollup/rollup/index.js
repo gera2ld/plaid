@@ -1,4 +1,5 @@
-const { combineConfigSync } = require('@gera2ld/plaid');
+const path = require('path');
+const { combineConfigSync, defaultOptions } = require('@gera2ld/plaid');
 const babel = require('@rollup/plugin-babel').default;
 const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve');
@@ -6,7 +7,7 @@ const commonjs = require('@rollup/plugin-commonjs');
 const alias = require('@rollup/plugin-alias');
 const json = require('@rollup/plugin-json');
 const postcss = require('rollup-plugin-postcss');
-const pkg = require('../package.json');
+const pkg = require(path.resolve('package.json'));
 
 const values = {
   'process.env.VERSION': pkg.version,
@@ -52,7 +53,7 @@ function getRollupPlugins({
   babelConfig,
   esm,
   aliases,
-  extensions,
+  extensions = defaultOptions.extensions,
   replaceValues,
   postcss = true,
 } = {}) {
