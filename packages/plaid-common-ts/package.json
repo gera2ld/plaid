@@ -1,0 +1,30 @@
+{
+  "name": "@gera2ld/plaid-common-ts",
+  "version": "2.0.1",
+  "description": "Common config for Typescript",
+  "author": "Gerald <gera2ld@163.com>",
+  "homepage": "https://github.com/gera2ld/plaid#readme",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@gera2ld/plaid": "~2.0.0"
+  },
+  "devDependencies": {
+    "@gera2ld/plaid": "~2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gera2ld/plaid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gera2ld/plaid/issues"
+  },
+  "dependencies": {
+    "@babel/preset-typescript": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "typescript": "^3.8.3"
+  }
+}

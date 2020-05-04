@@ -12,7 +12,6 @@ exports.defaultOptions = {
     '#': path.resolve('src'),
   },
   extensions: [
-    '.ts', '.tsx',
     '.mjs', '.js', '.jsx',
   ],
   purgecssOptions: options => ({

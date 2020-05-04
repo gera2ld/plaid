@@ -14,5 +14,8 @@
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/gera2ld/plaid.git"
+  },
+  "dependencies": {
+    "@babel/core": "^7.9.6"
   }
 }
