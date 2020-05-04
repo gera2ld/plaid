@@ -44,3 +44,4 @@ const defaultConfiguratorList = [
 ];
 
 exports.modifyWebpackConfig = modifyWebpackConfig;
+exports.webpackConfigurators = configurators;
