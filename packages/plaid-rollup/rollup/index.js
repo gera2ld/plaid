@@ -7,6 +7,7 @@ const commonjs = require('@rollup/plugin-commonjs');
 const alias = require('@rollup/plugin-alias');
 const json = require('@rollup/plugin-json');
 const postcss = require('rollup-plugin-postcss');
+const { terser } = require('rollup-plugin-terser');
 const pkg = require(path.resolve('package.json'));
 
 const values = {
@@ -78,5 +79,22 @@ function getRollupExternal(externals = []) {
   };
 }
 
+function rollupMinify(config) {
+  return {
+    input: {
+      ...config.input,
+      plugins: [
+        ...config.input.plugins || [],
+        terser(),
+      ],
+    },
+    output: {
+      ...config.output,
+      file: config.output.file.replace(/\.js$/, '.min.js'),
+    },
+  };
+}
+
 exports.getRollupPlugins = getRollupPlugins;
 exports.getRollupExternal = getRollupExternal;
+exports.rollupMinify = rollupMinify;
