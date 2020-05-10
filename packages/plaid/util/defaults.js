@@ -1,5 +1,4 @@
 const path = require('path');
-const globby = require('globby');
 
 exports.defaultOptions = {
   srcDir: path.resolve('src'),
@@ -14,8 +13,4 @@ exports.defaultOptions = {
   extensions: [
     '.mjs', '.js', '.jsx',
   ],
-  purgecssOptions: options => ({
-    paths: () => globby.sync(`${options.srcDir}/**/*.@(js|html|vue|svelte)`),
-    defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-  }),
 };

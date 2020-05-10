@@ -34,7 +34,6 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "globby": "^11.0.0",
     "lodash": "^4.17.15",
     "postcss-calc": "^7.0.2",
     "postcss-color-function": "^4.0.1",
