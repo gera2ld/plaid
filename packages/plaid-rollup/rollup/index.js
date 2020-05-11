@@ -15,19 +15,16 @@ const values = {
 };
 
 const rollupPluginMap = {
-  postcss: (opts) => {
-    if (opts === true) {
-      opts = combineConfigSync({}, [
+  postcss: config => {
+    if (config === true) {
+      config = combineConfigSync({}, [
         require('@gera2ld/plaid/postcss/precss'),
-        isProd && (config => {
-          config.plugins = [
-            ...config.plugins || [],
-            require('cssnano'),
-          ];
-        }),
       ]);
     }
-    return postcss(opts);
+    return postcss({
+      minimize: isProd,
+      ...config,
+    });
   },
   alias: aliases => alias(aliases),
   babel: ({ babelConfig, esm, extensions }) => babel({
