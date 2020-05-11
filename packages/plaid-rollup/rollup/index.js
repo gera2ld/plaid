@@ -1,5 +1,5 @@
 const path = require('path');
-const { combineConfigSync, defaultOptions } = require('@gera2ld/plaid');
+const { combineConfigSync, defaultOptions, isProd } = require('@gera2ld/plaid');
 const babel = require('@rollup/plugin-babel').default;
 const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve');
@@ -15,16 +15,20 @@ const values = {
 };
 
 const rollupPluginMap = {
-  postcss: ({ noDefaults = false, ...rest }) => postcss({
-    ...!noDefaults && combineConfigSync({}, [
-      require('@gera2ld/plaid/postcss/precss'),
-      config => {
-        config.plugins.push(require('cssnano'));
-        return config;
-      },
-    ]),
-    ...rest,
-  }),
+  postcss: (opts) => {
+    if (opts === true) {
+      opts = combineConfigSync({}, [
+        require('@gera2ld/plaid/postcss/precss'),
+        isProd && (config => {
+          config.plugins = [
+            ...config.plugins || [],
+            require('cssnano'),
+          ];
+        }),
+      ]);
+    }
+    return postcss(opts);
+  },
   alias: aliases => alias(aliases),
   babel: ({ babelConfig, esm, extensions }) => babel({
     // import helpers from '@babel/runtime'
