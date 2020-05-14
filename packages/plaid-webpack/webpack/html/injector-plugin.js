@@ -104,23 +104,19 @@ class InjectorPlugin {
       return item;
     });
     const jsTags = (js || []).map(item => {
-      if (typeof item === 'string') {
-        return {
-          tagName: 'script',
-          closeTag: true,
-          attributes: {
-            src: item,
-          },
-        };
-      }
-      if (item && item.content) {
-        return {
-          tagName: 'script',
-          closeTag: true,
-          innerHTML: util.escapeScript(item.content),
-        };
-      }
-      return item;
+      if (!item) return;
+      if (typeof item === 'string') item = { src: item };
+      if (!item.content && !item.src) return;
+      const script = {
+        tagName: 'script',
+        closeTag: true,
+        attributes: {},
+      };
+      if (item.async) script.attributes.async = true;
+      if (item.defer) script.attributes.defer = true;
+      if (item.content) script.innerHTML = util.escapeScript(item.content);
+      else if (item.src) script.attributes.src = item.src;
+      return script;
     });
     data.headTags = [...cssTags, ...data.headTags, ...jsTags];
   }

@@ -14,7 +14,7 @@ const values = {
   'process.env.VERSION': pkg.version,
 };
 
-const rollupPluginMap = {
+const rollupPlugins = {
   postcss: config => {
     if (config === true) {
       config = combineConfigSync({}, [
@@ -46,7 +46,7 @@ const rollupPluginMap = {
       ...replaceValues,
     },
   }),
-  resolve: ({ extensions }) => resolve({ extensions }),
+  resolve: options => resolve(options),
   commonjs: () => commonjs(),
   json: () => json(),
 };
@@ -58,15 +58,16 @@ function getRollupPlugins({
   extensions = defaultOptions.extensions,
   replaceValues,
   postcss = true,
+  browser = false,
 } = {}) {
   return [
-    aliases && rollupPluginMap.alias(aliases),
-    postcss && rollupPluginMap.postcss(postcss),
-    rollupPluginMap.babel({ babelConfig, esm, extensions }),
-    rollupPluginMap.replace(replaceValues),
-    rollupPluginMap.resolve({ extensions }),
-    rollupPluginMap.commonjs(),
-    rollupPluginMap.json(),
+    aliases && rollupPlugins.alias(aliases),
+    postcss && rollupPlugins.postcss(postcss),
+    rollupPlugins.babel({ babelConfig, esm, extensions }),
+    rollupPlugins.replace(replaceValues),
+    rollupPlugins.resolve({ browser, extensions }),
+    rollupPlugins.commonjs(),
+    rollupPlugins.json(),
   ].filter(Boolean);
 }
 
@@ -96,6 +97,7 @@ function rollupMinify(config) {
   };
 }
 
+exports.rollupPlugins = rollupPlugins;
 exports.getRollupPlugins = getRollupPlugins;
 exports.getRollupExternal = getRollupExternal;
 exports.rollupMinify = rollupMinify;
