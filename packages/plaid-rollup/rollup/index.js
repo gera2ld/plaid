@@ -11,6 +11,7 @@ const { terser } = require('rollup-plugin-terser');
 const pkg = require(path.resolve('package.json'));
 
 const values = {
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   'process.env.VERSION': pkg.version,
 };
 
