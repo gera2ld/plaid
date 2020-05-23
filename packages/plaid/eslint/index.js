@@ -21,7 +21,7 @@ module.exports = {
     'consistent-return': 'off',
     'import/default': 'error',
     'import/prefer-default-export': 'off',
-    indent: ['error', 2, { MemberExpression: 0 }],
+    indent: ['warn', 2],
     'max-len': ['error', 100, 2, { // airbnb-base + ignore comments
       ignoreUrls: true,
       ignoreComments: true,
