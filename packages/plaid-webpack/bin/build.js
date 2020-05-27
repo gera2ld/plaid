@@ -34,6 +34,7 @@ async function buildWithAPI() {
 }
 
 async function build(cmd) {
+  if (cmd.analyze) process.env.RUN_ENV = 'analyze';
   await prebuild(cmd);
   await (cmd.api ? buildWithAPI : buildWithCLI)();
 }

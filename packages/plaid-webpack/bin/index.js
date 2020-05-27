@@ -14,15 +14,9 @@ program
 .option('-k, --keep', 'Keep previously built files')
 .option('--no-copy', 'Copy `src/public/**` to `dist`')
 .option('--api', 'Build with webpack API')
+.option('-a, --analyze', 'Analyze package size')
 .action((...args) => {
   safeRun(require('./build'), args);
-});
-
-program
-.command('analyze')
-.description('Analyze package size')
-.action((...args) => {
-  safeRun(require('./analyze'), args);
 });
 
 templateInfo.push({
