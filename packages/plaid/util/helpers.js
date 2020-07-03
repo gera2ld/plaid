@@ -146,9 +146,11 @@ function requireSilent(modulePath) {
   }
 }
 
+const packageDir = path.dirname(path.dirname(__dirname));
+
 let packages;
 function mergeLibraries(obj, lib, test) {
-  if (!packages) packages = fs.readdirSync('node_modules/@gera2ld');
+  if (!packages) packages = fs.readdirSync(packageDir);
   let filter;
   if (test instanceof RegExp) {
     filter = s => test.test(s);
@@ -161,7 +163,7 @@ function mergeLibraries(obj, lib, test) {
     filter = s => test.includes(s);
   }
   packages.filter(filter).forEach(name => {
-    let modulePath = path.resolve(`node_modules/@gera2ld/${name}`);
+    let modulePath = path.join(packageDir, name);
     if (lib) modulePath += '/' + lib;
     Object.assign(obj, requireSilent(modulePath));
   });
