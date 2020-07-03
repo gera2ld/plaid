@@ -8,14 +8,14 @@
     "prepublishOnly": "npm run lint"
   },
   "devDependencies": {
-    "eslint": "^6.4.0",
-    "lerna": "^3.16.4"
+    "eslint": "^7.3.1",
+    "lerna": "^3.22.1"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/gera2ld/plaid.git"
   },
   "dependencies": {
-    "@babel/core": "^7.9.6"
+    "@babel/core": "^7.10.4"
   }
 }
