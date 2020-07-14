@@ -24,7 +24,6 @@ module.exports = resolveBabelConfig({
     '@babel/plugin-syntax-import-meta',
     // Use loose mode: facebook/create-react-app#4263
     ['@babel/plugin-proposal-class-properties', { loose: true }],
-    '@babel/plugin-proposal-numeric-separator',
 
     'babel-plugin-macros',
 
