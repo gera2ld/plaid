@@ -1,4 +1,5 @@
 const TerserPlugin = require('terser-webpack-plugin');
+const ImportHttpWebpackPlugin = require('import-http/webpack');
 const { isProd, shallowMerge } = require('@gera2ld/plaid/util');
 
 module.exports = async (config, options) => {
@@ -12,6 +13,7 @@ module.exports = async (config, options) => {
     alias,
     extensions,
     optimization,
+    importHttp,
   } = options;
   config.mode = isProd ? 'production' : 'development';
   if (devtool) config.devtool = devtool;
@@ -90,5 +92,9 @@ module.exports = async (config, options) => {
     // Override if an object is provided
     config.externals = externals;
   }
+  config.plugins = [
+    ...config.plugins || [],
+    importHttp && new ImportHttpWebpackPlugin(importHttp),
+  ].filter(Boolean);
   return config;
 };

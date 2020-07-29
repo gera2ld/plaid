@@ -7,6 +7,7 @@ const commonjs = require('@rollup/plugin-commonjs');
 const alias = require('@rollup/plugin-alias');
 const json = require('@rollup/plugin-json');
 const postcss = require('rollup-plugin-postcss');
+const importHttp = require('import-http/rollup');
 const { terser } = require('rollup-plugin-terser');
 const pkg = require(path.resolve('package.json'));
 
@@ -50,6 +51,7 @@ const rollupPlugins = {
   resolve: options => resolve(options),
   commonjs: () => commonjs(),
   json: () => json(),
+  importHttp: () => importHttp(),
 };
 
 function getRollupPlugins({
@@ -60,6 +62,7 @@ function getRollupPlugins({
   replaceValues,
   postcss = true,
   browser = false,
+  importHttp = defaultOptions.importHttp,
 } = {}) {
   return [
     aliases && rollupPlugins.alias(aliases),
@@ -69,6 +72,7 @@ function getRollupPlugins({
     rollupPlugins.resolve({ browser, extensions }),
     rollupPlugins.commonjs(),
     rollupPlugins.json(),
+    importHttp && rollupPlugins.importHttp(importHttp),
   ].filter(Boolean);
 }
 

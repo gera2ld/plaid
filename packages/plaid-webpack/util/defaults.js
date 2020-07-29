@@ -61,4 +61,7 @@ exports.defaultOptions = Object.assign(defaultOptions, {
   analyzer: {
     analyzerPort: 0,
   },
+  importHttp: {
+    reload: !!process.env.IMPORT_HTTP_RELOAD,
+  },
 });
