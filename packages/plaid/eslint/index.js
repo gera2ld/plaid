@@ -3,6 +3,9 @@ module.exports = {
   extends: [
     'airbnb-base',
   ],
+  plugins: [
+    '@babel',
+  ],
   env: {
     browser: true,
   },
