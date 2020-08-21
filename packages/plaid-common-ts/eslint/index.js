@@ -1,13 +1,9 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  plugins: [
-    '@typescript-eslint',
-  ],
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
+    'airbnb-typescript/base',
   ],
   rules: {
+    'no-restricted-syntax': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-use-before-define': ['error', { 'functions': false }],
   },

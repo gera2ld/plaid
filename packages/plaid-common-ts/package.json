@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.9.0",
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
-    "@typescript-eslint/parser": "^2.29.0",
-    "typescript": "^3.8.3"
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "eslint-config-airbnb-typescript": "^9.0.0",
+    "typescript": "^4.0.2"
   }
 }
