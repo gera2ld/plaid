@@ -77,13 +77,15 @@ function getRollupPlugins({
 }
 
 function getRollupExternal(externals = []) {
-  return id => {
-    if (/^@babel\/runtime[-/]/.test(id)) return true;
-    return externals.some(pattern => {
-      if (pattern && typeof pattern.test === 'function') return pattern.test(id);
-      return id === pattern || id.startsWith(pattern + '/');
-    });
-  };
+  externals = [
+    /^@babel\/runtime[-/]/,
+    ...externals,
+  ];
+  return id => externals.some(pattern => {
+    if (typeof pattern === 'function') return pattern(id);
+    if (pattern && typeof pattern.test === 'function') return pattern.test(id);
+    return id === pattern || id.startsWith(pattern + '/');
+  });
 }
 
 function rollupMinify(config) {
