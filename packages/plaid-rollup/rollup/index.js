@@ -36,6 +36,7 @@ const rollupPlugins = {
       [require.resolve('@babel/plugin-transform-runtime'), {
         useESModules: esm,
         version: '^7.5.0', // see https://github.com/babel/babel/issues/10261#issuecomment-514687857
+        corejs: 3,
       }],
     ],
     exclude: 'node_modules/**',
