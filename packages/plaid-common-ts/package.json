@@ -1,6 +1,6 @@
 {
   "name": "@gera2ld/plaid-common-ts",
-  "version": "2.0.7",
+  "version": "2.1.2",
   "description": "Common config for Typescript",
   "author": "Gerald <gera2ld@163.com>",
   "homepage": "https://github.com/gera2ld/plaid#readme",
