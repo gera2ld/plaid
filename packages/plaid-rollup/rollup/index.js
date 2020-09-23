@@ -30,6 +30,7 @@ const rollupPlugins = {
   },
   alias: aliases => alias(aliases),
   babel: ({ babelConfig, esm, extensions }) => babel({
+    root: process.env.BABEL_ROOT || process.cwd(),
     // import helpers from '@babel/runtime'
     babelHelpers: 'runtime',
     plugins: [
