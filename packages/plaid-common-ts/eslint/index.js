@@ -3,6 +3,9 @@ module.exports = {
     'airbnb-typescript/base',
   ],
   rules: {
+    '@typescript-eslint/indent': ['error', 2, {
+      ignoredNodes: ['TSTypeParameterInstantiation']
+    }],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
     '@typescript-eslint/no-use-before-define': ['error', { 'functions': false }],
@@ -11,7 +14,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'consistent-return': 'off',
     'import/prefer-default-export': 'off',
-    indent: ['warn', 2],
+    indent: 'off', // use @typescript-eslint/indent instead
     'max-len': ['error', 100, 2, { // airbnb-base + ignore comments
       ignoreUrls: true,
       ignoreComments: true,
