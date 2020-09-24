@@ -20,7 +20,7 @@
     "url": "https://github.com/gera2ld/plaid/issues"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "~2.0.0"
+    "@gera2ld/plaid": "^2.0.0"
   },
   "dependencies": {
     "@rollup/plugin-alias": "^3.1.1",

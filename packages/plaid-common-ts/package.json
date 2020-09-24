@@ -9,7 +9,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "~2.0.0"
+    "@gera2ld/plaid": "^2.0.0"
   },
   "repository": {
     "type": "git",

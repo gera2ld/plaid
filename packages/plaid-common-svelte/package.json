@@ -5,11 +5,11 @@
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
   "dependencies": {
-    "eslint-plugin-svelte3": "^2.7.3",
-    "svelte": "^3.21.0"
+    "eslint-plugin-svelte3": "^2.7.3"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "~2.0.0"
+    "@gera2ld/plaid": "^2.0.0",
+    "svelte": "^3.21.0"
   },
   "repository": {
     "type": "git",

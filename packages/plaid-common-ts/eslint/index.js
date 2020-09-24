@@ -7,7 +7,10 @@ module.exports = {
       ignoredNodes: ['TSTypeParameterInstantiation']
     }],
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
+    '@typescript-eslint/no-unused-vars': ['error', {
+      args: 'none',
+      ignoreRestSiblings: true,
+    }],
     '@typescript-eslint/no-use-before-define': ['error', { 'functions': false }],
     'arrow-body-style': 'off',
     'arrow-parens': 'off',
