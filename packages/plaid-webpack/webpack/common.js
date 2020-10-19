@@ -65,9 +65,6 @@ module.exports = async (config, options) => {
     },
     minimizer: [
       isProd && new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
         terserOptions: {
           output: {
             ascii_only: true,
