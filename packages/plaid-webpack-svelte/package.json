@@ -14,7 +14,7 @@
     "svelte-loader": "^2.13.6"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "^2.0.0"
+    "@gera2ld/plaid": "2.x"
   },
   "publishConfig": {
     "access": "public",

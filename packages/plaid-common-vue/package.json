@@ -5,11 +5,11 @@
   "author": "Gerald <i@gerald.top>",
   "license": "MIT",
   "dependencies": {
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "eslint-plugin-vue": "^7.1.0",
+    "vue-template-compiler": "^2.6.12"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "^2.0.0"
+    "@gera2ld/plaid": "2.x"
   },
   "repository": {
     "type": "git",

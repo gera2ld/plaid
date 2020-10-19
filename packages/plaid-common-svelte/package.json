@@ -8,8 +8,8 @@
     "eslint-plugin-svelte3": "^2.7.3"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "^2.0.0",
-    "svelte": "^3.21.0"
+    "@gera2ld/plaid": "2.x",
+    "svelte": "^3.29.0"
   },
   "repository": {
     "type": "git",

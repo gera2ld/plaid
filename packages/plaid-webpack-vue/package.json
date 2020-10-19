@@ -11,10 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "@gera2ld/plaid-common-vue": "~2.0.7",
-    "vue-loader": "^15.9.1"
+    "vue-loader": "^15.9.3"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "^2.0.0"
+    "@gera2ld/plaid": "2.x"
   },
   "publishConfig": {
     "access": "public",

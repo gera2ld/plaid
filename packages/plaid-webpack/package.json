@@ -33,7 +33,7 @@
     "worker-loader": "^3.0.1"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "^2.0.0"
+    "@gera2ld/plaid": "2.x"
   },
   "repository": {
     "type": "git",

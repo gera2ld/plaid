@@ -8,8 +8,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@babel/preset-react": "^7.9.4",
-    "eslint-config-airbnb": "^18.1.0"
+    "@babel/preset-react": "^7.12.1",
+    "eslint-config-airbnb": "^18.2.0"
   },
   "repository": {
     "type": "git",
