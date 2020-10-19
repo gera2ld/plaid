@@ -17,7 +17,8 @@
     "@gera2ld/plaid": "^2.0.0"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
