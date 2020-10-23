@@ -17,14 +17,20 @@ const values = {
 };
 
 const rollupPlugins = {
-  postcss: config => {
+  postcss: (config, minimize = false) => {
     if (config === true) {
       config = combineConfigSync({}, [
         require('@gera2ld/plaid/postcss/precss'),
       ]);
     }
+    if (minimize && /(?<!\.min)\.css$/.test(config.extract)) {
+      config = {
+        ...config,
+        extract: config.extract.slice(0, -4) + '.min.css',
+      };
+    }
     return postcss({
-      minimize: isProd,
+      minimize,
       ...config,
     });
   },
@@ -64,16 +70,18 @@ function getRollupPlugins({
   postcss = true,
   browser = false,
   importHttp = defaultOptions.importHttp,
+  minimize = isProd,
 } = {}) {
   return [
     aliases && rollupPlugins.alias(aliases),
-    postcss && rollupPlugins.postcss(postcss),
+    postcss && rollupPlugins.postcss(postcss, minimize),
     rollupPlugins.babel({ babelConfig, esm, extensions }),
     rollupPlugins.replace(replaceValues),
     rollupPlugins.resolve({ browser, extensions }),
     rollupPlugins.commonjs(),
     rollupPlugins.json(),
     importHttp && rollupPlugins.importHttp(importHttp),
+    minimize && terser(),
   ].filter(Boolean);
 }
 
