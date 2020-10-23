@@ -38,7 +38,6 @@ module.exports = {
     'no-throw-literal': 'off',
     'no-underscore-dangle': 'off',
     'no-unused-vars': 'off', // use @typescript-eslint/no-unused-vars instead
-    'no-use-before-define': ['error', 'nofunc'],
     'object-shorthand': ['error', 'always'],
     'prefer-destructuring': ['error', { array: false }],
     'prefer-object-spread': 'off',
