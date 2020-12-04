@@ -2,6 +2,7 @@
   "name": "@gera2ld/plaid",
   "author": "Gerald <i@gerald.top>",
   "description": "Webpack utility helpers",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",

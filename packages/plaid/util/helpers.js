@@ -1,8 +1,7 @@
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs/promises');
 const { cosmiconfig, cosmiconfigSync } = require('cosmiconfig');
-
-const fsPromises = fs.promises;
+const packages = require('./packages.json');
 
 async function combineConfig(input, reducers, options = {}) {
   let config = await input;
@@ -69,7 +68,7 @@ async function loadConfig(name) {
 
 async function exists(filepath, { file, dir } = {}) {
   try {
-    const stats = await fsPromises.stat(filepath);
+    const stats = await fs.stat(filepath);
     if (file && stats.isFile()) return true;
     if (dir && stats.isDirectory()) return true;
   } catch (err) {
@@ -146,11 +145,7 @@ function requireSilent(modulePath) {
   }
 }
 
-const packageDir = path.dirname(path.dirname(__dirname));
-
-let packages;
 function mergeLibraries(obj, lib, test) {
-  if (!packages) packages = fs.readdirSync(packageDir);
   let filter;
   if (test instanceof RegExp) {
     filter = s => test.test(s);
@@ -163,9 +158,9 @@ function mergeLibraries(obj, lib, test) {
     filter = s => test.includes(s);
   }
   packages.filter(filter).forEach(name => {
-    let modulePath = path.join(packageDir, name);
-    if (lib) modulePath += '/' + lib;
-    Object.assign(obj, requireSilent(modulePath));
+    name = `@gera2ld/${name}`;
+    if (lib) name += '/' + lib;
+    Object.assign(obj, requireSilent(name));
   });
   return obj;
 }

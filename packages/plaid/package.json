@@ -7,6 +7,9 @@
   "bin": {
     "plaid": "bin/cli.js"
   },
+  "scripts": {
+    "prepublishOnly": "node scripts/update"
+  },
   "dependencies": {
     "@babel/core": "^7.12.3",
     "@babel/eslint-parser": "^7.12.1",

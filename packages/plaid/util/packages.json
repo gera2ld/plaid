@@ -1,0 +1,11 @@
+[
+  "plaid",
+  "plaid-common-react",
+  "plaid-common-svelte",
+  "plaid-common-ts",
+  "plaid-common-vue",
+  "plaid-rollup",
+  "plaid-webpack",
+  "plaid-webpack-svelte",
+  "plaid-webpack-vue"
+]
