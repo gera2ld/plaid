@@ -4,11 +4,8 @@
     "packages/*"
   ],
   "command": {
-    "bootstrap": {
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
-    }
   },
-  "version": "2.1.8"
+  "version": "2.1.8",
+  "npmClient": "yarn",
+  "useWorkspaces": true
 }

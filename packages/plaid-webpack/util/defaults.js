@@ -36,9 +36,11 @@ exports.defaultOptions = Object.assign(defaultOptions, {
     loader: require.resolve('less-loader'),
     // For ant-design
     // options: {
-    //   javascriptEnabled: true,
-    //   modifyVars: {
-    //     hd: '2px',
+    //   lessOptions: {
+    //     javascriptEnabled: true,
+    //     modifyVars: {
+    //       hd: '2px',
+    //     },
     //   },
     // },
   },

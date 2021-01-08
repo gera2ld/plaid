@@ -1,9 +1,9 @@
-const { defaultOptions, resolveBabelConfig } = require('../util');
+const { defaultOptions, resolveBabelConfig, isTest } = require('../util');
 
 module.exports = resolveBabelConfig({
   presets: [
     ['@babel/preset-env', {
-      ...process.env.BABEL_ENV !== 'test' && {
+      ...!isTest && {
         modules: false,
       },
       loose: true,
@@ -30,5 +30,8 @@ module.exports = resolveBabelConfig({
       alias: defaultOptions.alias,
       extensions: defaultOptions.extensions,
     }],
+
+    // For testing
+    isTest && 'babel-plugin-istanbul',
   ]
 }, require.resolve);

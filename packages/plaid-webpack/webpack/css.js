@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { isProd, styleRule, loadConfig } = require('@gera2ld/plaid/util');
 
 module.exports = async (config, options) => {
@@ -44,7 +44,7 @@ module.exports = async (config, options) => {
   };
   config.optimization.minimizer = [
     ...config.optimization.minimizer || [],
-    isProd && new OptimizeCSSAssetsPlugin(),
+    isProd && new CssMinimizerPlugin(),
   ].filter(Boolean);
   const filename = typeof cssFilename === 'function' ? cssFilename(options) : cssFilename;
   config.plugins = [

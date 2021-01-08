@@ -51,7 +51,7 @@ module.exports = async (config, options) => {
     },
     splitChunks: {
       cacheGroups: {
-        vendor: {
+        defaultVendors: {
           test: /node_modules/,
           name: 'vendor',
           chunks: 'all',
