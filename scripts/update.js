@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const packageRoot = path.resolve(__dirname, '..');
+const packageRoot = path.resolve('packages/plaid');
 
 async function main() {
   const packages = await fs.readdir(path.dirname(packageRoot));

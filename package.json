@@ -9,6 +9,7 @@
     "prepublishOnly": "npm run lint"
   },
   "devDependencies": {
+    "husky": "^4.3.7",
     "lerna": "^3.22.1"
   },
   "repository": {
@@ -17,5 +18,10 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-push": "node scripts/update.js && git diff --quiet"
+    }
+  }
 }
