@@ -1,0 +1,22 @@
+{
+  "name": "@gera2ld/plaid-test",
+  "version": "2.1.5",
+  "description": "Test related packages",
+  "author": "Gerald <gera2ld@163.com>",
+  "homepage": "https://github.com/gera2ld/plaid#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gera2ld/plaid.git"
+  },
+  "dependencies": {
+    "babel-jest": "^26.6.3",
+    "babel-plugin-istanbul": "^6.0.0",
+    "jest": "^26.6.3",
+    "nyc": "^15.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
