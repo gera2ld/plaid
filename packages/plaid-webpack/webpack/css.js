@@ -12,7 +12,9 @@ module.exports = async (config, options) => {
   } = options;
   if (!postcssLoader.options) {
     // Initialize postcss config
-    postcssLoader.options = await loadConfig('postcss') || require('@gera2ld/plaid/config/postcssrc');
+    postcssLoader.options = {
+      postcssOptions: await loadConfig('postcss') || require('@gera2ld/plaid/config/postcssrc'),
+    };
   }
 
   config.module.rules = [

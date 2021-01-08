@@ -16,8 +16,9 @@ module.exports = async (config, options) => {
     importHttp,
   } = options;
   config.mode = isProd ? 'production' : 'development';
+  config.target = 'web'; // required by live reloading
   if (devtool) config.devtool = devtool;
-  else if (!isProd) config.devtool = 'cheap-module-eval-source-map';
+  else if (!isProd) config.devtool = 'eval-cheap-module-source-map';
   config.output = {
     path: distDir,
     publicPath: '',

@@ -14,16 +14,15 @@ async function develop() {
 
   const argv = [
     process.argv[0],
+    'webpack',
   ];
-  let module;
+  const module = 'webpack-cli/bin/cli';
   if (devServer !== false) {
     // Use webpack-dev-server, write in memory
-    module = 'webpack-dev-server/bin/webpack-dev-server';
-    argv.push('webpack-dev-server');
+    argv.push('serve');
   } else {
     // Use webpack watch mode, write in file system
-    module = 'webpack-cli/bin/cli';
-    argv.push('webpack', '-w');
+    argv.push('-w');
   }
   argv.push(
     '--config',

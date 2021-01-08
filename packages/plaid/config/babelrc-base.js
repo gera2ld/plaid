@@ -33,5 +33,5 @@ module.exports = resolveBabelConfig({
 
     // For testing
     isTest && 'babel-plugin-istanbul',
-  ]
+  ].filter(Boolean),
 }, require.resolve);
