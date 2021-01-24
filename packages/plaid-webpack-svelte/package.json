@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@gera2ld/plaid-common-svelte": "^2.2.0",
-    "svelte-loader": "^2.13.6"
+    "svelte-loader": "^3.0.0"
   },
   "peerDependencies": {
     "@gera2ld/plaid": "2.x"
