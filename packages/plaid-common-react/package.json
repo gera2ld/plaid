@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.12.10",
-    "eslint-config-airbnb": "^18.2.1"
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1"
   },
   "repository": {
     "type": "git",
