@@ -89,6 +89,7 @@ function getRollupExternal(externals = []) {
   return id => externals.some(pattern => {
     if (typeof pattern === 'function') return pattern(id);
     if (pattern && typeof pattern.test === 'function') return pattern.test(id);
+    if (path.isAbsolute(pattern)) return !path.relative(pattern, path.resolve(id)).startsWith('..');
     return id === pattern || id.startsWith(pattern + '/');
   });
 }
