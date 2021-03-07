@@ -86,10 +86,6 @@ function getRollupPlugins({
 }
 
 function getRollupExternal(externals = []) {
-  externals = [
-    /^@babel\/runtime[-/]/,
-    ...externals,
-  ];
   return id => externals.some(pattern => {
     if (typeof pattern === 'function') return pattern(id);
     if (pattern && typeof pattern.test === 'function') return pattern.test(id);
