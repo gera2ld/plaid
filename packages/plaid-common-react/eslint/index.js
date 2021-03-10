@@ -2,6 +2,7 @@ module.exports = {
   extends: [
     'airbnb-base/rules/strict',
     'airbnb/rules/react',
+    'airbnb/rules/react-hooks',
   ],
   rules: {
     'react/button-has-type': 'off',
