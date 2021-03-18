@@ -1,7 +1,6 @@
 module.exports = {
   extends: [
     'airbnb-typescript/base',
-    'airbnb/rules/react',
   ],
   settings: {
     'import/resolver': {
@@ -50,6 +49,5 @@ module.exports = {
     'prefer-destructuring': ['error', { array: false }],
     'prefer-object-spread': 'off',
     'prefer-promise-reject-errors': 'off',
-    'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
   },
 };
