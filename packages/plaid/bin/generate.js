@@ -15,7 +15,7 @@ module.exports = combineConfigSync({}, [precss]);`,
 ];
 
 
-async function generate(cmd, name) {
+async function generate(name) {
   const info = templateInfo.find(info => info.name === name);
   if (info) {
     await handleConflict(info.filepath, info.template);

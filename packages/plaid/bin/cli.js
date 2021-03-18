@@ -9,7 +9,8 @@ mergeLibraries({}, 'bin', /^plaid-webpack/);
 
 program
 .command('*')
-.action((cmd, name) => {
+.action((cmd) => {
+  const [name] = cmd.args;
   exitError(1, `Unknown command: ${name}`);
 });
 

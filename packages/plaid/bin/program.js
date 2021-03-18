@@ -12,17 +12,9 @@ program
   safeRun(require('./generate'), args);
 });
 
-program
-.command('svgo [files...]')
-.description('Compress SVG files')
-.action((...args) => {
-  safeRun(require('./svgo'), args);
-});
-
 function safeRun(module, args) {
   const { catchError } = require('../util/helpers');
-  const cmd = args.pop();
-  catchError(module)(cmd, ...args);
+  catchError(module)(...args);
 }
 
 exports.program = program;

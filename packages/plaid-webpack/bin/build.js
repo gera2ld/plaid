@@ -10,10 +10,10 @@ const {
   webpackCallback,
 } = require('@gera2ld/plaid/util');
 
-async function prebuild(cmd) {
+async function prebuild(options) {
   const { distDir, publicDir } = await loadProjectConfig();
-  if (!cmd.keep) await fs.emptyDir(distDir);
-  if (cmd.copy && await exists(publicDir, { dir: true })) {
+  if (!options.keep) await fs.emptyDir(distDir);
+  if (options.copy && await exists(publicDir, { dir: true })) {
     await fs.copy(publicDir, distDir);
   }
 }
@@ -33,10 +33,10 @@ async function buildWithAPI() {
   await new Promise((resolve, reject) => compiler.run(webpackCallback(resolve, reject)));
 }
 
-async function build(cmd) {
-  if (cmd.analyze) process.env.RUN_ENV = 'analyze';
-  await prebuild(cmd);
-  await (cmd.api ? buildWithAPI : buildWithCLI)();
+async function build(options) {
+  if (options.analyze) process.env.RUN_ENV = 'analyze';
+  await prebuild(options);
+  await (options.api ? buildWithAPI : buildWithCLI)();
 }
 
 module.exports = build;
