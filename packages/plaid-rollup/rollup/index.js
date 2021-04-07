@@ -23,12 +23,6 @@ const rollupPlugins = {
         require('@gera2ld/plaid/postcss/precss'),
       ]);
     }
-    if (minimize && /(?<!\.min)\.css$/.test(config.extract)) {
-      config = {
-        ...config,
-        extract: config.extract.slice(0, -4) + '.min.css',
-      };
-    }
     return postcss({
       minimize,
       ...config,
