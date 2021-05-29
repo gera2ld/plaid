@@ -1,14 +1,15 @@
-const { resolveBabelConfig } = require('../util');
+const { resolveBabelConfig, isTest } = require('../util');
 
 module.exports = resolveBabelConfig({
   extends: require.resolve('./babelrc-base'),
   presets: [
     ['@babel/preset-env', {
-      ...process.env.BABEL_ENV !== 'test' && {
+      ...!isTest && {
         modules: false,
       },
       useBuiltIns: 'usage',
       corejs: 3,
+      loose: true,
     }],
   ],
   plugins: [

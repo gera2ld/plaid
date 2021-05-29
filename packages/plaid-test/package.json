@@ -10,9 +10,9 @@
     "url": "git+https://github.com/gera2ld/plaid.git"
   },
   "dependencies": {
-    "@types/jest": "^26.0.20",
-    "babel-jest": "^26.6.3",
-    "jest": "^26.6.3"
+    "@types/jest": "^26.0.23",
+    "babel-jest": "^27.0.1",
+    "jest": "^27.0.1"
   },
   "publishConfig": {
     "access": "public",

@@ -13,7 +13,10 @@ exports.defaultOptions = {
   extensions: [
     '.mjs', '.js', '.jsx',
   ],
-  purgeCss: [
-    './src/**/*.@(js|ts|vue|svelte)',
-  ],
+  tailwindcss: {
+    prefix: '',
+    purgeCss: [
+      './src/**/*.@(js|ts|vue|svelte)',
+    ],
+  },
 };
