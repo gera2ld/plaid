@@ -15,7 +15,7 @@ exports.defaultOptions = {
   ],
   tailwindcss: {
     prefix: '',
-    purgeCss: [
+    purge: [
       './src/**/*.@(js|ts|vue|svelte)',
     ],
   },
