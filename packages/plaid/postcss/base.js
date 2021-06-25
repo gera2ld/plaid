@@ -18,6 +18,8 @@ module.exports = config => {
     }),
     // Calculate at compile time
     require('postcss-calc'),
+    require('postcss-nested'),
+    require('autoprefixer'),
   ];
   return config;
 };
