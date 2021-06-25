@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@gera2ld/plaid-common-vue": "^2.3.3",
-    "vue-loader": "^15.9.6"
+    "vue-loader": "^15.9.7"
   },
   "peerDependencies": {
     "@gera2ld/plaid": "2.x"

@@ -2,7 +2,6 @@ const path = require('path');
 const { defaultOptions } = require('../util');
 
 module.exports = config => {
-  config.parser = require('postcss-scss');
   config.plugins = [
     ...config.plugins || [],
     // Transform @import, resolve `#` to `$PWD/src`
@@ -17,10 +16,6 @@ module.exports = config => {
         return id;
       },
     }),
-    // Transform SCSS into CSS
-    require('precss'),
-    // Transform colors
-    require('postcss-color-function'),
     // Calculate at compile time
     require('postcss-calc'),
   ];

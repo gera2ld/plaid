@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@types/jest": "^26.0.23",
-    "babel-jest": "^27.0.1",
-    "jest": "^27.0.1"
+    "babel-jest": "^27.0.5",
+    "jest": "^27.0.5"
   },
   "publishConfig": {
     "access": "public",

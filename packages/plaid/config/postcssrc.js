@@ -1,5 +1,5 @@
 const { combineConfigSync } = require('../util/helpers');
 const tailwind = require('../postcss/tailwind');
-const precss = require('../postcss/precss');
+const base = require('../postcss/base');
 
-module.exports = combineConfigSync({}, [tailwind, precss]);
+module.exports = combineConfigSync({}, [tailwind, base]);
