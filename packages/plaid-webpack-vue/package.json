@@ -1,6 +1,6 @@
 {
   "name": "@gera2ld/plaid-webpack-vue",
-  "version": "2.2.0",
+  "version": "2.3.3",
   "description": "Webpack configuration for Vue",
   "keywords": [
     "webpack",
@@ -10,7 +10,7 @@
   "homepage": "https://github.com/gera2ld/plaid#readme",
   "license": "ISC",
   "dependencies": {
-    "@gera2ld/plaid-common-vue": "^2.2.0",
+    "@gera2ld/plaid-common-vue": "^2.3.3",
     "vue-loader": "^15.9.6"
   },
   "peerDependencies": {
