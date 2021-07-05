@@ -7,12 +7,15 @@ module.exports = (config, options) => {
   config.module.rules = [
     {
       test: /\.svelte$/,
-      use: {
-        loader: require.resolve('svelte-loader'),
-        options: {
-          emitCss: true,
+      use: [
+        { loader: require.resolve('babel-loader') },
+        {
+          loader: require.resolve('svelte-loader'),
+          options: {
+            emitCss: true,
+          },
         },
-      },
+      ],
     },
     ...config.module.rules || [],
   ];
