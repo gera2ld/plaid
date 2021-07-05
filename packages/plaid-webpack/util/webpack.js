@@ -22,20 +22,35 @@ function loadDefaultWebpackConfig() {
   return parseConfig(require(DEFAULT_WEBPACK));
 }
 
+function formatMessage(item) {
+  return item.message;
+}
+
 function webpackCallback(resolve, reject) {
   return (err, stats) => {
     if (err) {
       console.error('[FATAL]', err);
       return reject(err);
     }
-    if (stats.hasErrors()) {
-      const { errors } = stats.toJson();
-      console.error('[ERROR] webpack compilation failed\n', errors.join('\n'));
-      return reject({ errors });
+    const { errors, warnings } = stats.toJson();
+    const formattedErrors = errors.map(formatMessage);
+    if (formattedErrors.length) {
+      console.error([
+        '[ERROR] webpack compilation failed',
+        '',
+        ...formattedErrors,
+        '',
+      ].join('\n'));
+      return reject(new Error('Webpack compilation failed'));
     }
-    if (stats.hasWarnings()) {
-      const { warnings } = stats.toJson();
-      console.warn('[WARNING] webpack compilation has warnings\n', warnings.join('\n'));
+    const formattedWarnings = warnings.map(formatMessage);
+    if (formattedWarnings.length) {
+      console.warn([
+        '[WARNING] webpack compilation has warnings',
+        '',
+        ...formattedWarnings,
+        '',
+      ].join('\n'));
     }
     (Array.isArray(stats.stats) ? stats.stats : [stats])
     .forEach(stat => {
