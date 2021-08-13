@@ -1,5 +1,5 @@
 const path = require('path');
-const { combineConfigSync, defaultOptions, isProd } = require('@gera2ld/plaid');
+const { defaultOptions, isProd } = require('@gera2ld/plaid');
 const babel = require('@rollup/plugin-babel').default;
 const replace = require('@rollup/plugin-replace');
 const resolve = require('@rollup/plugin-node-resolve').default;
@@ -19,9 +19,7 @@ const values = {
 const rollupPlugins = {
   postcss: (config, minimize = false) => {
     if (config === true) {
-      config = combineConfigSync({}, [
-        require('@gera2ld/plaid/postcss/precss'),
-      ]);
+      config = require('@gera2ld/plaid/config/postcssrc');
     }
     return postcss({
       minimize,
