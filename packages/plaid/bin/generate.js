@@ -7,9 +7,10 @@ const templateInfo = [
     filepath: '.postcssrc.js',
     template: `\
 const { combineConfigSync } = require('@gera2ld/plaid/util/helpers');
-const precss = require('@gera2ld/plaid/postcss/precss');
+const tailwind = require('@gera2ld/plaid/postcss/tailwind');
+const base = require('@gera2ld/plaid/postcss/base');
 
-module.exports = combineConfigSync({}, [precss]);`,
+module.exports = combineConfigSync({}, [tailwind, base]);`,
     successMessage: 'PostCSS config is generated successfully at .postcssrc.js',
   },
 ];
