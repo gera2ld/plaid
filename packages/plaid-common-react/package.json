@@ -2,17 +2,18 @@
   "name": "@gera2ld/plaid-common-react",
   "version": "2.4.0",
   "description": "Webpack utility helpers for React",
-  "author": "Gerald <i@gerald.top>",
-  "license": "MIT",
+  "author": "Gerald <gera2ld@live.com>",
+  "license": "ISC",
   "scripts": {
     "lint": "eslint ."
   },
   "dependencies": {
-    "@babel/preset-react": "^7.14.5",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "@babel/preset-react": "^7.16.5",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0"
+  },
+  "peerDependencies": {
+    "@gera2ld/plaid": "2.x"
   },
   "repository": {
     "type": "git",

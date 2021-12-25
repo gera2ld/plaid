@@ -16,11 +16,7 @@ module.exports = resolveBabelConfig({
 
     // stage-2
     ['@babel/plugin-proposal-decorators', { legacy: true }],
-    '@babel/plugin-proposal-function-sent',
     '@babel/plugin-proposal-throw-expressions',
-
-    // stage-3
-    '@babel/plugin-syntax-import-meta',
 
     'babel-plugin-macros',
 

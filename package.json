@@ -3,14 +3,14 @@
   "author": "Gerald <i@gerald.top>",
   "description": "Webpack utility helpers",
   "private": true,
-  "license": "MIT",
+  "license": "ISC",
   "scripts": {
     "lint": "eslint .",
     "postinstall": "husky install",
     "prepublishOnly": "npm run lint"
   },
   "devDependencies": {
-    "husky": "^6.0.0",
+    "husky": "^7.0.4",
     "lerna": "^4.0.0"
   },
   "repository": {

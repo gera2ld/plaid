@@ -6,12 +6,13 @@
     "webpack",
     "vue"
   ],
-  "author": "Gerald <gera2ld@163.com>",
+  "author": "Gerald <gera2ld@live.com>",
   "homepage": "https://github.com/gera2ld/plaid#readme",
   "license": "ISC",
   "dependencies": {
     "@gera2ld/plaid-common-vue": "^2.4.0",
-    "vue-loader": "^15.9.7"
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14"
   },
   "peerDependencies": {
     "@gera2ld/plaid": "2.x"

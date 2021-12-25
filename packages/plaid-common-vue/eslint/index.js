@@ -6,12 +6,4 @@ module.exports = {
   extends: [
     'plugin:vue/essential',
   ],
-  overrides: [
-    {
-      files: ['**/*.vue'],
-      rules: {
-        'max-len': 'off',
-      },
-    },
-  ],
 };

@@ -2,8 +2,8 @@
   "name": "@gera2ld/plaid-common-svelte",
   "version": "2.2.0",
   "description": "Webpack utility helpers for Vue",
-  "author": "Gerald <i@gerald.top>",
-  "license": "MIT",
+  "author": "Gerald <gera2ld@live.com>",
+  "license": "ISC",
   "dependencies": {
     "eslint-plugin-svelte3": "^2.7.3"
   },

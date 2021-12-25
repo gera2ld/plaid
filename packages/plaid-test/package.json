@@ -2,7 +2,7 @@
   "name": "@gera2ld/plaid-test",
   "version": "2.4.0",
   "description": "Test related packages",
-  "author": "Gerald <gera2ld@163.com>",
+  "author": "Gerald <gera2ld@live.com>",
   "homepage": "https://github.com/gera2ld/plaid#readme",
   "license": "ISC",
   "repository": {
@@ -10,9 +10,9 @@
     "url": "git+https://github.com/gera2ld/plaid.git"
   },
   "dependencies": {
-    "@types/jest": "^27.0.1",
-    "babel-jest": "^27.0.6",
-    "jest": "^27.0.6"
+    "@types/jest": "^27.0.3",
+    "babel-jest": "^27.4.5",
+    "jest": "^27.4.5"
   },
   "publishConfig": {
     "access": "public",

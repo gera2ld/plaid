@@ -5,7 +5,7 @@
   "keywords": [
     "rollup"
   ],
-  "author": "Gerald <gera2ld@163.com>",
+  "author": "Gerald <gera2ld@live.com>",
   "homepage": "https://github.com/gera2ld/plaid#readme",
   "license": "ISC",
   "main": "index.js",
@@ -24,16 +24,16 @@
     "@gera2ld/plaid": "2.x"
   },
   "dependencies": {
-    "@rollup/plugin-alias": "^3.1.5",
+    "@rollup/plugin-alias": "^3.1.8",
     "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-node-resolve": "^13.1.1",
     "@rollup/plugin-replace": "^3.0.0",
-    "cssnano": "^5.0.7",
+    "cssnano": "^5.0.14",
     "import-http": "^0.3.1",
-    "rollup": "^2.56.2",
-    "rollup-plugin-postcss": "^4.0.1",
+    "rollup": "^2.62.0",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2"
   }
 }

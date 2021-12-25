@@ -14,8 +14,7 @@ exports.defaultOptions = {
     '.mjs', '.js', '.jsx',
   ],
   tailwindcss: {
-    prefix: '',
-    purge: [
+    content: [
       './src/**/*.@(js|ts|tsx|vue|svelte|html)',
     ],
   },
