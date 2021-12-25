@@ -24,5 +24,5 @@ module.exports = resolveBabelConfig({
       alias: defaultOptions.alias,
       extensions: defaultOptions.extensions,
     }],
-  ].filter(Boolean),
+  ],
 }, require.resolve);
