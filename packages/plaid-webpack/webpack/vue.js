@@ -1,7 +1,7 @@
 module.exports = (config, options) => {
   let VueLoaderPlugin;
   try {
-    VueLoaderPlugin = require('vue-loader/lib/plugin');
+    ({ VueLoaderPlugin } = require('vue-loader'));
   } catch (err) {
     console.error(`Please install @gera2ld/plaid-webpack-vue or @gera2ld/plaid-webpack-vue3 first`);
     throw err;
