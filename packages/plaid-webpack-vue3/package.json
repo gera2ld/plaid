@@ -1,7 +1,7 @@
 {
-  "name": "@gera2ld/plaid-webpack-vue",
+  "name": "@gera2ld/plaid-webpack-vue3",
   "version": "2.4.0",
-  "description": "Webpack configuration for Vue",
+  "description": "Webpack configuration for Vue 3",
   "keywords": [
     "webpack",
     "vue"
@@ -11,12 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "@gera2ld/plaid-common-vue": "^2.4.0",
-    "vue-loader": "^15.9.8",
-    "vue-template-compiler": "^2.6.14"
+    "@vue/compiler-sfc": "^3.2.26",
+    "vue-loader": "^17.0.0"
   },
   "peerDependencies": {
     "@gera2ld/plaid": "2.x",
-    "vue": "2.x"
+    "vue": "3.x"
   },
   "publishConfig": {
     "access": "public",

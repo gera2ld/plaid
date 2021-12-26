@@ -22,6 +22,7 @@ const nameMap = mergeLibraries({
   sw: './sw',
   url: './url',
   devServer: './dev-server',
+  vue: './vue',
 }, 'webpack', /^plaid-webpack-/);
 
 const configurators = Object.entries(nameMap)
