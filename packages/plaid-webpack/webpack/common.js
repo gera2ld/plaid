@@ -43,7 +43,7 @@ module.exports = async (config, options) => {
     {
       test: /\.[jt]sx?$/,
       use: require.resolve('babel-loader'),
-      include: [srcDir, testDir],
+      exclude: file => /node_modules/.test(file) && !/\.vue\.js/.test(file),
     },
   ];
   config.optimization = shallowMerge({
