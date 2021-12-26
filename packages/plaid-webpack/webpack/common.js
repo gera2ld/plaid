@@ -41,7 +41,7 @@ module.exports = async (config, options) => {
       include: [srcDir, testDir],
     },
     {
-      test: /\.m[jt]sx?$/,
+      test: /\.m?[jt]sx?$/,
       use: require.resolve('babel-loader'),
       exclude: file => /node_modules/.test(file) && !/\.vue\.js/.test(file),
     },
