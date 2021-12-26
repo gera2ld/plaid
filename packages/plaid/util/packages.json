@@ -8,5 +8,6 @@
   "plaid-test",
   "plaid-webpack",
   "plaid-webpack-svelte",
-  "plaid-webpack-vue"
+  "plaid-webpack-vue",
+  "plaid-webpack-vue3"
 ]

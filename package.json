@@ -6,8 +6,9 @@
   "license": "ISC",
   "scripts": {
     "lint": "eslint .",
-    "postinstall": "husky install",
-    "prepublishOnly": "npm run lint"
+    "postinstall": "husky install && node scripts/update.js",
+    "prepublishOnly": "npm run lint",
+    "update": "node scripts/update.js"
   },
   "devDependencies": {
     "husky": "^7.0.4",

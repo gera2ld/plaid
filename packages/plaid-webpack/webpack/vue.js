@@ -1,11 +1,11 @@
-module.exports = (config, options) => {
-  let VueLoaderPlugin;
-  try {
-    ({ VueLoaderPlugin } = require('vue-loader'));
-  } catch (err) {
-    console.error(`Please install @gera2ld/plaid-webpack-vue or @gera2ld/plaid-webpack-vue3 first`);
-    throw err;
-  }
+let VueLoaderPlugin;
+try {
+  ({ VueLoaderPlugin } = require('vue-loader'));
+} catch (err) {
+  // ignore
+}
+
+module.exports = VueLoaderPlugin && ((config, options) => {
   const {
     vueOptions,
   } = options;
@@ -18,4 +18,4 @@ module.exports = (config, options) => {
     ...config.module.rules || [],
   ];
   config.plugins.push(new VueLoaderPlugin());
-};
+});
