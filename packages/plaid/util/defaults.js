@@ -8,7 +8,7 @@ exports.defaultOptions = {
   // Babel accepts both absolute paths and relative paths
   // Webpack accepts only absolute paths
   alias: {
-    '#': path.resolve('src'),
+    '@': path.resolve('src'),
   },
   extensions: [
     '.mjs', '.js', '.jsx',
