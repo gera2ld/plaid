@@ -47,7 +47,6 @@ exports.defaultOptions = Object.assign(defaultOptions, {
   devServer: {
     host: '0.0.0.0',
     hot: true,
-    quiet: true,
   },
   successInfo(config/*, options */) {
     return {

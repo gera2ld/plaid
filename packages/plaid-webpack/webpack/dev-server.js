@@ -14,7 +14,7 @@ module.exports = async (config, options) => {
   } = options;
   if (devServer === false) return config;
   config.devServer = {
-    contentBase: distDir,
+    static: distDir,
     ...devServer,
     ...config.devServer,
   };
