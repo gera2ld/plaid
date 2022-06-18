@@ -1,3 +1,5 @@
+const preprocess = require('svelte-preprocess');
+
 module.exports = (config, options) => {
   config.resolve.extensions = [
     ...config.resolve.extensions || [],
@@ -13,6 +15,7 @@ module.exports = (config, options) => {
           loader: require.resolve('svelte-loader'),
           options: {
             emitCss: true,
+            preprocess: preprocess(),
           },
         },
       ],
