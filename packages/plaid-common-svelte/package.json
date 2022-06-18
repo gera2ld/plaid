@@ -6,7 +6,7 @@
   "license": "ISC",
   "dependencies": {
     "@tsconfig/svelte": "^3.0.0",
-    "eslint-plugin-svelte3": "^2.7.3"
+    "eslint-plugin-svelte3": "^4.0.0"
   },
   "peerDependencies": {
     "@gera2ld/plaid": "2.x",
