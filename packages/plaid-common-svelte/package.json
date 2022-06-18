@@ -5,6 +5,7 @@
   "author": "Gerald <gera2ld@live.com>",
   "license": "ISC",
   "dependencies": {
+    "@tsconfig/svelte": "^3.0.0",
     "eslint-plugin-svelte3": "^2.7.3"
   },
   "peerDependencies": {
