@@ -48,7 +48,7 @@ const rollupPlugins = {
     },
   }),
   resolve: options => resolve(options),
-  commonjs: () => commonjs(),
+  commonjs: options => commonjs(options),
   json: () => json(),
   importHttp: () => importHttp(),
 };
@@ -63,6 +63,7 @@ function getRollupPlugins({
   browser = false,
   importHttp = defaultOptions.importHttp,
   minimize = isProd,
+  commonjs,
 } = {}) {
   return [
     aliases && rollupPlugins.alias(aliases),
@@ -70,7 +71,7 @@ function getRollupPlugins({
     rollupPlugins.babel({ babelConfig, esm, extensions }),
     rollupPlugins.replace(replaceValues),
     rollupPlugins.resolve({ browser, extensions }),
-    rollupPlugins.commonjs(),
+    rollupPlugins.commonjs(commonjs),
     rollupPlugins.json(),
     importHttp && rollupPlugins.importHttp(importHttp),
     minimize && terser(),
