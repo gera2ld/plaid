@@ -1,8 +1,6 @@
 module.exports = {
   extends: [
-    'airbnb-base/rules/strict',
-    'airbnb/rules/react',
-    'airbnb/rules/react-hooks',
+    'plugin:react/recommended',
   ],
   rules: {
     'react/button-has-type': 'off',
@@ -14,7 +12,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.13.1',
+      version: '17.0.2',
     },
   },
 };
