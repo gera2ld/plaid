@@ -1,6 +1,6 @@
 {
   "name": "@gera2ld/plaid-common-react",
-  "version": "2.5.0",
+  "version": "2.5.6",
   "description": "Webpack utility helpers for React",
   "author": "Gerald <gera2ld@live.com>",
   "license": "ISC",
