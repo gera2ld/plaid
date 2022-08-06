@@ -14,7 +14,7 @@ module.exports = resolveBabelConfig({
   ],
   plugins: [
     ['@babel/plugin-transform-runtime', {
-      useESModules: true,
+      useESModules: !isTest,
       version: '^7.5.0',
     }],
   ]
