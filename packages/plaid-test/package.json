@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/jest": "^27.0.3",
     "babel-jest": "^27.4.5",
+    "eslint-plugin-jest": "^26.7.0",
     "jest": "^27.4.5"
   },
   "publishConfig": {
