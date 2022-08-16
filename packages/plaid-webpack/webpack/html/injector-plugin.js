@@ -107,15 +107,16 @@ class InjectorPlugin {
       if (!item) return;
       if (typeof item === 'string') item = { src: item };
       if (!item.content && !item.src) return;
+      const { content, ...rest } = item;
       const script = {
         tagName: 'script',
         closeTag: true,
-        attributes: {},
+        attributes: rest,
       };
-      if (item.async) script.attributes.async = true;
-      if (item.defer) script.attributes.defer = true;
-      if (item.content) script.innerHTML = util.escapeScript(item.content);
-      else if (item.src) script.attributes.src = item.src;
+      if (content) {
+        script.innerHTML = util.escapeScript(content);
+        delete script.attributes.src;
+      }
       return script;
     });
     data.headTags = [...cssTags, ...data.headTags, ...jsTags];
