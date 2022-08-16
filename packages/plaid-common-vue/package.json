@@ -5,9 +5,9 @@
   "author": "Gerald <gera2ld@live.com>",
   "license": "ISC",
   "dependencies": {
-    "@vue/eslint-config-typescript": "^10.0.0",
-    "eslint-plugin-vue": "^8.2.0",
-    "vue-tsc": "^0.33.2-patch.1"
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "vue-tsc": "^0.40.1"
   },
   "peerDependencies": {
     "@gera2ld/plaid": "2.x"
