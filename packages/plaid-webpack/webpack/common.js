@@ -23,6 +23,7 @@ module.exports = async (config, options) => {
     path: distDir,
     publicPath: '',
     filename: isProd && hashedFilename ? '[name].[chunkhash].js' : '[name].js',
+    hashFunction: 'xxhash64',
     ...config.output,
   };
   config.resolve = {
