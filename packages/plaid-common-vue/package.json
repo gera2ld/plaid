@@ -1,6 +1,6 @@
 {
   "name": "@gera2ld/plaid-common-vue",
-  "version": "2.5.7",
+  "version": "2.5.9",
   "description": "Webpack utility helpers for Vue",
   "author": "Gerald <gera2ld@live.com>",
   "license": "ISC",
