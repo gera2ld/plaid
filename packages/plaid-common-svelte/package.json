@@ -5,9 +5,9 @@
   "author": "Gerald <gera2ld@live.com>",
   "license": "ISC",
   "dependencies": {
-    "@tsconfig/svelte": "^3.0.0",
+    "@tsconfig/svelte": "^4.0.1",
     "eslint-plugin-svelte3": "^4.0.0",
-    "prettier-plugin-svelte": "^2.7.0"
+    "prettier-plugin-svelte": "^2.10.0"
   },
   "peerDependencies": {
     "@gera2ld/plaid": "2.x",

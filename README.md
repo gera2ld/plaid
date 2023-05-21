@@ -1,5 +1,5 @@
 # @gera2ld/plaid
 
-A bunch of helpers to add functions to your webpack configuration.
+Gerald's build toolchain and configuration.
 
-It's highly recommended to use [@gera2ld/generator-h5](https://github.com/gera2ld/generator-h5).
+`plaid-webpack*` are deprecated in favor of Vite.

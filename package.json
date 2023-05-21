@@ -11,8 +11,8 @@
     "update": "node scripts/update.js"
   },
   "devDependencies": {
-    "husky": "^7.0.4",
-    "lerna": "^4.0.0"
+    "husky": "^8.0.3",
+    "lerna": "^6.6.2"
   },
   "repository": {
     "type": "git",

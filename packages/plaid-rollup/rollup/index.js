@@ -6,9 +6,9 @@ const resolve = require('@rollup/plugin-node-resolve').default;
 const commonjs = require('@rollup/plugin-commonjs');
 const alias = require('@rollup/plugin-alias');
 const json = require('@rollup/plugin-json');
+const terser = require('@rollup/plugin-terser');
 const postcss = require('rollup-plugin-postcss');
 const importHttp = require('import-http/rollup');
-const { terser } = require('rollup-plugin-terser');
 const pkg = require(path.resolve('package.json'));
 
 const values = {
