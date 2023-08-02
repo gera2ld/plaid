@@ -46,6 +46,7 @@ const rollupPlugins = {
       ...values,
       ...replaceValues,
     },
+    preventAssignment: true,
   }),
   resolve: options => resolve(options),
   commonjs: options => commonjs(options),
