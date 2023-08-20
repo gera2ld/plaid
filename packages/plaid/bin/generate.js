@@ -1,37 +1,54 @@
-const fs = require('fs').promises;
+const { writeFile } = require('fs/promises');
 const { exists } = require('../util/helpers');
 
 const templateInfo = [
   {
     name: 'postcss',
-    filepath: '.postcssrc.js',
+    filepath: 'postcss.config.cjs',
     template: `\
-const { combineConfigSync } = require('@gera2ld/plaid/util/helpers');
-const tailwind = require('@gera2ld/plaid/postcss/tailwind');
-const base = require('@gera2ld/plaid/postcss/base');
+module.exports = {
+  plugins: {
+    'autoprefixer': {},
+    'postcss-calc': {},
+    'postcss-nested': {},
+    '@unocss/postcss': {},
+  },
+};`,
+  },
+  {
+    name: 'unocss',
+    filepath: 'uno.config.ts',
+    template: `\
+import { defineConfig, presetUno } from 'unocss';
 
-module.exports = combineConfigSync({}, [tailwind, base]);`,
-    successMessage: 'PostCSS config is generated successfully at .postcssrc.js',
+export default defineConfig({
+  content: {
+    filesystem: ['src/**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}'],
+  },
+  presets: [presetUno()],
+});`,
   },
 ];
 
 
-async function generate(name) {
+async function generateOne(name, opts) {
   const info = templateInfo.find(info => info.name === name);
-  if (info) {
-    await handleConflict(info.filepath, info.template);
-    console.info(info.successMessage);
-    return;
+  if (!info) {
+    console.error(`Only the following types are supported: ${templateInfo.map(t => t.name).join(', ')}`);
+    throw new Error(`Unknown config type: ${name}`);
   }
-  throw new Error(`Unknown type to generate: ${name}`);
+  if (!opts.force && await exists(info.filepath, { file: true })) {
+    throw new Error(`File already exists: ${info.filepath}`);
+  }
+  await writeFile(info.filepath, info.template, 'utf8');
+  console.info(`${name} config is successfully generated at ${info.filepath}`);
 }
 
-async function handleConflict(filepath, content) {
-  if (await exists(filepath, { file: true })) {
-    throw new Error(`File already exists: ${filepath}`);
+async function generate(names, opts) {
+  for (const name of names) {
+    await generateOne(name, opts);
   }
-  return fs.writeFile(filepath, content, 'utf8');
 }
 
-generate.templateInfo = templateInfo;
-module.exports = generate;
+exports.templateInfo = templateInfo;
+exports.generate = generate;

@@ -91,9 +91,7 @@ async function findFile(candidates, message) {
 
 function findConfigFile(name, message) {
   return findFile([
-    `scripts/${name}.conf.js`,
     `scripts/${name}.config.js`,
-    `${name}.conf.js`,
     `${name}.config.js`,
   ], message);
 }

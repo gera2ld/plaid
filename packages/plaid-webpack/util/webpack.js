@@ -1,11 +1,11 @@
 const { findConfigFile, parseConfig } = require('@gera2ld/plaid/util/helpers');
 
-const DEFAULT_WEBPACK = require.resolve('../config/webpack.conf');
+const DEFAULT_WEBPACK = require.resolve('../config/webpack.config');
 
 async function findWebpackConfig() {
   let filepath;
   try {
-    filepath = await findConfigFile('webpack', 'No webpack.conf.js is found');
+    filepath = await findConfigFile('webpack', 'No webpack.config.js is found');
   } catch (err) {
     filepath = DEFAULT_WEBPACK;
   }

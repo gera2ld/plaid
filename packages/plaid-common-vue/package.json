@@ -6,11 +6,11 @@
   "license": "ISC",
   "dependencies": {
     "@vue/eslint-config-typescript": "^11.0.3",
-    "eslint-plugin-vue": "^9.13.0",
-    "vue-tsc": "^1.6.5"
+    "eslint-plugin-vue": "^9.17.0",
+    "vue-tsc": "^1.8.8"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "2.x"
+    "@gera2ld/plaid": "*"
   },
   "repository": {
     "type": "git",

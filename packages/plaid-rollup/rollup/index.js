@@ -17,15 +17,7 @@ const values = {
 };
 
 const rollupPlugins = {
-  postcss: (config, minimize = false) => {
-    if (config === true) {
-      config = require('@gera2ld/plaid/config/postcssrc');
-    }
-    return postcss({
-      minimize,
-      ...config,
-    });
-  },
+  postcss: (config) => postcss(config),
   alias: aliases => alias(aliases),
   babel: ({ babelConfig, esm, extensions }) => babel({
     root: process.env.BABEL_ROOT || process.cwd(),
@@ -54,28 +46,29 @@ const rollupPlugins = {
   importHttp: () => importHttp(),
 };
 
-function getRollupPlugins({
-  babelConfig,
-  esm,
-  aliases,
-  extensions = defaultOptions.extensions,
-  replaceValues,
-  postcss = true,
-  browser = false,
-  importHttp = defaultOptions.importHttp,
-  minimize = isProd,
-  commonjs,
-} = {}) {
+function getRollupPlugins(options) {
+  const {
+    babelConfig,
+    esm,
+    aliases,
+    extensions = defaultOptions.extensions,
+    replaceValues,
+    postcss = { minimize: true },
+    browser = false,
+    importHttp = defaultOptions.importHttp,
+    minimize = isProd,
+    commonjs,
+  } = options;
   return [
     aliases && rollupPlugins.alias(aliases),
-    postcss && rollupPlugins.postcss(postcss, minimize),
+    postcss && rollupPlugins.postcss(postcss),
     rollupPlugins.babel({ babelConfig, esm, extensions }),
     rollupPlugins.replace(replaceValues),
     rollupPlugins.resolve({ browser, extensions }),
     rollupPlugins.commonjs(commonjs),
     rollupPlugins.json(),
     importHttp && rollupPlugins.importHttp(importHttp),
-    minimize && terser(),
+    minimize && terser({ ...minimize }),
   ].filter(Boolean);
 }
 
@@ -88,23 +81,6 @@ function getRollupExternal(externals = []) {
   });
 }
 
-function rollupMinify(config) {
-  return {
-    input: {
-      ...config.input,
-      plugins: [
-        ...config.input.plugins || [],
-        terser(),
-      ],
-    },
-    output: {
-      ...config.output,
-      file: config.output.file.replace(/\.js$/, '.min.js'),
-    },
-  };
-}
-
 exports.rollupPlugins = rollupPlugins;
 exports.getRollupPlugins = getRollupPlugins;
 exports.getRollupExternal = getRollupExternal;
-exports.rollupMinify = rollupMinify;

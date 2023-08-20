@@ -11,7 +11,7 @@ exports.defaultOptions = {
     '@': path.resolve('src'),
   },
   extensions: [
-    '.mjs', '.js', '.jsx',
+    '.ts', '.tsx', '.mjs', '.js', '.jsx',
   ],
   tailwindcss: {
     content: [

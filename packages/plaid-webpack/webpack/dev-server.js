@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const portfinder = require('portfinder');
 const { isProd } = require('@gera2ld/plaid/util');
 
@@ -41,14 +40,9 @@ module.exports = async (config, options) => {
       }
     }
   }
-  let { successInfo } = options;
-  if (typeof successInfo === 'function') successInfo = successInfo(config, options);
   config.plugins = [
     ...config.plugins || [],
     !isProd && new webpack.HotModuleReplacementPlugin(),
-    !isProd && new FriendlyErrorsPlugin({
-      compilationSuccessInfo: successInfo,
-    }),
   ].filter(Boolean);
   return config;
 };

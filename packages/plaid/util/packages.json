@@ -2,12 +2,10 @@
   "plaid",
   "plaid-common-react",
   "plaid-common-svelte",
-  "plaid-common-ts",
   "plaid-common-vue",
   "plaid-rollup",
   "plaid-test",
   "plaid-webpack",
   "plaid-webpack-svelte",
-  "plaid-webpack-vue",
   "plaid-webpack-vue3"
 ]

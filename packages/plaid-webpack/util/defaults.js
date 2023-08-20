@@ -48,16 +48,6 @@ exports.defaultOptions = Object.assign(defaultOptions, {
     host: '0.0.0.0',
     hot: true,
   },
-  successInfo(config/*, options */) {
-    return {
-      messages: [
-        'Envs:',
-        `  NODE_ENV=${process.env.NODE_ENV || ''}`,
-        `  BABEL_ENV=${process.env.BABEL_ENV || ''}`,
-        `Application running at http://localhost:${config.devServer.port}`,
-      ],
-    };
-  },
   externals: undefined,
   analyzer: {
     analyzerPort: 0,

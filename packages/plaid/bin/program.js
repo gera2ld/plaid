@@ -6,11 +6,12 @@ program
 .version(require('../package.json').version);
 
 program
-.command('generate <name>')
-.description('Generate template files')
-.action((...args) => {
-  safeRun(require('./generate'), args);
-});
+  .command('generate [...names]')
+  .option('-f, --force', 'Override existing config files')
+  .description('Generate template files')
+  .action((names, opts) => {
+    safeRun(require('./generate').generate, [names, opts]);
+  });
 
 function safeRun(module, args) {
   const { catchError } = require('../util/helpers');

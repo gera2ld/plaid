@@ -16,7 +16,6 @@ const nameMap = mergeLibraries({
   analyze: './analyze',
   common: './common',
   css: './css',
-  less: './less',
   raw: './raw',
   svg: './svg',
   sw: './sw',

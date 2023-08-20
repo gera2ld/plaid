@@ -21,12 +21,11 @@ program
 
 templateInfo.push({
   name: 'webpack',
-  filepath: 'scripts/webpack.conf.js',
+  filepath: 'scripts/webpack.config.cjs',
   template: `\
 const { modifyWebpackConfig } = require('@gera2ld/plaid');
 
 module.exports = modifyWebpackConfig(async (config) => {
   return config;
 });`,
-  successMessage: 'Webpack config is generated successfully at scripts/webpack.conf.js',
 });

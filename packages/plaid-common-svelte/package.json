@@ -5,12 +5,12 @@
   "author": "Gerald <gera2ld@live.com>",
   "license": "ISC",
   "dependencies": {
-    "@tsconfig/svelte": "^4.0.1",
+    "@tsconfig/svelte": "^5.0.0",
     "eslint-plugin-svelte3": "^4.0.0",
-    "prettier-plugin-svelte": "^2.10.0"
+    "prettier-plugin-svelte": "^3.0.3"
   },
   "peerDependencies": {
-    "@gera2ld/plaid": "2.x",
+    "@gera2ld/plaid": "*",
     "svelte": "^3.31.2"
   },
   "repository": {

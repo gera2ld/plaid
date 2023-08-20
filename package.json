@@ -6,19 +6,16 @@
   "license": "ISC",
   "scripts": {
     "lint": "eslint .",
-    "postinstall": "husky install && node scripts/update.js",
+    "prepare": "husky install && node scripts/update.js",
     "prepublishOnly": "npm run lint",
     "update": "node scripts/update.js"
   },
   "devDependencies": {
     "husky": "^8.0.3",
-    "lerna": "^6.6.2"
+    "lerna": "^7.1.5"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/gera2ld/plaid.git"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+  }
 }
