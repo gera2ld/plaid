@@ -6,7 +6,8 @@ program
 .version(require('../package.json').version);
 
 program
-  .command('generate [...names]')
+  .command('generate')
+  .argument('<names...>')
   .option('-f, --force', 'Override existing config files')
   .description('Generate template files')
   .action((names, opts) => {
