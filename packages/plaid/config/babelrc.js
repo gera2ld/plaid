@@ -1,7 +1,6 @@
 const { resolveBabelConfig, isTest } = require('../util');
 
 module.exports = resolveBabelConfig({
-  extends: require.resolve('./babelrc-base'),
   presets: [
     ['@babel/preset-env', {
       ...!isTest && {
