@@ -8,7 +8,10 @@
   "author": "Gerald <gera2ld@live.com>",
   "homepage": "https://github.com/gera2ld/plaid#readme",
   "license": "ISC",
+  "type": "module",
   "main": "index.js",
+  "files": ["index.js", "index.d.ts"],
+  "types": "index.d.ts",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -20,20 +23,18 @@
   "bugs": {
     "url": "https://github.com/gera2ld/plaid/issues"
   },
-  "peerDependencies": {
-    "@gera2ld/plaid": "*"
-  },
   "dependencies": {
-    "@rollup/plugin-alias": "^5.0.0",
-    "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-commonjs": "^25.0.4",
-    "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.2.0",
-    "@rollup/plugin-replace": "^5.0.2",
-    "@rollup/plugin-terser": "^0.4.3",
-    "cssnano": "^6.0.1",
-    "import-http": "^0.3.1",
-    "rollup": "^3.28.0",
+    "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.6.1",
     "rollup-plugin-postcss": "^4.0.2"
+  },
+  "peerDependencies": {
+    "@gera2ld/plaid": "^2"
   }
 }
