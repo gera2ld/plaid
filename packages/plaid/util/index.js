@@ -1,13 +1,6 @@
-const helpers = require('./helpers');
-const config = require('./config');
-const env = require('./env');
-const defaults = require('./defaults');
-
 Object.assign(
   exports,
-  helpers,
-  config,
-  env,
-  defaults,
+  require('./babel'),
+  require('./helpers'),
+  require('./env'),
 );
-helpers.mergeLibraries(exports, 'util', /^plaid-/);

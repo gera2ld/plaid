@@ -9,6 +9,8 @@ import jsonPlugin from '@rollup/plugin-json';
 import terserPlugin from '@rollup/plugin-terser';
 import postcssPlugin from 'rollup-plugin-postcss';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const values = {
   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
 };

@@ -1,18 +1,17 @@
 {
   "name": "@gera2ld/plaid",
-  "author": "Gerald <i@gerald.top>",
+  "author": "Gerald <code@gera2ld.space>",
   "description": "Webpack utility helpers",
   "private": true,
   "license": "ISC",
   "scripts": {
     "lint": "eslint .",
-    "prepare": "husky install && node scripts/update.js",
-    "prepublishOnly": "npm run lint",
-    "update": "node scripts/update.js"
+    "prepare": "husky install",
+    "prepublishOnly": "npm run lint"
   },
   "devDependencies": {
     "husky": "^8.0.3",
-    "lerna": "^7.1.5"
+    "lerna": "^8.0.0"
   },
   "repository": {
     "type": "git",
