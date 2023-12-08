@@ -1,10 +1,13 @@
 {
   "name": "@gera2ld/plaid-common-react",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "Webpack utility helpers for React",
   "author": "Gerald <gera2ld@live.com>",
   "license": "ISC",
-  "files": ["config", "eslint"],
+  "files": [
+    "config",
+    "eslint"
+  ],
   "dependencies": {
     "@babel/preset-react": "^7.22.5",
     "eslint-plugin-react": "^7.33.2",

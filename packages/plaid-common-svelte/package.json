@@ -1,10 +1,12 @@
 {
   "name": "@gera2ld/plaid-common-svelte",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "Webpack utility helpers for Vue",
   "author": "Gerald <gera2ld@live.com>",
   "license": "ISC",
-  "files": ["eslint"],
+  "files": [
+    "eslint"
+  ],
   "dependencies": {
     "@tsconfig/svelte": "^5.0.2",
     "eslint-plugin-svelte3": "^4.0.0",

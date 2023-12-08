@@ -1,6 +1,6 @@
 {
   "name": "@gera2ld/plaid-rollup",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "Gerald's rollup config",
   "keywords": [
     "rollup"
@@ -10,7 +10,10 @@
   "license": "ISC",
   "type": "module",
   "main": "index.js",
-  "files": ["index.js", "index.d.ts"],
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "types": "index.d.ts",
   "publishConfig": {
     "access": "public",
